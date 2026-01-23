@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Le Prestige</title>
+    <link rel="stylesheet" href="nav-styles.css">
+    <link rel="stylesheet" href="gallery-styles.css">
+    <link rel="stylesheet" href="footer-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="home-new.html" class="nav-logo">Le Prestige</a>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="home-new.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reservations.html">Reservations</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="index-portal.html" style="margin-right: 10px;">Portal</a>
+                <a href="index.html">Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Modal -->
+    <div id="cartModal">
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h2>Your Order</h2>
+                <button class="cart-close">&times;</button>
+            </div>
+            <div class="cart-content" id="cartContent">
+                <div class="cart-empty">Your cart is empty</div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span class="cart-total-label">Total:</span>
+                    <span class="cart-total-value" id="cartTotal">$0.00</span>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn">PROCEED TO CHECKOUT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <!-- Hero -->
+        <div class="gallery-hero">
+            <div>
+                <h1>Visual Journey</h1>
+                <p>Discover Our World of Culinary Excellence</p>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="gallery-content">
+            <h2 class="gallery-section-title">Our Spaces</h2>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Main Dining Room">
+                    </div>
+                    <h3>Main Dining Room</h3>
+                    <p>An intimate sanctuary of refined elegance where crystal chandeliers illuminate handcrafted details and museum-quality art adorns the walls.</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Open Kitchen Theatre">
+                    </div>
+                    <h3>Open Kitchen Theatre</h3>
+                    <p>Witness culinary mastery in real-time as our award-winning chefs orchestrate a symphony of flavors with precision and passion.</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="https://images.pexels.com/photos/1632523/pexels-photo-1632523.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Private Dining Salon">
+                    </div>
+                    <h3>Private Dining Salon</h3>
+                    <p>Exclusively designed for your most important celebrations, this sophisticated space offers complete privacy and personalized service.</p>
+                </div>
+            </div>
+
+            <h2 class="gallery-section-title">Culinary Artistry</h2>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="https://images.pexels.com/photos/3915857/pexels-photo-3915857.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Signature Creations">
+                    </div>
+                    <h3>Signature Creations</h3>
+                    <p>Each dish is a work of art—meticulously plated and presented with the precision of a master craftsman.</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="https://images.pexels.com/photos/3407814/pexels-photo-3407814.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Wine Collection">
+                    </div>
+                    <h3>Wine Collection</h3>
+                    <p>Our sommelier-curated selection features rare vintages and exceptional wines from distinguished vineyards worldwide.</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="https://images.pexels.com/photos/3407815/pexels-photo-3407815.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Dessert Creations">
+                    </div>
+                    <h3>Dessert Creations</h3>
+                    <p>Indulge in our pastry chef's exquisite confections—the perfect finale to an extraordinary culinary experience.</p>
+                </div>
+            </div>
+
+            <h2 class="gallery-section-title">Ambiance & Elegance</h2>
+
+            <div class="gallery-grid two-columns">
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Outdoor Terrace">
+                    </div>
+                    <h3>Outdoor Terrace</h3>
+                    <p>Seasonal dining under starlit skies with gentle breezes and the ambiance of refined sophistication.</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="https://images.pexels.com/photos/2220316/pexels-photo-2220316.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cocktail Lounge">
+                    </div>
+                    <h3>Cocktail Lounge</h3>
+                    <p>An elegant bar featuring classic and contemporary cocktails crafted by our expert mixologists.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mini Footer -->
+    <footer>
+        <div class="footer-bottom" style="border-top: 1px solid rgba(212,175,55,0.2); margin-top: 60px; padding-top: 30px;">
+            <p>&copy; 2026 Le Prestige Fine Dining. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="contact.html">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="nav-scripts.js"></script>
+</body>
+</html>

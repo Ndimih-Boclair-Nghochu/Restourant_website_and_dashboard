@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signature Events & Celebrations - Le Prestige</title>
+    <link rel="stylesheet" href="nav-styles.css">
+    <link rel="stylesheet" href="events-styles.css">
+    <link rel="stylesheet" href="footer-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="home-new.html" class="nav-logo">Le Prestige</a>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="home-new.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reservations.html">Reservations</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="index-portal.html" style="margin-right: 10px;">Portal</a>
+                <a href="index.html">Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Modal -->
+    <div id="cartModal">
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h2>Your Order</h2>
+                <button class="cart-close">&times;</button>
+            </div>
+            <div class="cart-content" id="cartContent">
+                <div class="cart-empty">Your cart is empty</div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span class="cart-total-label">Total:</span>
+                    <span class="cart-total-value" id="cartTotal">$0.00</span>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn">PROCEED TO CHECKOUT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Events Section -->
+    <section class="events">
+        <!-- Hero -->
+        <div class="events-hero">
+            <div>
+                <h1>Extraordinary Events</h1>
+                <p>Unforgettable Moments in Elegant Settings</p>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="events-content">
+            <!-- Signature Experiences -->
+            <div class="events-section">
+                <h2 class="section-title">Signature Experiences</h2>
+                <div class="events-list">
+                    <div class="event-item">
+                        <h3 class="event-title">Grand Wine Tasting Soirée</h3>
+                        <p class="event-meta">First Friday of Every Month • 7:00 PM - 10:00 PM</p>
+                        <p class="event-desc">An exquisite evening featuring rare vintages from around the world, expertly paired with our chef's bespoke five-course tasting menu. Each course is thoughtfully crafted to complement the character and complexity of each wine selection.</p>
+                        <p class="event-details"><strong>$295 per person</strong> • Limited to 18 guests • Dress code: Black Tie Optional • Advance reservations only</p>
+                    </div>
+
+                    <div class="event-item">
+                        <h3 class="event-title">Chef's Counter Culinary Journey</h3>
+                        <p class="event-meta">By Private Appointment • Customizable Time</p>
+                        <p class="event-desc">An intimate experience at our chef's counter where culinary artistry comes to life before your eyes. Our executive chef personally designs a bespoke seven-course tasting menu, preparing each dish with meticulous attention to technique and presentation while you enjoy front-row access to the kitchen's artistry.</p>
+                        <p class="event-details"><strong>$425 per person</strong> • Up to 10 guests • Dietary preferences accommodated • 48-hour advance notice required</p>
+                    </div>
+
+                    <div class="event-item">
+                        <h3 class="event-title">Seasonal Inspiration Tasting</h3>
+                        <p class="event-meta">Thursday - Sunday • Evening & Afternoon Services</p>
+                        <p class="event-desc">Celebrate the finest offerings of each season through our chef's artistic interpretation. From spring's delicate vegetables to autumn's rich game, each seasonal menu showcases the highest quality ingredients transformed into contemporary culinary masterpieces.</p>
+                        <p class="event-details"><strong>À la carte pricing available</strong> • Nightly specials • Wine pairings recommended • Reservations encouraged</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Private Dining -->
+            <div class="private-section">
+                <h2>PRIVATE DINING & CELEBRATIONS</h2>
+                <p>Celebrate life's most precious moments in our elegantly appointed private dining salon. Our dedicated event team orchestrates every detail with meticulous precision—from bespoke menu creation by our executive chef to personalized service that exceeds expectations. Whether hosting an intimate dinner for 12 or an elegant gala for 50, we transform your vision into an unforgettable gastronomic celebration. Our sommelier curates wine selections tailored to your preferences, and our pastry chef creates signature desserts that reflect your style. Let us handle every element while you focus on creating memories that last a lifetime.</p>
+            </div>
+
+            <!-- Event Types -->
+            <div class="events-section">
+                <h2 class="section-title">Occasions We Celebrate</h2>
+                <div class="event-types">
+                    <div class="event-type-item">
+                        <h3>Corporate Excellence</h3>
+                        <p>Executive dinners, product launches, and client appreciation galas. Our refined ambiance and impeccable service provide the perfect backdrop for business success and professional networking.</p>
+                        <a href="contact.html" class="btn-book">Book Event</a>
+                    </div>
+                    <div class="event-type-item">
+                        <h3>Weddings & Honeymoons</h3>
+                        <p>From rehearsal dinners to wedding receptions, we orchestrate every moment. Our team collaborates with your vision to create an enchanting culinary celebration of your union.</p>
+                        <a href="contact.html" class="btn-book">Book Event</a>
+                    </div>
+                    <div class="event-type-item">
+                        <h3>Milestone Celebrations</h3>
+                        <p>Anniversaries, birthdays, and life achievements. We design personalized experiences that honor your accomplishments with elegance, sophistication, and exceptional cuisine.</p>
+                        <a href="contact.html" class="btn-book">Book Event</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="contact-info">
+                <h3>Begin Your Celebration</h3>
+                <p>Our events coordinator is ready to transform your vision into reality</p>
+                <div class="contact-details">
+                    <p><strong>events@leprestige.com</strong></p>
+                    <p><strong>+1 (555) 123-4567</strong></p>
+                    <p style="font-size: 13px; color: #999; margin-top: 20px;">Monday - Sunday • 10:00 AM - 10:00 PM</p>
+                    <a href="contact.html" class="btn-primary" style="margin-top: 30px; display: inline-block;">Reserve Your Event</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom" style="border-top: 1px solid rgba(212,175,55,0.2); margin-top: 60px; padding-top: 30px;">
+            <p>&copy; 2026 Le Prestige Fine Dining. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="contact.html">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="nav-scripts.js"></script>
+</body>
+</html>

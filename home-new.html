@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Prestige - Fine Dining Restaurant</title>
+    <link rel="stylesheet" href="nav-styles.css">
+    <link rel="stylesheet" href="home-new-styles.css">
+    <link rel="stylesheet" href="menu-styles.css">
+    <link rel="stylesheet" href="footer-styles.css">
+    <link rel="stylesheet" href="reviews.css">
+    <script src="menu-scripts.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="home-new.html" class="nav-logo">Le Prestige</a>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="home-new.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reservations.html">Reservations</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="index-portal.html" style="margin-right: 10px;">Portal</a>
+                <a href="admin-login.html" class="admin-badge" title="Admin Dashboard">👤 Admin</a>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Hero Section -->
+    <section class="hero" style="background: url('https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=1920&h=800&fit=crop') center/cover; background-attachment: fixed;">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Le Prestige</h1>
+            <p>Culinary Excellence Since 1998</p>
+            <a href="reservations.html" class="btn-primary">Reserve Your Table</a>
+        </div>
+    </section>
+
+    <!-- Quick Info -->
+    <section class="quick-info">
+        <div class="container">
+            <div class="info-items">
+                <div class="info-item">
+                    <h3>Michelin Quality</h3>
+                    <p>World-class cuisine and service standards</p>
+                </div>
+                <div class="info-item">
+                    <h3>Fine Dining</h3>
+                    <p>Sophisticated ambiance and presentation</p>
+                </div>
+                <div class="info-item">
+                    <h3>Expert Chefs</h3>
+                    <p>Renowned culinary team with decades of experience</p>
+                </div>
+                <div class="info-item">
+                    <h3>Fresh Ingredients</h3>
+                    <p>Premium sourced daily from local suppliers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Today's Menu & Drinks -->
+    <section class="todays-menu">
+        <div class="container">
+            <h2 class="section-title">Today's Specials</h2>
+            <p class="section-subtitle">Fresh selections from our kitchen</p>
+
+            <!-- Category Filter -->
+            <div class="category-filter">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="appetizers">Appetizers</button>
+                <button class="category-btn" data-category="mains">Main Courses</button>
+                <button class="category-btn" data-category="desserts">Desserts</button>
+                <button class="category-btn" data-category="beverages">Beverages</button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="menu-grid" id="homeMenuGrid">
+                <!-- Menu items will be loaded dynamically from JavaScript -->
+            </div>
+
+            <div class="order-cta">
+                <p>Ready to order? View our full menu or browse our daily specials above.</p>
+                <a href="menu.html" class="btn-primary">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-preview">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/3407857/pexels-photo-3407857.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop" alt="Le Prestige Restaurant">
+                </div>
+                <div class="about-content">
+                    <h2>Welcome to Le Prestige</h2>
+                    <p>For over 25 years, Le Prestige has been the destination for fine dining enthusiasts seeking culinary excellence, impeccable service, and an unforgettable experience.</p>
+                    <p>Our award-winning chefs craft each dish with passion, using only the finest ingredients sourced from trusted local and international suppliers. Every plate tells a story of precision, artistry, and dedication to perfection.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>25+</h3>
+                            <p>Years of Excellence</p>
+                        </div>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Expert Team Members</p>
+                        </div>
+                        <div class="stat">
+                            <h3>100K+</h3>
+                            <p>Happy Guests</p>
+                        </div>
+                    </div>
+                    <a href="about.html" class="btn-primary">Learn Our Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Guest Experiences</h2>
+            <p class="section-subtitle">What our guests are saying</p>
+            
+            <div class="testimonials-grid" id="reviewsContainer">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"An extraordinary culinary journey. Every course was a masterpiece of flavor and presentation. The service was impeccable. Truly world-class."</p>
+                    <div class="testimonial-author">
+                        <h4>Margaret Stone</h4>
+                        <p>Executive Director, New York</p>
+                    </div>
+                </div>
+
+                <div class="testimonial-card default">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Le Prestige exceeded all expectations. The chef's creativity is remarkable, and the wine pairing suggestions were exceptional. A dining experience to remember."</p>
+                    <div class="testimonial-author">
+                        <h4>James Mitchell</h4>
+                        <p>Entrepreneur, Manhattan</p>
+                    </div>
+                </div>
+
+                <div class="testimonial-card default">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Celebrated our anniversary here, and it was absolutely perfect. The ambiance, the food, the attention to detail—everything was flawless. We'll be back!"</p>
+                    <div class="testimonial-author">
+                        <h4>Victoria & Robert Chen</h4>
+                        <p>Guests, Brooklyn</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="review-btn-container">
+                <button class="add-review-btn" onclick="showReviewModal()">✍️ Share Your Experience</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events & Catering Section -->
+    <section class="events-catering">
+        <div class="container">
+            <h2 class="section-title">Celebrate with Us</h2>
+            <p class="section-subtitle">Private Events & Catering Services</p>
+            
+            <div class="events-catering-grid">
+                <div class="event-card">
+                    <div class="event-icon">💍</div>
+                    <h3>Weddings & Engagements</h3>
+                    <p>Create unforgettable memories with custom menus, intimate ambiance, and our dedicated event team</p>
+                    <a href="events.html" class="event-link">Explore Wedding Options →</a>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-icon">🏢</div>
+                    <h3>Corporate Events</h3>
+                    <p>Impress clients and colleagues with sophisticated corporate dining and team celebrations</p>
+                    <a href="events.html" class="event-link">Corporate Packages →</a>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-icon">🍽️</div>
+                    <h3>Private Catering</h3>
+                    <p>Full-service catering for off-site events with our award-winning culinary expertise</p>
+                    <a href="contact.html" class="event-link">Request Catering →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-content">
+                <h2>Our Commitment to Excellence</h2>
+                <p>At Le Prestige, we believe fine dining extends beyond exceptional cuisine. We are committed to sustainable practices, fair trade ingredients, and supporting our culinary community.</p>
+                
+                <div class="mission-grid">
+                    <div class="mission-item">
+                        <h3>Sustainable Sourcing</h3>
+                        <p>We partner with local farmers and ethical suppliers to ensure the freshest ingredients while supporting our community</p>
+                    </div>
+                    <div class="mission-item">
+                        <h3>Chef Development</h3>
+                        <p>Our culinary team mentors emerging chefs through apprenticeships and training programs in classic French techniques</p>
+                    </div>
+                    <div class="mission-item">
+                        <h3>Community Impact</h3>
+                        <p>Percentage of profits support local food banks and culinary education programs for underserved communities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-media-section">
+        <div class="container">
+            <h2 class="section-title">Follow Our Culinary Journey</h2>
+            <p class="section-subtitle">Latest updates from Le Prestige</p>
+            
+            <div class="instagram-feed">
+                <div class="instagram-placeholder">
+                    <div class="placeholder-card">
+                        <img src="https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Instagram Post">
+                        <div class="post-overlay">
+                            <span class="post-likes">❤️ 1,247</span>
+                        </div>
+                    </div>
+                    <div class="placeholder-card">
+                        <img src="https://images.pexels.com/photos/3915857/pexels-photo-3915857.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Instagram Post">
+                        <div class="post-overlay">
+                            <span class="post-likes">❤️ 892</span>
+                        </div>
+                    </div>
+                    <div class="placeholder-card">
+                        <img src="https://images.pexels.com/photos/3407815/pexels-photo-3407815.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Instagram Post">
+                        <div class="post-overlay">
+                            <span class="post-likes">❤️ 1,563</span>
+                        </div>
+                    </div>
+                    <div class="placeholder-card">
+                        <img src="https://images.pexels.com/photos/2282582/pexels-photo-2282582.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop" alt="Instagram Post">
+                        <div class="post-overlay">
+                            <span class="post-likes">❤️ 2,104</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="instagram-info">
+                    <h3>@LePrestigeNYC</h3>
+                    <p>Experience the finest in culinary artistry. Award-winning cuisine. Impeccable service. Unforgettable moments.</p>
+                    <a href="#" class="btn-instagram">FOLLOW ON INSTAGRAM</a>
+                    <p class="instagram-description">Join our community of food enthusiasts and stay updated with exclusive behind-the-scenes moments, new menu creations, and special events.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Experience Fine Dining Excellence</h2>
+            <p>Reserve your table and discover why Le Prestige is the preferred choice for discerning diners</p>
+            <a href="reservations.html" class="btn-primary">Make a Reservation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- About -->
+            <div class="footer-section">
+                <h3>About Le Prestige</h3>
+                <p>Experience the pinnacle of fine dining with our expertly crafted cuisine and impeccable service. Est. 2015</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Twitter">𝕏</a>
+                    <a href="#" title="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="home-new.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="reservations.html">Reservations</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                    <strong>Address:</strong>
+                    <span>123 Elegance Avenue<br>Culinary District<br>New York, NY 10001</span>
+                </div>
+                <div class="contact-item">
+                    <strong>Phone:</strong>
+                    <span><a href="tel:+12125551234" style="color:#ccc; text-decoration:none;">+1 (212) 555-1234</a></span>
+                </div>
+                <div class="contact-item">
+                    <strong>Email:</strong>
+                    <span><a href="mailto:info@leprestige.com" style="color:#ccc; text-decoration:none;">info@leprestige.com</a></span>
+                </div>
+            </div>
+
+            <!-- Hours & Newsletter -->
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <div class="hours-grid">
+                    <div class="hour-item">
+                        <strong>Tue - Thu:</strong>
+                        <span>5:00 PM - 10:00 PM</span>
+                    </div>
+                    <div class="hour-item">
+                        <strong>Fri - Sat:</strong>
+                        <span>5:00 PM - 11:00 PM</span>
+                    </div>
+                    <div class="hour-item">
+                        <strong>Sunday:</strong>
+                        <span>5:00 PM - 9:00 PM</span>
+                    </div>
+                    <div class="hour-item">
+                        <strong>Monday:</strong>
+                        <span>CLOSED</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div style="background: rgba(0,0,0,0.3); padding: 40px; margin-top: 40px; border-top: 1px solid rgba(212,175,55,0.2); border-bottom: 1px solid rgba(212,175,55,0.2);">
+            <div style="max-width: 1400px; margin: 0 auto;">
+                <h3 style="font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); margin-bottom: 20px;">Newsletter</h3>
+                <p style="color: #ccc; margin-bottom: 20px; font-size: 14px;">Subscribe to receive exclusive offers, special events, and culinary updates from Le Prestige</p>
+                <form class="newsletter-form" onsubmit="return false;">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Le Prestige Fine Dining. All rights reserved. | Culinary Excellence Since 2015</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Accessibility</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Review Modal -->
+    <div id="reviewModal">
+        <div class="review-modal-content">
+            <button class="review-close" onclick="closeReviewModal()">×</button>
+            <div class="review-modal-header">
+                <h2>Share Your Experience</h2>
+                <p>We'd love to hear about your dining experience at Le Prestige</p>
+            </div>
+            <form id="reviewForm" onsubmit="submitReview(event)">
+                <div class="review-form-group">
+                    <label for="reviewName">Your Name *</label>
+                    <input type="text" id="reviewName" required placeholder="Enter your full name">
+                </div>
+                <div class="review-form-group">
+                    <label for="reviewLocation">Location (Optional)</label>
+                    <input type="text" id="reviewLocation" placeholder="e.g., New York, Manhattan">
+                </div>
+                <div class="review-form-group">
+                    <label>Your Rating *</label>
+                    <div class="star-rating">
+                        <span class="star" data-rating="1">★</span>
+                        <span class="star" data-rating="2">★</span>
+                        <span class="star" data-rating="3">★</span>
+                        <span class="star" data-rating="4">★</span>
+                        <span class="star active" data-rating="5">★</span>
+                    </div>
+                </div>
+                <div class="review-form-group">
+                    <label for="reviewComment">Your Review *</label>
+                    <textarea id="reviewComment" required placeholder="Share your experience with us..."></textarea>
+                </div>
+                <div class="review-form-actions">
+                    <button type="button" class="review-cancel-btn" onclick="closeReviewModal()">Cancel</button>
+                    <button type="submit" class="review-submit-btn">Submit Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="nav-scripts.js"></script>
+    <script src="home-scripts.js"></script>
+    <script src="counter-animation.js"></script>
+    <script src="reviews.js"></script>
+</body>
+</html>

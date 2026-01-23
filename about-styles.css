@@ -1,0 +1,545 @@
+/* ==================== ABOUT PAGE STYLES ==================== */
+
+/* Hero Section */
+.about-hero {
+    position: relative;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 80px;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(13, 13, 13, 0.7) 0%, rgba(13, 13, 13, 0.5) 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+    animation: fadeInDown 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-title {
+    font-size: 72px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
+    color: #e8e8e8;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-accent {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #d4af37;
+    text-transform: uppercase;
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Main About Section */
+.about {
+    background: white;
+}
+
+/* Story Section */
+.story-section-simple {
+    margin-bottom: 80px;
+    padding: 60px 0;
+}
+
+.story-header {
+    margin-bottom: 40px;
+}
+
+.story-header h2 {
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    margin: 0 0 20px 0;
+}
+
+.story-intro {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--primary);
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.story-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.story-content p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* Stats Section */
+.stats-section-simple {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-bottom: 80px;
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.stat-item-simple {
+    text-align: center;
+}
+
+.stat-number-simple {
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--primary);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.stat-label-simple {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+/* Achievements Section */
+.achievements-section-simple {
+    background: white;
+    color: var(--text-dark);
+    padding: 60px 50px;
+    margin: 80px 0 0 0;
+    border-top: 2px solid var(--primary);
+}
+
+.achievements-title-simple {
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    margin: 0 0 50px 0;
+    text-align: center;
+}
+
+.achievements-grid-simple {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    text-align: center;
+}
+
+.achievement-item-simple {
+    padding: 20px 0;
+    border-left: 3px solid var(--primary);
+    padding-left: 20px;
+}
+
+.achievement-label {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.achievement-detail {
+    font-size: 13px;
+    color: var(--primary);
+    letter-spacing: 0.3px;
+    font-weight: 500;
+}
+
+/* Team Section */
+.team-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.team-title {
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    text-align: center;
+    margin: 0 0 15px 0;
+}
+
+.team-subtitle {
+    font-size: 15px;
+    color: var(--primary);
+    text-align: center;
+    margin: 0 0 60px 0;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 50px;
+}
+
+.team-member {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.member-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    border-top: 4px solid var(--primary);
+    margin-bottom: 25px;
+}
+
+.member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover .member-image img {
+    transform: scale(1.05);
+}
+
+.member-info h3 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin: 0 0 8px 0;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.member-role {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--primary);
+    margin: 0 0 12px 0;
+    font-weight: 500;
+}
+
+.member-bio {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 1024px) {
+    .about-hero {
+        height: 400px;
+    }
+
+    .hero-title {
+        font-size: 48px;
+        letter-spacing: 3px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .story-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .stats-section-simple {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .achievements-grid-simple {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        height: 300px;
+        margin-top: 60px;
+    }
+
+    .hero-title {
+        font-size: 36px;
+        letter-spacing: 2px;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+        letter-spacing: 0px;
+    }
+
+    .story-header h2 {
+        font-size: 28px;
+    }
+
+    .story-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 40px 0;
+    }
+
+    .story-content p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .stats-section-simple {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 40px 0;
+    }
+
+    .stat-number-simple {
+        font-size: 36px;
+    }
+
+    .achievements-section-simple {
+        padding: 50px 30px;
+    }
+
+    .achievements-title-simple {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+
+    .achievements-grid-simple {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .achievement-item-simple {
+        padding: 15px 0;
+        padding-left: 15px;
+        border-left: 2px solid var(--primary);
+    }
+
+    .achievement-label {
+        font-size: 13px;
+    }
+
+    .achievement-detail {
+        font-size: 12px;
+    }
+
+    .team-section {
+        padding: 60px 0;
+    }
+
+    .team-title {
+        font-size: 28px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .member-image {
+        margin-bottom: 20px;
+    }
+
+    .member-info h3 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-hero {
+        height: 220px;
+        margin-top: 40px;
+    }
+
+    .hero-title {
+        font-size: 28px;
+        letter-spacing: 1px;
+    }
+
+    .hero-subtitle {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+    .hero-accent {
+        font-size: 11px;
+    }
+
+    .story-header h2 {
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
+
+    .story-intro {
+        font-size: 14px;
+    }
+
+    .story-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 30px 0;
+        margin-bottom: 50px;
+    }
+
+    .story-content p {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .stats-section-simple {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 30px 0;
+        margin-bottom: 50px;
+    }
+
+    .stat-number-simple {
+        font-size: 32px;
+    }
+
+    .stat-label-simple {
+        font-size: 11px;
+    }
+
+    .achievements-section-simple {
+        padding: 35px 20px;
+        border-top: 1px solid var(--border);
+    }
+
+    .achievements-title-simple {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    .achievements-grid-simple {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .achievement-item-simple {
+        padding: 12px 0;
+        padding-left: 12px;
+        border-left: 2px solid var(--primary);
+    }
+
+    .achievement-label {
+        font-size: 12px;
+    }
+
+    .achievement-detail {
+        font-size: 11px;
+    }
+
+    .team-section {
+        padding: 50px 0;
+    }
+
+    .team-title {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+
+    .team-subtitle {
+        font-size: 13px;
+        margin-bottom: 35px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .member-image {
+        margin-bottom: 15px;
+        border-top: 3px solid var(--primary);
+    }
+
+    .member-info h3 {
+        font-size: 15px;
+    }
+
+    .member-role {
+        font-size: 11px;
+    }
+
+    .member-bio {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RestroHub - Fine Dining Restaurant</title>
+    <link rel="stylesheet" href="home-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>🍽️ RestroHub</h1>
+                <p>Fine Dining Cuisine</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#menu" class="nav-link">Menu</a></li>
+                <li><a href="#specials" class="nav-link">Specials</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#reservations" class="nav-link">Reservations</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="menu.html" class="btn-order">🛒 Order Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Welcome to RestroHub
+            </h1>
+            <p class="hero-subtitle">
+                Experience Culinary Excellence | Exceptional Service | Unforgettable Moments
+            </p>
+            <div class="hero-buttons">
+                <a href="menu.html" class="btn btn-primary btn-large">
+                    🛒 Order Online
+                </a>
+                <a href="#reservations" class="btn btn-secondary btn-large">
+                    📅 Make a Reservation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="menu" class="featured-menu">
+        <div class="container">
+            <h2 class="section-title">Our Signature Menu</h2>
+            <p class="section-subtitle">Handcrafted dishes by our award-winning chefs</p>
+
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="all">All Dishes</button>
+                <button class="category-btn" data-category="appetizers">Appetizers</button>
+                <button class="category-btn" data-category="mains">Main Course</button>
+                <button class="category-btn" data-category="desserts">Desserts</button>
+                <button class="category-btn" data-category="beverages">Beverages</button>
+            </div>
+
+            <div class="menu-grid">
+                <div class="menu-item" data-category="appetizers">
+                    <div class="menu-header">
+                        <h3>Foie Gras Terrine</h3>
+                        <span class="price">$28</span>
+                    </div>
+                    <p>House-made terrine with fig compote and brioche toast</p>
+                    <div class="menu-meta">⭐⭐⭐⭐⭐ (124 reviews)</div>
+                </div>
+
+                <div class="menu-item" data-category="appetizers">
+                    <div class="menu-header">
+                        <h3>Oysters Rockefeller</h3>
+                        <span class="price">$22</span>
+                    </div>
+                    <p>Fresh oysters with herbs butter, spinach, and breadcrumbs</p>
+                    <div class="menu-meta">⭐⭐⭐⭐⭐ (98 reviews)</div>
+                </div>
+
+                <div class="menu-item" data-category="appetizers">
+                    <div class="menu-header">
+                        <h3>Ceviche Tasting</h3>
+                        <span class="price">$24</span>
+                    </div>
+                    <p>Fresh fish cured in citrus with avocado and crispy tortilla</p>
+                    <div class="menu-meta">⭐⭐⭐⭐⭐ (156 reviews)</div>
+                </div>
+
+                <div class="menu-item" data-category="mains">
+                    <div class="menu-header">
+                        <h3>Wagyu Ribeye</h3>
+                        <span class="price">$65</span>
+                    </div>
+                    <p>Japanese A5 Wagyu with truffle butter and seasonal vegetables</p>
+                    <div class="menu-meta">⭐⭐⭐⭐⭐ (234 reviews)</div>
+                </div>
+
+                <div class="menu-item" data-category="mains">
+                    <div class="menu-header">
+                        <h3>Pan-Seared Halibut</h3>
+                        <span class="price">$48</span>
+                    </div>
+                    <p>Alaska halibut with champagne sauce and artisanal vegetables</p>
+                    <div class="menu-meta">⭐⭐⭐⭐⭐ (189 reviews)</div>
+                </div>
+
+                <div class="menu-item" data-category="mains">
+                    <div class="menu-header">
+                        <h3>Duck Confit</h3>
+                        <span class="price">$52</span>
+                    </div>
+                    <p>Slow-cooked duck leg with cherry gastrique and foie gras jus</p>
+                    <div class="menu-meta">⭐⭐⭐⭐⭐ (167 reviews)</div>
+                </div>
+
+                <div class="menu-item" data-category="desserts">
+                    <div class="menu-header">
+                        <h3>Chocolate Soufflé</h3>
+                        <span class="price">$18</span>
+                    </div>
+                    <p>Warm dark chocolate soufflé with vanilla bean ice cream</p>
+                    <div class="menu-meta">⭐⭐⭐⭐⭐ (212 reviews)</div>
+                </div>
+
+                <div class="menu-item" data-category="desserts">
+                    <div class="menu-header">
+                        <h3>Crème Brûlée</h3>
+                        <span class="price">$16</span>
+                    </div>
+                    <p>Classic French custard with caramelized sugar and fresh berries</p>
+                    <div class="menu-meta">⭐⭐⭐⭐⭐ (178 reviews)</div>
+                </div>
+
+                <div class="menu-item" data-category="beverages">
+                    <div class="menu-header">
+                        <h3>Signature Cocktail</h3>
+                        <span class="price">$16</span>
+                    </div>
+                    <p>Craft cocktail with artisanal spirits and fresh ingredients</p>
+                    <div class="menu-meta">⭐⭐⭐⭐⭐ (145 reviews)</div>
+                </div>
+            </div>
+
+            <div class="menu-cta">
+                <a href="menu.html" class="btn btn-primary btn-large">View Full Menu & Order</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Info Bar -->
+    <section class="quick-info">
+        <div class="container">
+            <div class="info-item">
+                <div class="info-icon">⭐</div>
+                <div class="info-text">
+                    <h4>Michelin Quality</h4>
+                    <p>Award-Winning Chef</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">🍽️</div>
+                <div class="info-text">
+                    <h4>Fine Dining</h4>
+                    <p>Elegant Atmosphere</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">👨‍🍳</div>
+                <div class="info-text">
+                    <h4>Expert Chefs</h4>
+                    <p>25+ Years Experience</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">🌍</div>
+                <div class="info-text">
+                    <h4>Fresh Ingredients</h4>
+                    <p>Local & Organic</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>About RestroHub</h2>
+                    <p>
+                        Since 1998, RestroHub has been a beacon of fine dining excellence. 
+                        Our restaurant combines traditional culinary techniques with modern innovation 
+                        to create unforgettable gastronomic experiences.
+                    </p>
+                    <p>
+                        Founded by Chef Marco Rossi, RestroHub has earned recognition as one of the 
+                        finest restaurants in the region. We pride ourselves on sourcing the freshest 
+                        local ingredients and creating seasonal menus that reflect the best of what 
+                        nature has to offer.
+                    </p>
+                    <p>
+                        Every dish is a masterpiece, every moment is special. Whether you're celebrating 
+                        a milestone or enjoying an evening with loved ones, RestroHub is your destination 
+                        for culinary excellence.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>25+</h3>
+                            <p>Years of Excellence</p>
+                        </div>
+                        <div class="stat">
+                            <h3>500+</h3>
+                            <p>Weekly Guests</p>
+                        </div>
+                        <div class="stat">
+                            <h3>⭐⭐⭐⭐⭐</h3>
+                            <p>Customer Rating</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">👨‍🍳</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Guest Reviews</h2>
+            <p class="section-subtitle">Hear from our satisfied diners</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "An absolutely extraordinary dining experience. 
+                        The presentation, flavors, and service were impeccable. 
+                        This is fine dining at its best!"
+                    </p>
+                    <div class="testimonial-author">
+                        <h4>Margaret Wilson</h4>
+                        <p>Celebrated on Anniversary</p>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Every dish was a masterpiece. The chef clearly has an incredible 
+                        talent and passion. We'll definitely be coming back!"
+                    </p>
+                    <div class="testimonial-author">
+                        <h4>James Chen</h4>
+                        <p>Food Critic, Culinary Magazine</p>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "The ambiance, the food, the service - everything was perfect. 
+                        We hosted our corporate event here and our guests are still 
+                        talking about it!"
+                    </p>
+                    <div class="testimonial-author">
+                        <h4>Sarah Martinez</h4>
+                        <p>Event Planner</p>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "Michelin-quality cuisine at a fine dining restaurant. 
+                        The attention to detail in every aspect is remarkable. 
+                        Highly recommended!"
+                    </p>
+                    <div class="testimonial-author">
+                        <h4>Dr. Robert Johnson</h4>
+                        <p>Regular Guest</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>500+</h3>
+                    <p>Weekly Guests</p>
+                </div>
+                <div class="stat-box">
+                    <h3>25+</h3>
+                    <p>Years Excellence</p>
+                </div>
+                <div class="stat-box">
+                    <h3>⭐⭐⭐⭐⭐</h3>
+                    <p>5-Star Rated</p>
+                </div>
+                <div class="stat-box">
+                    <h3>100%</h3>
+                    <p>Fresh Ingredients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specials Section -->
+    <section id="specials" class="specials">
+        <div class="container">
+            <h2 class="section-title">Today's Specials</h2>
+            <p class="section-subtitle">Chef's handpicked selections for today</p>
+
+            <div class="specials-grid">
+                <div class="special-card">
+                    <div class="special-badge">Chef's Pick</div>
+                    <h3>Surf & Turf Perfection</h3>
+                    <p class="special-desc">
+                        A harmonious blend of succulent Australian lobster tail and 
+                        premium Wagyu beef with seasonal truffle sauce
+                    </p>
+                    <div class="special-price">$85</div>
+                    <p class="special-limited">Limited to 15 servings today</p>
+                </div>
+
+                <div class="special-card">
+                    <div class="special-badge">Fresh Today</div>
+                    <h3>Mediterranean Branzino</h3>
+                    <p class="special-desc">
+                        Whole Mediterranean branzino with lemon caper sauce, 
+                        roasted fingerling potatoes, and grilled seasonal vegetables
+                    </p>
+                    <div class="special-price">$52</div>
+                    <p class="special-limited">Available while fresh supplies last</p>
+                </div>
+
+                <div class="special-card">
+                    <div class="special-badge">Exclusive</div>
+                    <h3>Black Truffle Pasta</h3>
+                    <p class="special-desc">
+                        Fresh house-made pasta with black truffle cream sauce, 
+                        wild mushrooms, and shaved Parmigiano-Reggiano
+                    </p>
+                    <div class="special-price">$48</div>
+                    <p class="special-limited">Limited to 8 servings today</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Restaurant Gallery</h2>
+            <p class="section-subtitle">Explore our elegant dining spaces and culinary creations</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🍽️</div>
+                    <h3>Main Dining Hall</h3>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">👨‍🍳</div>
+                    <h3>Open Kitchen</h3>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🍜</div>
+                    <h3>Signature Dishes</h3>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🥂</div>
+                    <h3>Wine Selection</h3>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🎉</div>
+                    <h3>Private Events</h3>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🌃</div>
+                    <h3>Ambiance</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Visit Us Today</h2>
+
+            <div class="contact-grid">
+                <div class="contact-box">
+                    <div class="contact-icon">📍</div>
+                    <h3>Address</h3>
+                    <p>
+                        RestroHub Fine Dining<br>
+                        123 Gourmet Street<br>
+                        Fine Dining District<br>
+                        City, State 12345
+                    </p>
+                </div>
+
+                <div class="contact-box">
+                    <div class="contact-icon">📞</div>
+                    <h3>Phone</h3>
+                    <p>
+                        Reservations: (555) 123-4567<br>
+                        Events: (555) 123-4568<br>
+                        Takeout Orders: (555) 123-4569
+                    </p>
+                </div>
+
+                <div class="contact-box">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p>
+                        General: info@retrohub.com<br>
+                        Reservations: reservations@retrohub.com<br>
+                        Events: events@retrohub.com
+                    </p>
+                </div>
+
+                <div class="contact-box">
+                    <div class="contact-icon">🕐</div>
+                    <h3>Hours</h3>
+                    <p>
+                        Mon-Thu: 5:00 PM - 11:00 PM<br>
+                        Fri-Sat: 5:00 PM - 12:00 AM<br>
+                        Sun: 5:00 PM - 10:00 PM<br>
+                        Closed Mondays
+                    </p>
+                </div>
+            </div>
+        </div>
+    <!-- Reservations Section -->
+    <section id="reservations" class="reservations">
+        <div class="container">
+            <h2 class="section-title">Make a Reservation</h2>
+            <p class="section-subtitle">Secure your table for an unforgettable experience</p>
+
+            <div class="reservation-grid">
+                <div class="reservation-form">
+                    <form id="reservation-form">
+                        <div class="form-row">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-row">
+                            <input type="tel" placeholder="Phone Number" required>
+                            <select required>
+                                <option>Number of Guests</option>
+                                <option>2 Guests</option>
+                                <option>4 Guests</option>
+                                <option>6 Guests</option>
+                                <option>8 Guests</option>
+                                <option>10+ Guests</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <input type="date" required>
+                            <select required>
+                                <option>Preferred Time</option>
+                                <option>5:00 PM</option>
+                                <option>6:00 PM</option>
+                                <option>7:00 PM</option>
+                                <option>8:00 PM</option>
+                                <option>9:00 PM</option>
+                            </select>
+                        </div>
+                        <textarea placeholder="Special Requests (Optional)" rows="3"></textarea>
+                        <button type="submit" class="btn btn-primary">Reserve Table</button>
+                    </form>
+                </div>
+
+                <div class="reservation-info">
+                    <div class="info-box">
+                        <h3>📍 Location</h3>
+                        <p>123 Gourmet Street<br>Fine Dining District<br>City, State 12345</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>⏰ Hours</h3>
+                        <p>
+                            Monday - Thursday: 5:00 PM - 11:00 PM<br>
+                            Friday - Saturday: 5:00 PM - 12:00 AM<br>
+                            Sunday: 5:00 PM - 10:00 PM<br>
+                            <strong>Closed Mondays</strong>
+                        </p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>📞 Contact</h3>
+                        <p>
+                            Phone: (555) 123-4567<br>
+                            Email: reservations@retrohub.com<br>
+                            For group reservations: events@retrohub.com
+                        </p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>🎯 Dress Code</h3>
+                        <p>
+                            Business Casual or Formal<br>
+                            Jeans, athletic wear, and sandals not permitted
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events">
+        <div class="container">
+            <h2 class="section-title">Special Events & Private Dining</h2>
+            <p class="section-subtitle">Host your special occasions with us</p>
+
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-icon">💒</div>
+                    <h3>Wedding Receptions</h3>
+                    <p>Create lasting memories with our exceptional catering and elegant venues. 
+                    We specialize in bespoke wedding menus.</p>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">🎊</div>
+                    <h3>Corporate Events</h3>
+                    <p>Impress clients and team members with sophisticated dining experiences. 
+                    Perfect for conferences and celebrations.</p>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Family Gatherings</h3>
+                    <p>Celebrate milestones with loved ones in our private dining spaces. 
+                    Customized menus available.</p>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">📸</div>
+                    <h3>Photo Shoots</h3>
+                    <p>Rent our stunning restaurant for professional photography and videography sessions.</p>
+                </div>
+            </div>
+
+            <div class="events-cta">
+                <p>For corporate and private event inquiries, please contact our events team:</p>
+                <a href="mailto:events@retrohub.com" class="btn btn-primary">Contact Events Team</a>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>RestroHub</h3>
+                    <p>Complete restaurant management system with online ordering and analytics.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Private Dining</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 RestroHub Fine Dining. All rights reserved.</p>
+                <p>Made with ❤️ for unforgettable dining experiences</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="home-scripts.js"></script>
+</body>
+</html>

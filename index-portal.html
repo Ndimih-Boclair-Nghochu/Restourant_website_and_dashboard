@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Prestige - Fine Dining Restaurant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+            color: #1a1a1a;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 80px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 18px;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .portals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .portal-card {
+            background: white;
+            padding: 50px 30px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-left: 4px solid #d4af37;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .portal-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .portal-card h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #0d0d0d;
+            letter-spacing: 1px;
+        }
+
+        .portal-card p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d4af37;
+            color: white;
+            padding: 14px 40px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+
+        .btn:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            color: white;
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .portals {
+                grid-template-columns: 1fr;
+            }
+
+            .portal-card {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>Le Prestige</h1>
+            <p>Culinary Excellence Since 1998</p>
+        </div>
+
+        <div class="portals">
+            <!-- Restaurant Website -->
+            <a href="home-new.html" class="portal-card">
+                <span class="portal-icon">🍽️</span>
+                <h2>Restaurant</h2>
+                <p>Explore our menu, make reservations, view our gallery, and discover our events and private dining options.</p>
+                <span class="btn">Visit Website</span>
+            </a>
+
+            <!-- Customer Store -->
+            <a href="menu.html" class="portal-card">
+                <span class="portal-icon">🛒</span>
+                <h2>Online Store</h2>
+                <p>Order from our menu online for delivery or pickup. Browse our full selection of fine dining cuisine.</p>
+                <span class="btn">Start Ordering</span>
+            </a>
+
+            <!-- Admin Dashboard -->
+            <a href="admin-login.html" class="portal-card">
+                <span class="portal-icon">⚙️</span>
+                <h2>Staff Portal</h2>
+                <p>Manage reservations, inventory, staff, menu items, orders, and view detailed business analytics.</p>
+                <span class="btn">Staff Login</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Le Prestige Fine Dining Restaurant. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

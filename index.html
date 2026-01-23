@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Authentication check
+        if (sessionStorage.getItem('adminLoggedIn') !== 'true') {
+            window.location.href = 'admin-login.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <h1 class="logo">🍽️ RestroHub</h1>
+                <p class="tagline">Restaurant Management</p>
+                <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 8px;">
+                    <a href="home-new.html" target="_blank" style="color: #1a1a1a; background: white; font-size: 11px; padding: 8px 12px; display: block; text-decoration: none; border-radius: 4px; text-align: center; font-weight: 600;">🍽️ Restaurant Website</a>
+                    <a href="menu.html" target="_blank" style="color: #1a1a1a; background: white; font-size: 11px; padding: 8px 12px; display: block; text-decoration: none; border-radius: 4px; text-align: center; font-weight: 600;">🛒 Order Menu</a>
+                    <a href="index-portal.html" style="color: #1a1a1a; background: white; font-size: 11px; padding: 8px 12px; display: block; text-decoration: none; border-radius: 4px; text-align: center; font-weight: 600;">🏠 Main Portal</a>
+                </div>
+            </div>
+            <nav class="navigation">
+                <button class="nav-btn active" data-tab="dashboard">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-btn" data-tab="customer-orders">
+                    <span class="icon">🛒</span>
+                    <span>Customer Orders</span>
+                </button>
+                <button class="nav-btn" data-tab="reservations">
+                    <span class="icon">📅</span>
+                    <span>Reservations</span>
+                </button>
+                <button class="nav-btn" data-tab="reservation-plans">
+                    <span class="icon">🎯</span>
+                    <span>Reservation Plans</span>
+                </button>
+                <button class="nav-btn" data-tab="reviews">
+                    <span class="icon">⭐</span>
+                    <span>Reviews</span>
+                </button>
+                <button class="nav-btn" data-tab="tables">
+                    <span class="icon">🪑</span>
+                    <span>Tables</span>
+                </button>
+                <button class="nav-btn" data-tab="orders">
+                    <span class="icon">📋</span>
+                    <span>All Orders</span>
+                </button>
+                <button class="nav-btn" data-tab="menu">
+                    <span class="icon">📖</span>
+                    <span>Menu</span>
+                </button>
+                <button class="nav-btn" data-tab="inventory">
+                    <span class="icon">📦</span>
+                    <span>Inventory</span>
+                </button>
+                <button class="nav-btn" data-tab="staff">
+                    <span class="icon">👥</span>
+                    <span>Staff</span>
+                </button>
+                <button class="nav-btn" data-tab="billing">
+                    <span class="icon">💳</span>
+                    <span>Billing</span>
+                </button>
+                <button class="nav-btn" data-tab="reports">
+                    <span class="icon">📈</span>
+                    <span>Reports</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h2 class="page-title">Dashboard</h2>
+                <div class="header-actions">
+                    <input type="text" class="search-box" placeholder="Search...">
+                    <span id="admin-username" style="color: #d4af37; margin-right: 15px; font-weight: 600;"></span>
+                    <button class="btn-secondary">⚙️ Settings</button>
+                    <button class="btn-secondary" id="logout-btn">🚪 Logout</button>
+                </div>
+            </header>
+
+            <!-- Dashboard Tab -->
+            <section id="dashboard" class="tab-content active">
+                <div class="dashboard-grid">
+                    <!-- KPI Cards -->
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <h3>Total Revenue</h3>
+                            <span class="kpi-icon">💰</span>
+                        </div>
+                        <p class="kpi-value"><span id="today-revenue">0 FCFA</span></p>
+                        <p class="kpi-change">Internal: 0 FCFA | Website: 0 FCFA</p>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <h3>Total Orders</h3>
+                            <span class="kpi-icon">📦</span>
+                        </div>
+                        <p class="kpi-value"><span id="total-orders">0</span></p>
+                        <p class="kpi-change">Internal: 0 | Website: 0</p>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <h3>Tables Status</h3>
+                            <span class="kpi-icon">🪑</span>
+                        </div>
+                        <p class="kpi-value"><span id="occupied-tables">0/0</span></p>
+                        <p class="kpi-change">Available: 0 | Reservations: 0</p>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <h3>Staff & Reviews</h3>
+                            <span class="kpi-icon">👥</span>
+                        </div>
+                        <p class="kpi-value"><span id="staff-duty">0/0</span></p>
+                        <p class="kpi-change">Reviews: 0 | Avg Rating: 0.0⭐</p>
+                    </div>
+                </div>
+
+                <!-- Charts and Details -->
+                <div class="dashboard-details">
+                    <!-- Active Orders -->
+                    <div class="card">
+                        <h3>Active Orders</h3>
+                        <div id="active-orders-list" class="orders-list">
+                            <p class="empty-state">No active orders</p>
+                        </div>
+                    </div>
+
+                    <!-- Recent Transactions -->
+                    <div class="card">
+                        <h3>Recent Transactions</h3>
+                        <div id="recent-transactions" class="transactions-list">
+                            <p class="empty-state">No transactions</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Customer Orders Tab -->
+            <section id="customer-orders" class="tab-content">
+                <div class="section-header">
+                    <h2>Customer Orders from Website</h2>
+                    <button class="btn-secondary" onclick="refreshCustomerOrders()">🔄 Refresh</button>
+                </div>
+                <div id="customer-orders-table" class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer Name</th>
+                                <th>Food Item</th>
+                                <th>Beverage</th>
+                                <th>Table/Location</th>
+                                <th>Amount (FCFA)</th>
+                                <th>Payment Method</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customer-orders-body">
+                            <!-- Orders will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Reservations Tab -->
+            <section id="reservations" class="tab-content">
+                <div class="section-header">
+                    <h2>Table Reservations</h2>
+                    <button class="btn-secondary" onclick="refreshReservations()">🔄 Refresh</button>
+                </div>
+                <div id="reservations-table" class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Reservation ID</th>
+                                <th>Customer Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Guests</th>
+                                <th>Plan</th>
+                                <th>Budget</th>
+                                <th>Special Requests</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reservations-body">
+                            <!-- Reservations will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Reviews Tab -->
+            <section id="reviews" class="tab-content">
+                <div class="section-header">
+                    <h2>Customer Reviews</h2>
+                    <button class="btn-secondary" onclick="refreshReviews()">🔄 Refresh</button>
+                </div>
+                <div id="reviews-container" class="reviews-grid">
+                    <!-- Reviews will be populated here -->
+                </div>
+            </section>
+
+            <!-- Reservation Plans Tab -->
+            <section id="reservation-plans" class="tab-content">
+                <div class="section-header">
+                    <h2>Reservation Plans & Budgets</h2>
+                    <button class="btn-primary" id="add-plan-btn">+ Add Plan</button>
+                </div>
+                <div id="plans-grid" class="plans-grid">
+                    <!-- Reservation plans will be displayed here -->
+                </div>
+            </section>
+
+            <!-- Tables Tab -->
+            <section id="tables" class="tab-content">
+                <div class="section-header">
+                    <h2>Table Management</h2>
+                    <button class="btn-primary" id="add-table-btn">+ Add Table</button>
+                </div>
+                <div id="tables-grid" class="tables-grid">
+                    <!-- Tables will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- Orders Tab -->
+            <section id="orders" class="tab-content">
+                <div class="section-header">
+                    <h2>All Orders</h2>
+                    <div>
+                        <button class="btn-secondary" onclick="uiManager.renderOrders()" style="margin-right: 10px;">🔄 Refresh</button>
+                        <button class="btn-primary" id="new-order-btn">+ New Order</button>
+                    </div>
+                </div>
+                <div id="orders-list" class="orders-list">
+                    <!-- Orders will be displayed here -->
+                </div>
+            </section>
+
+            <!-- Menu Tab -->
+            <section id="menu" class="tab-content">
+                <div class="section-header">
+                    <h2>Menu Management</h2>
+                    <button class="btn-primary" id="add-item-btn">+ Add Item</button>
+                </div>
+                <div id="menu-items" class="menu-grid">
+                    <!-- Menu items will be displayed here -->
+                </div>
+            </section>
+
+            <!-- Inventory Tab -->
+            <section id="inventory" class="tab-content">
+                <div class="section-header">
+                    <h2>Inventory Management</h2>
+                    <button class="btn-primary" id="add-inventory-btn">+ Add Item</button>
+                </div>
+                <div id="inventory-list" class="inventory-list">
+                    <!-- Inventory items will be displayed here -->
+                </div>
+            </section>
+
+            <!-- Staff Tab -->
+            <section id="staff" class="tab-content">
+                <div class="section-header">
+                    <h2>Staff Management</h2>
+                    <button class="btn-primary" id="add-staff-btn">+ Add Staff</button>
+                </div>
+                <div id="staff-list" class="staff-list">
+                    <!-- Staff members will be displayed here -->
+                </div>
+            </section>
+
+            <!-- Billing Tab -->
+            <section id="billing" class="tab-content">
+                <div class="section-header">
+                    <h2>Billing & Invoices</h2>
+                    <button class="btn-primary" id="generate-invoice-btn">+ Generate Invoice</button>
+                </div>
+                <div id="billing-list" class="billing-list">
+                    <!-- Billing records will be displayed here -->
+                </div>
+            </section>
+
+            <!-- Reports Tab -->
+            <section id="reports" class="tab-content">
+                <div class="section-header">
+                    <h2>Reports & Analytics</h2>
+                    <div class="report-filters">
+                        <select id="date-range">
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                        </select>
+                        <button class="btn-secondary">Export PDF</button>
+                    </div>
+                </div>
+                <div id="reports-container" class="reports-container">
+                    <!-- Reports will be displayed here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Add Table -->
+    <div id="table-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Table</h2>
+            <form id="table-form">
+                <input type="text" placeholder="Table Number" id="table-number" required>
+                <input type="number" placeholder="Capacity" id="table-capacity" min="1" required>
+                <select id="table-type">
+                    <option value="standard">Standard</option>
+                    <option value="vip">VIP</option>
+                    <option value="bar">Bar</option>
+                </select>
+                <button type="submit" class="btn-primary">Add Table</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Add Menu Item -->
+    <div id="menu-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Menu Item</h2>
+            <form id="menu-form">
+                <input type="text" placeholder="Item Name" id="item-name" required>
+                <textarea placeholder="Description" id="item-description"></textarea>
+                <input type="number" placeholder="Price" id="item-price" min="0" step="0.01" required>
+                <select id="item-category">
+                    <option value="appetizer">Appetizer</option>
+                    <option value="main">Main Course</option>
+                    <option value="dessert">Dessert</option>
+                    <option value="beverage">Beverage</option>
+                </select>
+                <button type="submit" class="btn-primary">Add Item</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for New Order -->
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create New Order</h2>
+            <form id="order-form">
+                <select id="order-table" required>
+                    <option value="">Select Table</option>
+                </select>
+                <select id="order-menu-item" required>
+                    <option value="">Select Menu Item</option>
+                </select>
+                <input type="number" placeholder="Quantity" id="order-quantity" min="1" value="1" required>
+                <textarea placeholder="Special Instructions" id="order-notes"></textarea>
+                <button type="submit" class="btn-primary">Add to Order</button>
+            </form>
+            <div id="order-items-list" class="order-items-list"></div>
+            <button class="btn-primary btn-large" id="complete-order-btn" style="display:none;">Complete Order</button>
+        </div>
+    </div>
+
+    <!-- Modal for Add Staff -->
+    <div id="staff-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Staff Member</h2>
+            <form id="staff-form">
+                <input type="text" placeholder="Full Name" id="staff-name" required>
+                <input type="email" placeholder="Email" id="staff-email" required>
+                <input type="tel" placeholder="Phone" id="staff-phone" required>
+                <select id="staff-role" required>
+                    <option value="waiter">Waiter</option>
+                    <option value="chef">Chef</option>
+                    <option value="manager">Manager</option>
+                    <option value="cashier">Cashier</option>
+                </select>
+                <button type="submit" class="btn-primary">Add Staff</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Add Inventory -->
+    <div id="inventory-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Inventory Item</h2>
+            <form id="inventory-form">
+                <input type="text" placeholder="Item Name" id="inv-item-name" required>
+                <input type="number" placeholder="Quantity" id="inv-quantity" min="0" required>
+                <input type="text" placeholder="Unit (kg, L, pcs)" id="inv-unit" required>
+                <input type="number" placeholder="Unit Price" id="inv-price" min="0" step="0.01" required>
+                <input type="number" placeholder="Min Stock Level" id="inv-min-stock" min="0" required>
+                <button type="submit" class="btn-primary">Add Item</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

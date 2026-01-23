@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations - Le Prestige</title>
+    <link rel="stylesheet" href="nav-styles.css">
+    <link rel="stylesheet" href="reservations-styles.css">
+    <link rel="stylesheet" href="footer-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="home-new.html" class="nav-logo">Le Prestige</a>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="home-new.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reservations.html" class="active">Reservations</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="index-portal.html" style="margin-right: 10px;">Portal</a>
+                <a href="index.html">Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Modal -->
+    <div id="cartModal">
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h2>Your Order</h2>
+                <button class="cart-close">&times;</button>
+            </div>
+            <div class="cart-content" id="cartContent">
+                <div class="cart-empty">Your cart is empty</div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span class="cart-total-label">Total:</span>
+                    <span class="cart-total-value" id="cartTotal">$0.00</span>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn">PROCEED TO CHECKOUT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="reservations-main">
+        <div class="container">
+            <!-- Section Title -->
+            <div class="section-header">
+                <h2 class="section-title">Book Your Reservation</h2>
+                <p class="section-subtitle">Join us for an unforgettable evening of fine dining</p>
+            </div>
+
+            <!-- Reservation Grid -->
+            <div class="reservation-grid">
+                <!-- Reservation Form -->
+                <div class="form-section">
+                    <h3 class="form-title">Your Details</h3>
+                    <form class="reservation-form" id="reservationForm">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" placeholder="+1 (555) 123-4567" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Number of Guests</label>
+                                <select required>
+                                    <option value="">Select number of guests</option>
+                                    <option value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5 Guests</option>
+                                    <option value="6">6 Guests</option>
+                                    <option value="7">7 Guests</option>
+                                    <option value="8">8+ Guests (Contact us)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Preferred Date</label>
+                                <input type="date" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Preferred Time</label>
+                                <select required>
+                                    <option value="">Select dining time</option>
+                                    <option value="17:00">5:00 PM</option>
+                                    <option value="17:30">5:30 PM</option>
+                                    <option value="18:00">6:00 PM</option>
+                                    <option value="18:30">6:30 PM</option>
+                                    <option value="19:00">7:00 PM</option>
+                                    <option value="19:30">7:30 PM</option>
+                                    <option value="20:00">8:00 PM</option>
+                                    <option value="20:30">8:30 PM</option>
+                                    <option value="21:00">9:00 PM</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Dining Occasion</label>
+                                <select required>
+                                    <option value="">Select occasion</option>
+                                    <option value="regular">Regular Dining</option>
+                                    <option value="birthday">Birthday Celebration</option>
+                                    <option value="anniversary">Anniversary</option>
+                                    <option value="proposal">Special Proposal</option>
+                                    <option value="corporate">Corporate Event</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Reservation Plan & Budget</label>
+                                <select id="reservation-plan-select" required>
+                                    <option value="">Select a plan</option>
+                                    <!-- Plans will be loaded dynamically -->
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Plan Details Display -->
+                        <div id="plan-details" class="plan-details-display" style="display: none;">
+                            <!-- Selected plan details will be displayed here -->
+                        </div>
+
+                        <div class="form-group">
+                            <label>Special Requests</label>
+                            <textarea placeholder="Allergies, preferences, special accommodations..." rows="5"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary">Confirm Reservation</button>
+                    </form>
+                </div>
+
+                <!-- Info Sidebar -->
+                <div class="info-sidebar">
+                    <!-- Important Info -->
+                    <div class="info-card">
+                        <h3>Important Information</h3>
+                        <div class="info-item">
+                            <strong>Seating Policy</strong>
+                            <p>Please arrive 10 minutes before your reservation time for a seamless seating experience.</p>
+                        </div>
+                        <div class="info-item">
+                            <strong>Cancellation</strong>
+                            <p>48 hours notice required. Late cancellations may incur charges.</p>
+                        </div>
+                        <div class="info-item">
+                            <strong>Special Requests</strong>
+                            <p>Our culinary team accommodates dietary needs and special occasions with advance notice.</p>
+                        </div>
+                    </div>
+
+                    <!-- Hours -->
+                    <div class="info-card">
+                        <h3>Operating Hours</h3>
+                        <div class="hours-list">
+                            <div class="hour-item">
+                                <span class="day">Tuesday - Thursday</span>
+                                <span class="time">5:00 PM - 10:00 PM</span>
+                            </div>
+                            <div class="hour-item">
+                                <span class="day">Friday - Saturday</span>
+                                <span class="time">5:00 PM - 11:00 PM</span>
+                            </div>
+                            <div class="hour-item">
+                                <span class="day">Sunday</span>
+                                <span class="time">5:00 PM - 9:00 PM</span>
+                            </div>
+                            <div class="hour-item closed">
+                                <span class="day">Monday</span>
+                                <span class="time">CLOSED</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- About -->
+            <div class="footer-section">
+                <h3>About Le Prestige</h3>
+                <p>Experience the pinnacle of fine dining with our expertly crafted cuisine and impeccable service. Est. 2015</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Twitter">𝕏</a>
+                    <a href="#" title="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="home-new.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="reservations.html">Reservations</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                    <strong>Address:</strong>
+                    <span>123 Elegance Avenue<br>Culinary District<br>New York, NY 10001</span>
+                </div>
+                <div class="contact-item">
+                    <strong>Phone:</strong>
+                    <span><a href="tel:+12125551234" style="color:#ccc; text-decoration:none;">+1 (212) 555-1234</a></span>
+                </div>
+                <div class="contact-item">
+                    <strong>Email:</strong>
+                    <span><a href="mailto:info@leprestige.com" style="color:#ccc; text-decoration:none;">info@leprestige.com</a></span>
+                </div>
+            </div>
+
+            <!-- Hours -->
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <div class="hours-grid">
+                    <div class="hour-item">
+                        <strong>Tue - Thu:</strong>
+                        <span>5:00 PM - 10:00 PM</span>
+                    </div>
+                    <div class="hour-item">
+                        <strong>Fri - Sat:</strong>
+                        <span>5:00 PM - 11:00 PM</span>
+                    </div>
+                    <div class="hour-item">
+                        <strong>Sunday:</strong>
+                        <span>5:00 PM - 9:00 PM</span>
+                    </div>
+                    <div class="hour-item">
+                        <strong>Monday:</strong>
+                        <span>CLOSED</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div style="background: rgba(0,0,0,0.3); padding: 40px; margin-top: 40px; border-top: 1px solid rgba(212,175,55,0.2); border-bottom: 1px solid rgba(212,175,55,0.2);">
+            <div style="max-width: 1400px; margin: 0 auto;">
+                <h3 style="font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); margin-bottom: 20px;">Newsletter</h3>
+                <p style="color: #ccc; margin-bottom: 20px; font-size: 14px;">Subscribe to receive exclusive offers, special events, and culinary updates from Le Prestige</p>
+                <form class="newsletter-form" onsubmit="return false;">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Le Prestige Fine Dining. All rights reserved. | Culinary Excellence Since 2015</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Accessibility</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="nav-scripts.js"></script>
+    <script src="reservations-scripts.js"></script>
+</body>
+</html>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Le Prestige</h3>
+                <p>Experience the pinnacle of fine dining with our expertly crafted cuisine and impeccable service. Est. 2015</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Twitter">𝕏</a>
+                    <a href="#" title="LinkedIn">in</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="home-new.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="reservations.html">Reservations</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                    <strong>Address:</strong>
+                    <span>123 Elegance Avenue<br>Culinary District<br>New York, NY 10001</span>
+                </div>
+                <div class="contact-item">
+                    <strong>Phone:</strong>
+                    <span><a href="tel:+12125551234" style="color:#ccc; text-decoration:none;">+1 (212) 555-1234</a></span>
+                </div>
+                <div class="contact-item">
+                    <strong>Email:</strong>
+                    <span><a href="mailto:info@leprestige.com" style="color:#ccc; text-decoration:none;">info@leprestige.com</a></span>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <div class="hours-grid">
+                    <div class="hour-item">
+                        <strong>Tue - Thu:</strong>
+                        <span>5:00 PM - 10:00 PM</span>
+                    </div>
+                    <div class="hour-item">
+                        <strong>Fri - Sat:</strong>
+                        <span>5:00 PM - 11:00 PM</span>
+                    </div>
+                    <div class="hour-item">
+                        <strong>Sunday:</strong>
+                        <span>5:00 PM - 9:00 PM</span>
+                    </div>
+                    <div class="hour-item">
+                        <strong>Monday:</strong>
+                        <span>CLOSED</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="background: rgba(0,0,0,0.3); padding: 40px; margin-top: 40px; border-top: 1px solid rgba(212,175,55,0.2); border-bottom: 1px solid rgba(212,175,55,0.2);">
+            <div style="max-width: 1400px; margin: 0 auto;">
+                <h3 style="font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); margin-bottom: 20px;">Newsletter</h3>
+                <p style="color: #ccc; margin-bottom: 20px; font-size: 14px;">Subscribe to receive exclusive offers, special events, and culinary updates from Le Prestige</p>
+                <form class="newsletter-form" onsubmit="return false;">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Le Prestige Fine Dining. All rights reserved. | Culinary Excellence Since 2015</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Accessibility</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="nav-scripts.js"></script>
+    <script src="reservations-scripts.js"></script>
+</body>
+</html>
