@@ -291,9 +291,9 @@ app.get('/api/analytics', (req, res) => {
     });
 });
 
-// Default route - serve the portal page
+// Default route - serve the home page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index-portal.html'));
+    res.sendFile(path.join(__dirname, 'home-new.html'));
 });
 
 // Start server
