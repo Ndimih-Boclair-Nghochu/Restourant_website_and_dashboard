@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaints Storage Diagnostic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .status {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #dee2e6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Complaints Storage Diagnostic Tool</h1>
+        
+        <div id="status"></div>
+        
+        <h2>1. Storage Status</h2>
+        <table>
+            <tr>
+                <th>Property</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Browser</td>
+                <td id="browser">-</td>
+            </tr>
+            <tr>
+                <td>localStorage Available</td>
+                <td id="storageAvailable">-</td>
+            </tr>
+            <tr>
+                <td>Total Complaints Stored</td>
+                <td id="totalComplaints">-</td>
+            </tr>
+            <tr>
+                <td>Storage Key Size</td>
+                <td id="storageSize">-</td>
+            </tr>
+        </table>
+
+        <h2>2. Complaints Data</h2>
+        <button onclick="viewComplaints()">View All Complaints</button>
+        <button onclick="testSaveComplaint()">Test Save Complaint</button>
+        <button onclick="clearComplaints()">Clear All Complaints</button>
+        <button onclick="syncToAdmin()">Sync to Admin DB</button>
+        
+        <pre id="complaintData">Loading...</pre>
+
+        <h2>3. Raw localStorage Content</h2>
+        <button onclick="viewRawStorage()">View Raw Storage</button>
+        <pre id="rawStorage">Click button to view</pre>
+
+        <h2>4. Diagnostic Log</h2>
+        <pre id="log">Initializing...</pre>
+    </div>
+
+    <script>
+        const logDiv = document.getElementById('log');
+        const statusDiv = document.getElementById('status');
+
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = `[${timestamp}] ${message}\n`;
+            logDiv.textContent += logEntry;
+            logDiv.scrollTop = logDiv.scrollHeight;
+            console.log(message);
+        }
+
+        function showStatus(message, type = 'info') {
+            statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+
+        function init() {
+            log('=== DIAGNOSTIC INITIALIZED ===');
+            document.getElementById('browser').textContent = navigator.userAgent.split(' ').slice(-1)[0];
+            
+            // Check localStorage
+            try {
+                const test = '__test__';
+                localStorage.setItem(test, test);
+                localStorage.removeItem(test);
+                document.getElementById('storageAvailable').textContent = '✅ YES';
+                log('✅ localStorage is available');
+            } catch (e) {
+                document.getElementById('storageAvailable').textContent = '❌ NO';
+                log('❌ localStorage is NOT available: ' + e.message, 'error');
+                showStatus('ERROR: localStorage is not available in this browser!', 'error');
+            }
+
+            viewComplaints();
+        }
+
+        function viewComplaints() {
+            try {
+                const data = localStorage.getItem('customerComplaints');
+                const complaints = JSON.parse(data || '[]');
+                
+                document.getElementById('totalComplaints').textContent = complaints.length;
+                document.getElementById('storageSize').textContent = data ? (data.length + ' bytes') : '0 bytes';
+                document.getElementById('complaintData').textContent = JSON.stringify(complaints, null, 2);
+                
+                log(`✅ Successfully loaded ${complaints.length} complaints from storage`);
+                
+                if (complaints.length > 0) {
+                    showStatus('✅ Complaints found in storage!', 'success');
+                } else {
+                    showStatus('⚠️ No complaints found in storage', 'info');
+                }
+            } catch (e) {
+                log('❌ Error loading complaints: ' + e.message, 'error');
+                showStatus('ERROR: Failed to load complaints!', 'error');
+            }
+        }
+
+        function testSaveComplaint() {
+            try {
+                const testComplaint = {
+                    id: 'TEST-' + Date.now(),
+                    name: 'Test User',
+                    email: 'test@example.com',
+                    complaintType: 'test',
+                    priority: 'medium',
+                    subject: 'Test Complaint - ' + new Date().toLocaleTimeString(),
+                    message: 'This is a test complaint to verify storage functionality.',
+                    createdAt: new Date().toISOString(),
+                    status: 'pending'
+                };
+
+                let complaints = JSON.parse(localStorage.getItem('customerComplaints') || '[]');
+                complaints.push(testComplaint);
+                localStorage.setItem('customerComplaints', JSON.stringify(complaints));
+                
+                log(`✅ Test complaint saved! ID: ${testComplaint.id}`);
+                showStatus('✅ Test complaint saved successfully!', 'success');
+                viewComplaints();
+            } catch (e) {
+                log('❌ Error saving test complaint: ' + e.message, 'error');
+                showStatus('ERROR: Failed to save test complaint!', 'error');
+            }
+        }
+
+        function clearComplaints() {
+            if (confirm('Are you sure? This will delete ALL complaints.')) {
+                try {
+                    localStorage.removeItem('customerComplaints');
+                    log('✅ All complaints cleared from storage');
+                    showStatus('✅ All complaints have been cleared', 'success');
+                    viewComplaints();
+                } catch (e) {
+                    log('❌ Error clearing complaints: ' + e.message, 'error');
+                }
+            }
+        }
+
+        function viewRawStorage() {
+            try {
+                const allData = {};
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    allData[key] = localStorage.getItem(key);
+                }
+                document.getElementById('rawStorage').textContent = JSON.stringify(allData, null, 2);
+                log('✅ Raw storage data displayed');
+            } catch (e) {
+                log('❌ Error viewing raw storage: ' + e.message, 'error');
+            }
+        }
+
+        function syncToAdmin() {
+            try {
+                const complaints = JSON.parse(localStorage.getItem('customerComplaints') || '[]');
+                alert(`Found ${complaints.length} complaints.\n\nNow open the admin dashboard to verify they appear there.\n\nPress F12 and check the console for any errors.`);
+                log(`✅ Sync request created. ${complaints.length} complaints available.`);
+            } catch (e) {
+                log('❌ Error during sync: ' + e.message, 'error');
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>

@@ -34,27 +34,20 @@ let currentOrder = {
     isOnSite: true,
     totalAmount: 0
 };
-            ...itemData,
-            quantity: 1,
-            id: Date.now()
-        });
-    }
-    
-    // Save to localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
-    
-    // Update badge and display cart
-    updateCartBadge();
-    showCartModal();
-    
-    // Show confirmation on button
-    event.target.textContent = '✓ ADDED';
-    event.target.style.background = '#b8941f';
-    setTimeout(() => {
-        event.target.textContent = 'ADD';
-        event.target.style.background = '';
-    }, 2000);
-}
+// ...existing code...
+// The following code block had misplaced object spread and was outside of a function.
+// It should be inside a function that adds items to the cart. If you want to add an item to the cart, use:
+// function addItemToCart(itemData) {
+//   cart.push({
+//     ...itemData,
+//     quantity: 1,
+//     id: Date.now()
+//   });
+//   localStorage.setItem('cart', JSON.stringify(cart));
+//   updateCartBadge();
+//   showCartModal();
+// }
+// ...existing code...
 
 // ==================== MENU FILTERING ====================
 document.addEventListener('DOMContentLoaded', () => {

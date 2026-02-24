@@ -11,32 +11,65 @@ let currentOrder = {
     specialRecommendations: ''
 };
 
-const menuData = {
-    appetizers: [
-        { name: 'Foie Gras Terrine', description: 'Elegant foie gras with brioche and seasonal fruit compote', price: 28, priceDisplay: '28,000 FCFA', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop' },
-        { name: 'Oyster Selection', description: 'Fresh oysters from local suppliers, served with champagne mignonette', price: 24, priceDisplay: '24,000 FCFA', image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400&h=300&fit=crop' },
-        { name: 'Smoked Salmon', description: 'House-smoked salmon with caviar and crème fraîche', price: 26, priceDisplay: '26,000 FCFA', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop' }
-    ],
-    mains: [
-        { name: 'Pan-Seared Beef Tenderloin', description: 'Premium aged beef with béarnaise sauce and seasonal vegetables', price: 52, priceDisplay: '52,000 FCFA', image: 'https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=400&h=300&fit=crop' },
-        { name: 'Lobster Thermidor', description: 'Classic preparation with champagne cream and truffle', price: 58, priceDisplay: '58,000 FCFA', image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=300&fit=crop' },
-        { name: 'Dover Sole Meunière', description: 'Delicate flatfish with brown butter and lemon', price: 48, priceDisplay: '48,000 FCFA', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop' }
-    ],
-    desserts: [
-        { name: 'Chocolate Soufflé', description: 'Warm chocolate soufflé with vanilla ice cream', price: 14, priceDisplay: '14,000 FCFA', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop' },
-        { name: 'Crème Brûlée', description: 'Classic French dessert with Madagascar vanilla', price: 12, priceDisplay: '12,000 FCFA', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop' },
-        { name: 'Lemon Tart', description: 'Artisanal lemon tart with Italian meringue', price: 13, priceDisplay: '13,000 FCFA', image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&h=300&fit=crop' }
-    ],
-    beverages: [
-        { name: 'Premium Wine Selection', description: 'Carefully curated wines from renowned vineyards', price: 25, priceDisplay: '25,000 FCFA', image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&h=300&fit=crop' },
-        { name: 'Signature Cocktail', description: 'Handcrafted cocktails by our master mixologist', price: 18, priceDisplay: '18,000 FCFA', image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=400&h=300&fit=crop' },
-        { name: 'Fresh Juice', description: 'Seasonal fresh squeezed juice', price: 8, priceDisplay: '8,000 FCFA', image: 'https://media.istockphoto.com/id/1409930732/photo/fresh-fruit-juice-drinks-on-table-outdoors.jpg?s=612x612&w=0&k=20&c=W2_qoOhBvZHXNFtT0CxNKJYzPbF8Mv5S5E5p5Cc6fCU=' },
-        { name: 'Espresso', description: 'Premium Italian espresso shot', price: 4, priceDisplay: '4,000 FCFA', image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop' },
-        { name: 'Mineral Water', description: 'Imported mineral water', price: 5, priceDisplay: '5,000 FCFA', image: 'https://images.unsplash.com/photo-1523677745891-6f3031224c94?w=400&h=300&fit=crop' }
-    ]
-};
+// Load menu data from localStorage or use defaults
+function getMenuData() {
+    const restaurantData = JSON.parse(localStorage.getItem('restaurantData') || '{}');
+    const menuItems = restaurantData.menuItems || [];
+    
+    // Organize by category
+    const menuData = {
+        appetizers: [],
+        mains: [],
+        desserts: [],
+        beverages: [],
+    };
+    
+    menuItems.forEach(item => {
+        const category = item.category.toLowerCase();
+        if (category === 'appetizer') {
+            menuData.appetizers.push(item);
+        } else if (category === 'main') {
+            menuData.mains.push(item);
+        } else if (category === 'dessert') {
+            menuData.desserts.push(item);
+        } else if (category === 'beverage') {
+            menuData.beverages.push(item);
+        }
+    });
+    
+    // If no items in localStorage, use default menu data
+    if (menuItems.length === 0) {
+        return {
+            appetizers: [
+                { id: 1, name: 'Foie Gras Terrine', description: 'Elegant foie gras with brioche and seasonal fruit compote', price: 28000, category: 'appetizer', emoji: '🥘', priceDisplay: '28,000 FCFA', image: 'https://images.unsplash.com/photo-1476124369162-f4978dea5f00?w=500&h=400&fit=crop' },
+                { id: 2, name: 'Oyster Selection', description: 'Fresh oysters from local suppliers, served with champagne mignonette', price: 24000, category: 'appetizer', emoji: '🦪', priceDisplay: '24,000 FCFA', image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=500&h=400&fit=crop' },
+                { id: 3, name: 'Smoked Salmon', description: 'House-smoked salmon with caviar and crème fraîche', price: 26000, category: 'appetizer', emoji: '🐟', priceDisplay: '26,000 FCFA', image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&h=400&fit=crop' }
+            ],
+            mains: [
+                { id: 4, name: 'Pan-Seared Beef Tenderloin', description: 'Premium aged beef with béarnaise sauce and seasonal vegetables', price: 52000, category: 'main', emoji: '🥩', priceDisplay: '52,000 FCFA', image: 'https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=500&h=400&fit=crop' },
+                { id: 5, name: 'Lobster Thermidor', description: 'Classic preparation with champagne cream and truffle', price: 58000, category: 'main', emoji: '🦞', priceDisplay: '58,000 FCFA', image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=500&h=400&fit=crop' },
+                { id: 6, name: 'Dover Sole Meunière', description: 'Delicate flatfish with brown butter and lemon', price: 48000, category: 'main', emoji: '🐟', priceDisplay: '48,000 FCFA', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop' }
+            ],
+            desserts: [
+                { id: 7, name: 'Chocolate Soufflé', description: 'Warm chocolate soufflé with vanilla ice cream', price: 14000, category: 'dessert', emoji: '🍰', priceDisplay: '14,000 FCFA', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop' },
+                { id: 8, name: 'Crème Brûlée', description: 'Classic French dessert with Madagascar vanilla', price: 12000, category: 'dessert', emoji: '🍮', priceDisplay: '12,000 FCFA', image: 'https://images.unsplash.com/photo-1470521598519-e21cc028cb29?w=500&h=400&fit=crop' },
+                { id: 9, name: 'Lemon Tart', description: 'Artisanal lemon tart with Italian meringue', price: 13000, category: 'dessert', emoji: '🍋', priceDisplay: '13,000 FCFA', image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&h=400&fit=crop' }
+            ],
+            beverages: [
+                { id: 10, name: 'Premium Wine Selection', description: 'Carefully curated wines from renowned vineyards', price: 25000, category: 'beverage', emoji: '🍷', priceDisplay: '25,000 FCFA', image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=500&h=400&fit=crop' },
+                { id: 11, name: 'Signature Cocktail', description: 'Handcrafted cocktails by our master mixologist', price: 18000, category: 'beverage', emoji: '🍹', priceDisplay: '18,000 FCFA', image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500&h=400&fit=crop' },
+                { id: 12, name: 'Fresh Juice', description: 'Seasonal fresh squeezed juice', price: 8000, category: 'beverage', emoji: '🥤', priceDisplay: '8,000 FCFA', image: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=500&h=400&fit=crop' },
+                { id: 13, name: 'Espresso', description: 'Premium Italian espresso shot', price: 4000, category: 'beverage', emoji: '☕', priceDisplay: '4,000 FCFA', image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop' },
+                { id: 14, name: 'Mineral Water', description: 'Imported mineral water', price: 5000, category: 'beverage', emoji: '💧', priceDisplay: '5,000 FCFA', image: 'https://images.unsplash.com/photo-1523677745891-6f3031224c94?w=500&h=400&fit=crop' }
+            ]
+        };
+    }
+    
+    return menuData;
+}
 
 function renderMenuItems(category = 'all', gridId = 'menuGrid') {
+    const menuData = getMenuData();
     const menuGrid = document.getElementById(gridId);
     if (!menuGrid) return;
     
@@ -44,9 +77,24 @@ function renderMenuItems(category = 'all', gridId = 'menuGrid') {
 
     let itemsToDisplay = [];
     if (category === 'all') {
-        Object.values(menuData).forEach(items => itemsToDisplay.push(...items));
+        Object.values(menuData).forEach(items => {
+            if (Array.isArray(items)) itemsToDisplay.push(...items);
+        });
+        // Remove duplicates
+        itemsToDisplay = Array.from(new Set(itemsToDisplay.map(item => item.id))).map(id => 
+            itemsToDisplay.find(item => item.id === id)
+        );
     } else {
-        itemsToDisplay = menuData[category] || [];
+        const categoryMap = {
+            appetizers: ['appetizers'],
+            mains: ['mains'],
+            desserts: ['desserts'],
+            beverages: ['beverages']
+        };
+        const categories = categoryMap[category] || [category];
+        categories.forEach(cat => {
+            if (menuData[cat]) itemsToDisplay.push(...menuData[cat]);
+        });
     }
 
     // Limit to 9 items (3 rows) for home page
@@ -55,18 +103,20 @@ function renderMenuItems(category = 'all', gridId = 'menuGrid') {
     }
 
     itemsToDisplay.forEach(item => {
-        const categoryName = Object.keys(menuData).find(key => menuData[key].includes(item));
+        const foodCategory = item.category || 'unknown';
+        const priceDisplay = typeof item.price === 'number' ? item.price.toLocaleString() + ' FCFA' : item.priceDisplay;
+        const image = item.image ? `<img src="${item.image}" alt="${item.name}" loading="lazy">` : `<div style="display: flex; align-items: center; justify-content: center; height: 200px; background: #f0f0f0; font-size: 64px;">${item.emoji || '🍽️'}</div>`;
         
         const itemHTML = `
             <div class="menu-item">
                 <div class="menu-image">
-                    <img src="${item.image}" alt="${item.name}" loading="lazy">
+                    ${image}
                 </div>
                 <div class="menu-content">
-                    <span class="category">${categoryName}</span>
+                    <span class="category">${foodCategory}</span>
                     <h3>${item.name}</h3>
                     <p class="description">${item.description}</p>
-                    <p class="price">${item.priceDisplay}</p>
+                    <p class="price">${priceDisplay}</p>
                     <button class="btn-add-cart" onclick='startOrderFlow(${JSON.stringify(item)})'>ORDER NOW</button>
                 </div>
             </div>
@@ -85,16 +135,21 @@ function startOrderFlow(foodItem) {
 
 // Step 2: Show drink selection modal
 function showDrinkSelectionModal() {
+    const menuData = getMenuData();
     const drinks = menuData.beverages;
     
-    let drinksHTML = drinks.map(drink => `
-        <div class="drink-option" onclick='selectDrink(${JSON.stringify(drink)})'>
-            <img src="${drink.image}" alt="${drink.name}">
-            <h4>${drink.name}</h4>
-            <p>${drink.description}</p>
-            <span class="price">${drink.priceDisplay}</span>
-        </div>
-    `).join('');
+    let drinksHTML = drinks.map(drink => {
+        const priceDisplay = typeof drink.price === 'number' ? drink.price.toLocaleString() + ' FCFA' : drink.priceDisplay;
+        const image = drink.image ? `<img src="${drink.image}" alt="${drink.name}">` : `<div style="display: flex; align-items: center; justify-content: center; height: 150px; background: #f0f0f0; font-size: 48px;">${drink.emoji || '☕'}</div>`;
+        return `
+            <div class="drink-option" onclick='selectDrink(${JSON.stringify(drink)})'>
+                ${image}
+                <h4>${drink.name}</h4>
+                <p>${drink.description}</p>
+                <span class="price">${priceDisplay}</span>
+            </div>
+        `;
+    }).join('');
 
     showOrderModal(`
         <div class="order-modal-header">
@@ -497,10 +552,15 @@ function selectPaymentMethod(method) {
         status: 'Confirmed'
     };
 
-    // Save to localStorage
-    let orders = JSON.parse(localStorage.getItem('customerOrders') || '[]');
+    // Save to localStorage - use restaurantOrders for consistency with checkout
+    let orders = JSON.parse(localStorage.getItem('restaurantOrders') || '[]');
     orders.push(order);
-    localStorage.setItem('customerOrders', JSON.stringify(orders));
+    localStorage.setItem('restaurantOrders', JSON.stringify(orders));
+    
+    // Also keep backup in customerOrders for backwards compatibility
+    let backupOrders = JSON.parse(localStorage.getItem('customerOrders') || '[]');
+    backupOrders.push(order);
+    localStorage.setItem('customerOrders', JSON.stringify(backupOrders));
 
     // Show confirmation
     showOrderConfirmation(order);

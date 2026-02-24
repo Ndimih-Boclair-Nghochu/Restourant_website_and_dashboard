@@ -46,6 +46,10 @@
                     <span class="icon">⭐</span>
                     <span>Reviews</span>
                 </button>
+                <button class="nav-btn" data-tab="complaints">
+                    <span class="icon">📞</span>
+                    <span>Customer Complaints</span>
+                </button>
                 <button class="nav-btn" data-tab="tables">
                     <span class="icon">🪑</span>
                     <span>Tables</span>
@@ -69,6 +73,10 @@
                 <button class="nav-btn" data-tab="billing">
                     <span class="icon">💳</span>
                     <span>Billing</span>
+                </button>
+                <button class="nav-btn" data-tab="shipping-zones">
+                    <span class="icon">🚚</span>
+                    <span>Shipping Zones</span>
                 </button>
                 <button class="nav-btn" data-tab="reports">
                     <span class="icon">📈</span>
@@ -163,11 +171,12 @@
                             <tr>
                                 <th>Order ID</th>
                                 <th>Customer Name</th>
-                                <th>Food Item</th>
-                                <th>Beverage</th>
-                                <th>Table/Location</th>
-                                <th>Amount (FCFA)</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Delivery Type</th>
+                                <th>Delivery Zone</th>
                                 <th>Payment Method</th>
+                                <th>Total (FCFA)</th>
                                 <th>Date</th>
                                 <th>Actions</th>
                             </tr>
@@ -218,6 +227,25 @@
                 </div>
                 <div id="reviews-container" class="reviews-grid">
                     <!-- Reviews will be populated here -->
+                </div>
+            </section>
+
+            <!-- Customer Complaints Tab -->
+            <section id="complaints" class="tab-content">
+                <div class="section-header">
+                    <h2>Customer Complaints & Feedback</h2>
+                    <div>
+                        <button class="btn-secondary" onclick="loadComplaints()">🔄 Refresh</button>
+                        <select id="complaint-filter" class="filter-select" onchange="filterComplaints(this.value)" style="padding: 8px 12px; margin-left: 10px; border: 1px solid #ddd; border-radius: 5px; background: white;">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="reviewing">Reviewing</option>
+                            <option value="resolved">Resolved</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="complaints-container" class="complaints-list">
+                    <p class="empty-state">No complaints yet</p>
                 </div>
             </section>
 
@@ -301,6 +329,17 @@
                 </div>
             </section>
 
+            <!-- Shipping Zones Tab -->
+            <section id="shipping-zones" class="tab-content">
+                <div class="section-header">
+                    <h2>Shipping Zones Management</h2>
+                    <button class="btn-primary" id="add-shipping-zone-btn">+ Add Shipping Zone</button>
+                </div>
+                <div id="shipping-zones-list" class="shipping-zones-list">
+                    <!-- Shipping zones will be displayed here -->
+                </div>
+            </section>
+
             <!-- Reports Tab -->
             <section id="reports" class="tab-content">
                 <div class="section-header">
@@ -343,7 +382,7 @@
     <div id="menu-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Add Menu Item</h2>
+            <h2 id="menu-modal-title">Add Menu Item</h2>
             <form id="menu-form">
                 <input type="text" placeholder="Item Name" id="item-name" required>
                 <textarea placeholder="Description" id="item-description"></textarea>
@@ -354,7 +393,15 @@
                     <option value="dessert">Dessert</option>
                     <option value="beverage">Beverage</option>
                 </select>
-                <button type="submit" class="btn-primary">Add Item</button>
+                <div style="margin: 15px 0;">
+                    <label for="item-image">Item Image (URL or File):</label>
+                    <input type="file" id="item-image-file" accept="image/*" style="margin-top: 5px;">
+                    <small style="color: #888;">Or paste image URL:</small>
+                    <input type="text" placeholder="Image URL" id="item-image-url" style="margin-top: 5px;">
+                </div>
+                <input type="hidden" id="item-id" value="">
+                <button type="submit" class="btn-primary" id="menu-form-submit">Add Item</button>
+                <button type="button" class="btn-secondary" id="menu-form-cancel" style="display:none; margin-left: 10px;">Cancel Edit</button>
             </form>
         </div>
     </div>
@@ -416,6 +463,25 @@
         </div>
     </div>
 
+    <!-- Modal for Add Shipping Zone -->
+    <div id="shipping-zone-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="shipping-zone-modal-title">Add Shipping Zone</h2>
+            <form id="shipping-zone-form">
+                <input type="hidden" id="shipping-zone-id" value="">
+                <input type="text" placeholder="Zone/Quarter Name (e.g., Yaounde Centre)" id="shipping-zone-name" required>
+                <input type="number" placeholder="Shipping Fee (FCFA)" id="shipping-zone-fee" min="0" step="100" required>
+                <select id="shipping-zone-status" required>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+                <button type="submit" class="btn-primary" id="shipping-zone-form-submit">Add Zone</button>
+            </form>
+        </div>
+    </div>
+
     <script src="app.js"></script>
+    <script src="mobile-responsive.js"></script>
 </body>
 </html>

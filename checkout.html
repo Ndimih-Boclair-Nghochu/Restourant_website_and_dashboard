@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="nav-styles.css">
     <link rel="stylesheet" href="checkout-styles.css">
     <link rel="stylesheet" href="footer-styles.css">
+    <link rel="stylesheet" href="floating-help.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="image-fallbacks.css">
+    <script src="image-fallback-handler.js" defer></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -68,6 +72,10 @@
                         <span>Tax (10%):</span>
                         <span id="taxAmount">$0.00</span>
                     </div>
+                    <div class="summary-shipping" id="summary-shipping" style="display: none;">
+                        <span>Shipping Fee:</span>
+                        <span id="summaryShippingFee">$0.00</span>
+                    </div>
                     <div class="summary-final-total">
                         <span>TOTAL:</span>
                         <span id="finalTotal">$0.00</span>
@@ -115,23 +123,35 @@
 
                         <div class="form-group">
                             <label for="deliveryType">Delivery Type *</label>
-                            <select id="deliveryType" name="deliveryType" required>
+                            <select id="deliveryType" name="deliveryType" required onchange="updateShippingDisplay()">
                                 <option value="">Select Option</option>
                                 <option value="delivery">Home Delivery</option>
                                 <option value="pickup">Pickup</option>
                             </select>
                         </div>
 
+                        <div class="form-group" id="shipping-zone-group" style="display: none;">
+                            <label for="shippingZone">Select Delivery Zone *</label>
+                            <select id="shippingZone" name="shippingZone" onchange="updateShippingFee()">
+                                <option value="">Choose your delivery zone...</option>
+                            </select>
+                            <small id="shipping-fee-display" style="color: #d4af37; font-weight: 600; margin-top: 5px; display: block;"></small>
+                        </div>
+
                         <div class="payment-section">
                             <h3>Payment Method</h3>
                             <div class="payment-options">
                                 <label class="payment-option">
-                                    <input type="radio" name="paymentMethod" value="card" checked>
-                                    <span>Credit/Debit Card</span>
+                                    <input type="radio" name="paymentMethod" value="orange" checked>
+                                    <span>🟠 Orange Money</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="mtn">
+                                    <span>🟡 MTN Mobile Money</span>
                                 </label>
                                 <label class="payment-option">
                                     <input type="radio" name="paymentMethod" value="cash">
-                                    <span>Cash on Delivery</span>
+                                    <span>💵 Cash on Delivery</span>
                                 </label>
                             </div>
                         </div>

@@ -1,0 +1,501 @@
+/* ==================== MOBILE RESPONSIVE - CORE STYLES ==================== */
+/* This file ensures the website and dashboards are fully responsive on all screen sizes */
+
+/* ==================== GLOBAL MOBILE FIXES ==================== */
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-size: clamp(14px, 2.5vw, 16px);
+}
+
+/* ==================== NAVIGATION RESPONSIVE ==================== */
+nav {
+    padding: clamp(10px, 3vw, 20px) 0;
+}
+
+nav .container {
+    padding: 0 clamp(15px, 4vw, 20px);
+}
+
+.nav-logo h1 {
+    font-size: clamp(18px, 5vw, 24px);
+}
+
+.nav-logo p {
+    font-size: clamp(9px, 2vw, 11px);
+}
+
+.nav-menu {
+    display: none;
+    gap: clamp(15px, 3vw, 40px);
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+
+.nav-menu.active {
+    display: flex;
+}
+
+.menu-toggle {
+    display: block !important;
+}
+
+@media (min-width: 768px) {
+    .nav-menu {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        background: none;
+        padding: 0;
+        box-shadow: none;
+    }
+    .menu-toggle {
+        display: none !important;
+    }
+}
+
+/* ==================== HERO SECTION RESPONSIVE ==================== */
+.hero {
+    height: clamp(300px, 60vh, 700px);
+    padding: clamp(20px, 5vw, 40px);
+}
+
+.hero h1 {
+    font-size: clamp(32px, 8vw, 80px);
+    letter-spacing: clamp(1px, 2vw, 5px);
+    margin-bottom: clamp(10px, 3vw, 20px);
+}
+
+.hero p {
+    font-size: clamp(14px, 4vw, 18px);
+    letter-spacing: clamp(0.5px, 1vw, 2px);
+    margin-bottom: clamp(20px, 5vw, 50px);
+}
+
+.hero .btn-primary {
+    padding: clamp(12px, 3vw, 18px) clamp(30px, 6vw, 60px);
+    font-size: clamp(11px, 2.5vw, 13px);
+}
+
+/* ==================== GALLERY HERO RESPONSIVE ==================== */
+.gallery-hero {
+    height: clamp(250px, 50vh, 500px);
+    padding: clamp(20px, 4vw, 30px);
+}
+
+.gallery-hero h1 {
+    font-size: clamp(28px, 7vw, 64px);
+}
+
+.gallery-hero p {
+    font-size: clamp(12px, 3vw, 16px);
+}
+
+/* ==================== GRID LAYOUTS RESPONSIVE ==================== */
+.container {
+    padding: 0 clamp(15px, 4vw, 20px);
+}
+
+.dashboard-grid,
+.gallery-grid,
+.menu-grid,
+.portals,
+.testimonials-grid,
+.about-grid {
+    grid-template-columns: 1fr !important;
+    gap: clamp(15px, 3vw, 40px) !important;
+}
+
+@media (min-width: 480px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .gallery-grid,
+    .menu-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    .gallery-grid,
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .menu-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .gallery-grid,
+    .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    .menu-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+/* ==================== SIDEBAR RESPONSIVE ==================== */
+.sidebar {
+    position: fixed !important;
+    left: -100% !important;
+    top: 0 !important;
+    width: 80vw !important;
+    max-width: 300px !important;
+    height: 100vh !important;
+    background: white !important;
+    z-index: 1000 !important;
+    overflow-y: auto !important;
+    transition: left 0.3s ease !important;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.sidebar.active {
+    left: 0 !important;
+}
+
+.sidebar-toggle {
+    display: block !important;
+    position: fixed !important;
+    top: 20px !important;
+    left: 20px !important;
+    z-index: 999 !important;
+    background: #d4af37 !important;
+    border: none !important;
+    padding: 10px 15px !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    font-size: 18px !important;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        position: relative !important;
+        left: 0 !important;
+        width: auto !important;
+        max-width: none !important;
+        height: auto !important;
+        box-shadow: none !important;
+    }
+    .sidebar-toggle {
+        display: none !important;
+    }
+}
+
+/* ==================== MAIN CONTENT RESPONSIVE ==================== */
+.main-content {
+    width: 100% !important;
+    padding: clamp(10px, 3vw, 20px) !important;
+}
+
+@media (min-width: 768px) {
+    .main-content {
+        padding: 20px !important;
+    }
+}
+
+/* ==================== HEADER RESPONSIVE ==================== */
+.header {
+    flex-direction: column !important;
+    gap: 15px !important;
+    margin-bottom: 20px !important;
+}
+
+.page-title {
+    font-size: clamp(20px, 5vw, 32px) !important;
+}
+
+.header-actions {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+}
+
+.search-box {
+    width: 100% !important;
+    min-width: auto !important;
+}
+
+@media (min-width: 768px) {
+    .header {
+        flex-direction: row !important;
+        gap: 20px !important;
+    }
+    .search-box {
+        min-width: 250px !important;
+    }
+}
+
+/* ==================== CARDS RESPONSIVE ==================== */
+.card,
+.kpi-card,
+.menu-item,
+.gallery-item,
+.testimonial-card,
+.portal-card {
+    padding: clamp(15px, 3vw, 30px) !important;
+}
+
+/* ==================== TABLE RESPONSIVE ==================== */
+.data-table {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+.data-table table {
+    font-size: clamp(11px, 2vw, 13px) !important;
+    min-width: 100% !important;
+}
+
+.data-table th,
+.data-table td {
+    padding: clamp(8px, 2vw, 15px) !important;
+}
+
+/* Hide less important columns on mobile */
+@media (max-width: 480px) {
+    .data-table th:nth-child(n+5),
+    .data-table td:nth-child(n+5) {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .data-table th:nth-child(n+6),
+    .data-table td:nth-child(n+6) {
+        display: none !important;
+    }
+}
+
+/* ==================== FORM RESPONSIVE ==================== */
+form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: clamp(10px, 2vw, 15px) !important;
+}
+
+input,
+textarea,
+select {
+    width: 100% !important;
+    padding: clamp(10px, 2vw, 12px) !important;
+    font-size: 16px !important; /* Prevents zoom on iOS */
+}
+
+button {
+    padding: clamp(10px, 2vw, 14px) clamp(20px, 4vw, 30px) !important;
+    font-size: clamp(12px, 2.5vw, 14px) !important;
+}
+
+/* ==================== MODAL RESPONSIVE ==================== */
+.modal,
+.modal-overlay {
+    width: 100% !important;
+    max-height: 100vh !important;
+    border-radius: 8px 8px 0 0 !important;
+}
+
+.modal {
+    max-width: calc(100% - 20px) !important;
+    max-height: 90vh !important;
+    margin: auto !important;
+}
+
+@media (min-width: 480px) {
+    .modal {
+        border-radius: 8px !important;
+        max-height: 85vh !important;
+    }
+}
+
+/* ==================== TEXT RESPONSIVE ==================== */
+h1 {
+    font-size: clamp(24px, 6vw, 48px) !important;
+}
+
+h2 {
+    font-size: clamp(20px, 5vw, 36px) !important;
+}
+
+h3 {
+    font-size: clamp(16px, 4vw, 24px) !important;
+}
+
+p {
+    font-size: clamp(13px, 2.5vw, 16px) !important;
+}
+
+/* ==================== SPACING RESPONSIVE ==================== */
+section {
+    padding: clamp(30px, 6vw, 100px) clamp(15px, 4vw, 20px) !important;
+}
+
+/* ==================== BUTTON RESPONSIVE ==================== */
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-action {
+    padding: clamp(10px, 2vw, 14px) clamp(20px, 4vw, 30px) !important;
+    font-size: clamp(11px, 2.5vw, 13px) !important;
+}
+
+/* ==================== FLEXBOX STACKING ==================== */
+.flex-row,
+.nav-right,
+.hero-buttons,
+.info-items,
+.category-filter,
+.order-cta {
+    flex-direction: column !important;
+    gap: clamp(10px, 2vw, 20px) !important;
+}
+
+@media (min-width: 480px) {
+    .flex-row,
+    .hero-buttons,
+    .category-filter {
+        flex-direction: row !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .nav-right,
+    .info-items {
+        flex-direction: row !important;
+    }
+}
+
+/* ==================== IMAGE RESPONSIVE ==================== */
+img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+.about-image img,
+.gallery-image img,
+.menu-item-image img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* ==================== MARGIN/PADDING RESPONSIVE ==================== */
+.margin-responsive {
+    margin: clamp(10px, 2vw, 20px) !important;
+}
+
+.padding-responsive {
+    padding: clamp(15px, 3vw, 30px) !important;
+}
+
+/* ==================== UTILITY CLASSES ==================== */
+@media (max-width: 480px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .hide-tablet {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .show-mobile {
+        display: none !important;
+    }
+}
+
+/* ==================== TOUCH TARGETS ==================== */
+button,
+a,
+.clickable {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* ==================== FONT SIZE CLAMP (Mobile-first) ==================== */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .section-title {
+        font-size: clamp(24px, 6vw, 36px) !important;
+    }
+}
+
+/* ==================== DASHBOARD FIXES ==================== */
+.container {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row !important;
+    }
+}
+
+.sidebar {
+    min-width: 100% !important;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        min-width: 250px !important;
+        width: auto !important;
+    }
+}
+
+/* ==================== MENU ITEMS RESPONSIVE ==================== */
+.menu-item,
+.order-item,
+.transaction-item {
+    padding: clamp(10px, 2vw, 15px) !important;
+}
+
+/* ==================== ENSURE FLEX/GRID WRAP ==================== */
+.flex-wrap {
+    flex-wrap: wrap !important;
+}
+
+/* ==================== Z-INDEX FIXES FOR MOBILE ==================== */
+nav {
+    z-index: 100 !important;
+}
+
+.sidebar.active {
+    z-index: 1001 !important;
+}
+
+/* ==================== PRINT RESPONSIVE ==================== */
+@media print {
+    .sidebar,
+    nav,
+    .header {
+        display: none !important;
+    }
+}

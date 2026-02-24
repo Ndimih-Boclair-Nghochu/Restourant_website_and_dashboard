@@ -17,14 +17,14 @@ class RestaurantDB {
                     { id: 6, number: 'B01', capacity: 1, type: 'bar', status: 'available', currentOrder: null },
                 ],
                 menuItems: [
-                    { id: 1, name: 'Margherita Pizza', description: 'Classic Italian pizza with fresh basil', price: 12990, category: 'main', emoji: '🍕' },
-                    { id: 2, name: 'Caesar Salad', description: 'Fresh romaine with parmesan and croutons', price: 8990, category: 'appetizer', emoji: '🥗' },
-                    { id: 3, name: 'Grilled Salmon', description: 'Atlantic salmon with lemon butter sauce', price: 18990, category: 'main', emoji: '🐟' },
-                    { id: 4, name: 'Chocolate Cake', description: 'Rich chocolate cake with vanilla cream', price: 7990, category: 'dessert', emoji: '🍰' },
-                    { id: 5, name: 'Cappuccino', description: 'Espresso with steamed milk', price: 4990, category: 'beverage', emoji: '☕' },
-                    { id: 6, name: 'Chicken Pasta', description: 'Creamy chicken alfredo pasta', price: 14990, category: 'main', emoji: '🍝' },
-                    { id: 7, name: 'Garlic Bread', description: 'Toasted bread with fresh garlic butter', price: 5990, category: 'appetizer', emoji: '🍞' },
-                    { id: 8, name: 'Tiramisu', description: 'Classic Italian dessert', price: 6990, category: 'dessert', emoji: '🎂' },
+                    { id: 1, name: 'Margherita Pizza', description: 'Classic Italian pizza with fresh basil', price: 12990, category: 'main', image: 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=500&h=400&fit=crop', emoji: '🍕' },
+                    { id: 2, name: 'Caesar Salad', description: 'Fresh romaine with parmesan and croutons', price: 8990, category: 'appetizer', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop', emoji: '🥗' },
+                    { id: 3, name: 'Grilled Salmon', description: 'Atlantic salmon with lemon butter sauce', price: 18990, category: 'main', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop', emoji: '🐟' },
+                    { id: 4, name: 'Chocolate Cake', description: 'Rich chocolate cake with vanilla cream', price: 7990, category: 'dessert', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop', emoji: '🍰' },
+                    { id: 5, name: 'Cappuccino', description: 'Espresso with steamed milk', price: 4990, category: 'beverage', image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=400&fit=crop', emoji: '☕' },
+                    { id: 6, name: 'Chicken Pasta', description: 'Creamy chicken alfredo pasta', price: 14990, category: 'main', image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=500&h=400&fit=crop', emoji: '🍝' },
+                    { id: 7, name: 'Garlic Bread', description: 'Toasted bread with fresh garlic butter', price: 5990, category: 'appetizer', image: 'https://images.unsplash.com/photo-1599599810694-b5ac4dd19453?w=500&h=400&fit=crop', emoji: '🍞' },
+                    { id: 8, name: 'Tiramisu', description: 'Classic Italian dessert', price: 6990, category: 'dessert', image: 'https://images.unsplash.com/photo-1571115764595-644a60f1e302?w=500&h=400&fit=crop', emoji: '🎂' },
                 ],
                 orders: [],
                 inventory: [
@@ -53,6 +53,15 @@ class RestaurantDB {
                     },
                     { 
                         id: 2, 
+                        name: 'Family Package', 
+                        budget: 75000, 
+                        description: 'Perfect for family gatherings with special kids menu',
+                        features: ['Family-friendly seating', 'Kids menu included', 'Complimentary soft drinks', 'Birthday cake option', 'Family photo service'],
+                        icon: '👨‍👩‍👧‍👦',
+                        color: '#27ae60'
+                    },
+                    { 
+                        id: 3, 
                         name: 'Premium Dining', 
                         budget: 100000, 
                         description: 'Enhanced dining with premium dishes and beverages',
@@ -61,7 +70,16 @@ class RestaurantDB {
                         color: '#3498db'
                     },
                     { 
-                        id: 3, 
+                        id: 4, 
+                        name: 'Romantic Evening', 
+                        budget: 150000, 
+                        description: 'Perfect for couples with intimate ambiance',
+                        features: ['Private corner table', 'Candlelight setup', 'Rose bouquet', 'Champagne bottle', 'Romantic music playlist', 'Dessert platter'],
+                        icon: '💑',
+                        color: '#e74c3c'
+                    },
+                    { 
+                        id: 5, 
                         name: 'VIP Experience', 
                         budget: 200000, 
                         description: 'Exclusive VIP treatment with finest cuisine',
@@ -70,15 +88,82 @@ class RestaurantDB {
                         color: '#f39c12'
                     },
                     { 
-                        id: 4, 
+                        id: 6, 
+                        name: 'Business Dining', 
+                        budget: 250000, 
+                        description: 'Professional setting for corporate meetings',
+                        features: ['Private meeting room', 'High-speed WiFi', 'Presentation screen', 'Business lunch menu', 'Coffee & tea service', 'Conference call setup'],
+                        icon: '💼',
+                        color: '#34495e'
+                    },
+                    { 
+                        id: 7, 
+                        name: 'Chef\'s Table', 
+                        budget: 350000, 
+                        description: 'Exclusive experience at the chef\'s table',
+                        features: ['Chef\'s table seating', 'Multi-course tasting menu', 'Kitchen tour', 'Chef interaction', 'Wine pairing', 'Signed menu card'],
+                        icon: '👨‍🍳',
+                        color: '#16a085'
+                    },
+                    { 
+                        id: 8, 
                         name: 'Luxury Package', 
                         budget: 500000, 
                         description: 'Ultimate luxury dining experience',
                         features: ['Private dining room', 'Custom chef-prepared menu', 'Personal sommelier', 'Live music/entertainment', 'Valet parking', 'Premium champagne'],
                         icon: '💎',
                         color: '#9b59b6'
+                    },
+                    { 
+                        id: 9, 
+                        name: 'Anniversary Special', 
+                        budget: 180000, 
+                        description: 'Celebrate your special milestone with elegance',
+                        features: ['Decorated private area', 'Custom anniversary cake', 'Photo session', 'Memory book', 'Champagne toast', 'Live violin music'],
+                        icon: '💝',
+                        color: '#c0392b'
+                    },
+                    { 
+                        id: 10, 
+                        name: 'Birthday Celebration', 
+                        budget: 120000, 
+                        description: 'Make your birthday unforgettable',
+                        features: ['Birthday decorations', 'Custom cake design', 'Party favors', 'Special birthday menu', 'Photo booth setup', 'Music selection'],
+                        icon: '🎂',
+                        color: '#e67e22'
+                    },
+                    { 
+                        id: 11, 
+                        name: 'Garden Dining', 
+                        budget: 130000, 
+                        description: 'Outdoor dining experience in our beautiful garden',
+                        features: ['Garden terrace seating', 'Natural ambiance', 'BBQ options', 'Fresh cocktails', 'Sunset view', 'Live acoustic music'],
+                        icon: '🌺',
+                        color: '#1abc9c'
+                    },
+                    { 
+                        id: 12, 
+                        name: 'Executive Package', 
+                        budget: 800000, 
+                        description: 'The pinnacle of luxury for high-profile events',
+                        features: ['Entire restaurant reservation', 'Custom event planning', 'Celebrity chef service', 'Full bar service', 'Security detail', 'Red carpet entry', 'Professional photography', 'Live band performance'],
+                        icon: '🏆',
+                        color: '#8e44ad'
                     }
                 ],
+                complaints: [],
+                shippingZones: [
+                    { id: 1, name: 'Yaounde Centre', fee: 3500, status: 'active' },
+                    { id: 2, name: 'Yaounde Bastos', fee: 3500, status: 'active' },
+                    { id: 3, name: 'Yaounde Nlongkak', fee: 4000, status: 'active' },
+                    { id: 4, name: 'Douala Akwa', fee: 4000, status: 'active' },
+                    { id: 5, name: 'Douala Bonanjo', fee: 4000, status: 'active' },
+                ],
+                paymentMethods: [
+                    { id: 1, name: 'Orange Money', code: 'orange', emoji: '🟠', status: 'active', description: 'Mobile money via Orange' },
+                    { id: 2, name: 'MTN Mobile Money', code: 'mtn', emoji: '🟡', status: 'active', description: 'Mobile money via MTN' },
+                    { id: 3, name: 'Cash on Delivery', code: 'cash', emoji: '💵', status: 'active', description: 'Pay when order arrives' },
+                ]
             };
             localStorage.setItem(this.storageKey, JSON.stringify(defaultData));
         }
@@ -126,6 +211,24 @@ class RestaurantDB {
         data.menuItems.push(item);
         this.saveData(data);
         return item;
+    }
+
+    updateMenuItem(id, item) {
+        const data = this.getData();
+        const index = data.menuItems.findIndex(m => m.id === id);
+        if (index !== -1) {
+            data.menuItems[index] = { ...data.menuItems[index], ...item, id };
+            this.saveData(data);
+            return data.menuItems[index];
+        }
+        return null;
+    }
+
+    deleteMenuItem(id) {
+        const data = this.getData();
+        data.menuItems = data.menuItems.filter(m => m.id !== id);
+        this.saveData(data);
+        return true;
     }
 
     // Order operations
@@ -253,6 +356,84 @@ class RestaurantDB {
         data.reservationPlans = data.reservationPlans.filter(p => p.id !== id);
         this.saveData(data);
     }
+
+    // Shipping Zone operations
+    getShippingZones() {
+        const data = this.getData();
+        if (!data.shippingZones) {
+            data.shippingZones = [];
+            this.saveData(data);
+        }
+        return data.shippingZones;
+    }
+
+    addShippingZone(zone) {
+        const data = this.getData();
+        if (!data.shippingZones) data.shippingZones = [];
+        zone.id = Math.max(...data.shippingZones.map(z => z.id || 0), 0) + 1;
+        zone.status = zone.status || 'active';
+        data.shippingZones.push(zone);
+        this.saveData(data);
+        return zone;
+    }
+
+    updateShippingZone(id, updates) {
+        const data = this.getData();
+        if (!data.shippingZones) return null;
+        const zone = data.shippingZones.find(z => z.id === id);
+        if (zone) {
+            Object.assign(zone, updates);
+            this.saveData(data);
+        }
+        return zone;
+    }
+
+    deleteShippingZone(id) {
+        const data = this.getData();
+        if (!data.shippingZones) return false;
+        data.shippingZones = data.shippingZones.filter(z => z.id !== id);
+        this.saveData(data);
+        return true;
+    }
+
+    // Payment Method operations
+    getPaymentMethods() {
+        const data = this.getData();
+        if (!data.paymentMethods) {
+            data.paymentMethods = [];
+            this.saveData(data);
+        }
+        return data.paymentMethods;
+    }
+
+    addPaymentMethod(method) {
+        const data = this.getData();
+        if (!data.paymentMethods) data.paymentMethods = [];
+        method.id = Math.max(...data.paymentMethods.map(m => m.id || 0), 0) + 1;
+        method.status = method.status || 'active';
+        data.paymentMethods.push(method);
+        this.saveData(data);
+        return method;
+    }
+
+    updatePaymentMethod(id, updates) {
+        const data = this.getData();
+        if (!data.paymentMethods) return null;
+        const method = data.paymentMethods.find(m => m.id === id);
+        if (method) {
+            Object.assign(method, updates);
+            this.saveData(data);
+        }
+        return method;
+    }
+
+    deletePaymentMethod(id) {
+        const data = this.getData();
+        if (!data.paymentMethods) return false;
+        data.paymentMethods = data.paymentMethods.filter(m => m.id !== id);
+        this.saveData(data);
+        return true;
+    }
 }
 
 // ==================== UI MANAGER ====================
@@ -284,7 +465,14 @@ class UIManager {
 
         // Buttons
         document.getElementById('add-table-btn').addEventListener('click', () => this.openModal('table-modal'));
-        document.getElementById('add-item-btn').addEventListener('click', () => this.openModal('menu-modal'));
+        document.getElementById('add-item-btn').addEventListener('click', () => {
+            document.getElementById('item-id').value = '';
+            document.getElementById('menu-modal-title').textContent = 'Add Menu Item';
+            document.getElementById('menu-form-submit').textContent = 'Add Item';
+            document.getElementById('menu-form-cancel').style.display = 'none';
+            document.getElementById('menu-form').reset();
+            this.openModal('menu-modal');
+        });
         document.getElementById('new-order-btn').addEventListener('click', () => this.openModal('order-modal'));
         document.getElementById('add-staff-btn').addEventListener('click', () => this.openModal('staff-modal'));
         document.getElementById('add-inventory-btn').addEventListener('click', () => this.openModal('inventory-modal'));
@@ -297,11 +485,38 @@ class UIManager {
         document.getElementById('staff-form').addEventListener('submit', (e) => this.handleAddStaff(e));
         document.getElementById('inventory-form').addEventListener('submit', (e) => this.handleAddInventory(e));
 
+        // Cancel edit button for menu
+        document.getElementById('menu-form-cancel').addEventListener('click', () => {
+            document.getElementById('menu-form').reset();
+            document.getElementById('item-id').value = '';
+            document.getElementById('menu-modal-title').textContent = 'Add Menu Item';
+            document.getElementById('menu-form-submit').textContent = 'Add Item';
+            document.getElementById('menu-form-cancel').style.display = 'none';
+            this.closeModal('menu-modal');
+        });
+
+        // Search functionality
+        const searchBox = document.querySelector('.search-box');
+        if (searchBox) {
+            searchBox.addEventListener('keyup', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                this.performSearch(searchTerm);
+            });
+        }
+
+        // Settings button
+        const settingsBtn = Array.from(document.querySelectorAll('button')).find(btn => btn.textContent.includes('⚙️'));
+        if (settingsBtn) {
+            settingsBtn.addEventListener('click', () => {
+                this.showSettings();
+            });
+        }
+
         // Logout
         document.getElementById('logout-btn').addEventListener('click', () => {
             if (confirm('Are you sure you want to logout?')) {
-                alert('Logged out successfully');
-                // In a real app, this would redirect to login
+                sessionStorage.clear();
+                window.location.href = 'admin-login.html';
             }
         });
 
@@ -346,12 +561,14 @@ class UIManager {
             reservations: 'Reservations',
             'reservation-plans': 'Reservation Plans & Budgets',
             reviews: 'Customer Reviews',
+            complaints: 'Customer Complaints & Feedback',
             tables: 'Table Management',
             orders: 'Order Management',
             menu: 'Menu Management',
             inventory: 'Inventory Management',
             staff: 'Staff Management',
             billing: 'Billing & Invoices',
+            'shipping-zones': 'Shipping Zones Management',
             reports: 'Reports & Analytics',
         };
         document.querySelector('.page-title').textContent = tabTitles[tabName];
@@ -367,6 +584,8 @@ class UIManager {
             this.renderReservationPlans();
         } else if (tabName === 'reviews') {
             loadReviews();
+        } else if (tabName === 'complaints') {
+            loadComplaints();
         } else if (tabName === 'tables') {
             this.renderTables();
         } else if (tabName === 'orders') {
@@ -379,6 +598,8 @@ class UIManager {
             this.renderStaff();
         } else if (tabName === 'billing') {
             this.renderBilling();
+        } else if (tabName === 'shipping-zones') {
+            this.renderShippingZones();
         } else if (tabName === 'reports') {
             this.renderReports();
         }
@@ -401,8 +622,11 @@ class UIManager {
         const staff = this.db.getStaff();
         const billing = this.db.getBilling();
         
-        // Get customer data from website
-        const customerOrders = JSON.parse(localStorage.getItem('customerOrders') || '[]');
+        // Get customer data from website - Try restaurantOrders first (from checkout), then fallback to customerOrders
+        let customerOrders = JSON.parse(localStorage.getItem('restaurantOrders') || '[]');
+        if (customerOrders.length === 0) {
+            customerOrders = JSON.parse(localStorage.getItem('customerOrders') || '[]');
+        }
         const customerReviews = JSON.parse(localStorage.getItem('customerReviews') || '[]');
         const reservations = JSON.parse(localStorage.getItem('reservations') || '[]');
 
@@ -606,7 +830,11 @@ class UIManager {
     // Orders
     renderOrders() {
         const orders = this.db.getOrders(); // Internal orders from staff
-        const customerOrders = JSON.parse(localStorage.getItem('customerOrders') || '[]'); // Website orders
+        // Load customer orders from restaurantOrders (checkout) first, fallback to customerOrders
+        let customerOrders = JSON.parse(localStorage.getItem('restaurantOrders') || '[]'); // Website orders
+        if (customerOrders.length === 0) {
+            customerOrders = JSON.parse(localStorage.getItem('customerOrders') || '[]');
+        }
         const ordersListEl = document.getElementById('orders-list');
         
         if (!ordersListEl) {
@@ -688,13 +916,19 @@ class UIManager {
         }
         
         const html = menuItems.map(item => `
-            <div class="menu-card">
-                <div class="menu-image">${item.emoji || '🍽️'}</div>
+            <div class="menu-card" data-searchable="true">
+                <div class="menu-image">
+                    ${item.image ? `<img src="${item.image}" alt="${item.name}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 5px;">` : `<div style="width: 100%; height: 150px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; border-radius: 5px; font-size: 48px;">${item.emoji || '🍽️'}</div>`}
+                </div>
                 <div class="menu-content">
                     <div class="menu-name">${item.name}</div>
                     <div class="menu-description">${item.description}</div>
                     <div class="menu-category">${item.category.toUpperCase()}</div>
                     <div class="menu-price">${item.price.toLocaleString()} FCFA</div>
+                    <div style="display: flex; gap: 8px; margin-top: 10px;">
+                        <button class="btn-secondary" onclick="app.editMenuItem(${item.id})" style="flex: 1; padding: 8px; font-size: 12px;">✏️ Edit</button>
+                        <button class="btn-danger" onclick="app.deleteMenuItem(${item.id})" style="flex: 1; padding: 8px; font-size: 12px;">🗑️ Delete</button>
+                    </div>
                 </div>
             </div>
         `).join('');
@@ -799,6 +1033,102 @@ class UIManager {
         billingListEl.innerHTML = html;
     }
 
+    // Shipping Zones
+    renderShippingZones() {
+        const zones = this.db.getShippingZones();
+        const zonesListEl = document.getElementById('shipping-zones-list');
+        
+        const html = zones.length > 0 
+            ? zones.map(zone => `
+                <div class="shipping-zone-card" style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e0e0e0; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="flex: 1;">
+                        <h3 style="margin: 0 0 8px 0; color: #333;">${zone.name}</h3>
+                        <p style="margin: 5px 0; color: #666;">
+                            <strong>Fee:</strong> ${zone.fee.toLocaleString()} FCFA
+                        </p>
+                        <p style="margin: 5px 0; color: #666;">
+                            <strong>Status:</strong> <span style="background: ${zone.status === 'active' ? '#4caf50' : '#f44336'}; color: white; padding: 4px 10px; border-radius: 4px; font-size: 12px;">${zone.status.toUpperCase()}</span>
+                        </p>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-secondary" onclick="uiManager.editShippingZone(${zone.id})" style="padding: 8px 12px;">✏️ Edit</button>
+                        <button class="btn-danger" onclick="uiManager.deleteShippingZone(${zone.id})" style="padding: 8px 12px;">🗑️ Delete</button>
+                    </div>
+                </div>
+            `).join('')
+            : '<p class="empty-state">No shipping zones configured. Add your first zone to enable shipping.</p>';
+        
+        zonesListEl.innerHTML = html;
+        
+        // Attach event listeners
+        document.getElementById('add-shipping-zone-btn').addEventListener('click', () => {
+            document.getElementById('shipping-zone-id').value = '';
+            document.getElementById('shipping-zone-name').value = '';
+            document.getElementById('shipping-zone-fee').value = '';
+            document.getElementById('shipping-zone-status').value = 'active';
+            document.getElementById('shipping-zone-modal-title').textContent = 'Add Shipping Zone';
+            document.getElementById('shipping-zone-form-submit').textContent = 'Add Zone';
+            this.openModal('shipping-zone-modal');
+        });
+
+        document.getElementById('shipping-zone-form').addEventListener('submit', (e) => {
+            this.handleAddShippingZone(e);
+        });
+
+        // Setup close buttons for modal
+        const modal = document.getElementById('shipping-zone-modal');
+        const closeBtn = modal.querySelector('.close');
+        closeBtn.addEventListener('click', () => this.closeModal('shipping-zone-modal'));
+    }
+
+    editShippingZone(id) {
+        const zones = this.db.getShippingZones();
+        const zone = zones.find(z => z.id === id);
+        if (zone) {
+            document.getElementById('shipping-zone-id').value = zone.id;
+            document.getElementById('shipping-zone-name').value = zone.name;
+            document.getElementById('shipping-zone-fee').value = zone.fee;
+            document.getElementById('shipping-zone-status').value = zone.status;
+            document.getElementById('shipping-zone-modal-title').textContent = 'Edit Shipping Zone';
+            document.getElementById('shipping-zone-form-submit').textContent = 'Save Changes';
+            this.openModal('shipping-zone-modal');
+        }
+    }
+
+    handleAddShippingZone(e) {
+        e.preventDefault();
+        
+        const id = document.getElementById('shipping-zone-id').value;
+        const name = document.getElementById('shipping-zone-name').value;
+        const fee = parseFloat(document.getElementById('shipping-zone-fee').value);
+        const status = document.getElementById('shipping-zone-status').value;
+
+        if (!name || isNaN(fee) || fee < 0) {
+            alert('Please fill in all fields correctly');
+            return;
+        }
+
+        if (id) {
+            // Update existing zone
+            this.db.updateShippingZone(parseInt(id), { name, fee, status });
+            alert('Shipping zone updated successfully!');
+        } else {
+            // Add new zone
+            this.db.addShippingZone({ name, fee, status });
+            alert('Shipping zone added successfully!');
+        }
+
+        this.closeModal('shipping-zone-modal');
+        this.renderShippingZones();
+    }
+
+    deleteShippingZone(id) {
+        if (confirm('Are you sure you want to delete this shipping zone?')) {
+            this.db.deleteShippingZone(id);
+            this.renderShippingZones();
+        }
+    }
+
     // Reports
     renderReports() {
         const orders = this.db.getOrders();
@@ -898,18 +1228,78 @@ class UIManager {
 
     handleAddMenuItem(e) {
         e.preventDefault();
-        const item = {
-            name: document.getElementById('item-name').value,
-            description: document.getElementById('item-description').value,
-            price: parseFloat(document.getElementById('item-price').value),
-            category: document.getElementById('item-category').value,
-            emoji: '🍽️',
-        };
-        this.db.addMenuItem(item);
+        const itemId = document.getElementById('item-id').value;
+        const imageFile = document.getElementById('item-image-file').files[0];
+        const imageUrl = document.getElementById('item-image-url').value;
+        
+        // Handle image
+        let imageData = imageUrl || null;
+        if (imageFile) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const item = {
+                    name: document.getElementById('item-name').value,
+                    description: document.getElementById('item-description').value,
+                    price: parseFloat(document.getElementById('item-price').value),
+                    category: document.getElementById('item-category').value,
+                    emoji: '🍽️',
+                    image: event.target.result
+                };
+                this.saveMenuItem(item, itemId);
+            };
+            reader.readAsDataURL(imageFile);
+        } else {
+            const item = {
+                name: document.getElementById('item-name').value,
+                description: document.getElementById('item-description').value,
+                price: parseFloat(document.getElementById('item-price').value),
+                category: document.getElementById('item-category').value,
+                emoji: '🍽️',
+                image: imageData
+            };
+            this.saveMenuItem(item, itemId);
+        }
+    }
+
+    saveMenuItem(item, itemId) {
+        if (itemId) {
+            this.db.updateMenuItem(parseInt(itemId), item);
+            alert('Menu item updated successfully!');
+        } else {
+            this.db.addMenuItem(item);
+            alert('Menu item added successfully!');
+        }
         this.closeModal('menu-modal');
         document.getElementById('menu-form').reset();
+        document.getElementById('item-id').value = '';
+        document.getElementById('menu-modal-title').textContent = 'Add Menu Item';
+        document.getElementById('menu-form-submit').textContent = 'Add Item';
+        document.getElementById('menu-form-cancel').style.display = 'none';
         this.renderMenuItems();
-        alert('Menu item added successfully!');
+    }
+
+    editMenuItem(id) {
+        const item = this.db.getMenuItems().find(m => m.id === id);
+        if (item) {
+            document.getElementById('item-id').value = id;
+            document.getElementById('item-name').value = item.name;
+            document.getElementById('item-description').value = item.description;
+            document.getElementById('item-price').value = item.price;
+            document.getElementById('item-category').value = item.category;
+            document.getElementById('item-image-url').value = item.image || '';
+            document.getElementById('menu-modal-title').textContent = 'Edit Menu Item';
+            document.getElementById('menu-form-submit').textContent = 'Update Item';
+            document.getElementById('menu-form-cancel').style.display = 'inline-block';
+            this.openModal('menu-modal');
+        }
+    }
+
+    deleteMenuItem(id) {
+        if (confirm('Are you sure you want to delete this menu item?')) {
+            this.db.deleteMenuItem(id);
+            alert('Menu item deleted successfully!');
+            this.renderMenuItems();
+        }
     }
 
     handleAddOrderItem(e) {
@@ -997,6 +1387,81 @@ class UIManager {
         }
     }
 
+    performSearch(searchTerm) {
+        if (!searchTerm) {
+            // Show all items if search is empty
+            document.querySelectorAll('[data-searchable]').forEach(item => {
+                item.style.display = '';
+            });
+            return;
+        }
+
+        const results = [];
+        const tables = this.db.getData().tables || [];
+        const menuItems = this.db.getData().menuItems || [];
+        const orders = this.db.getData().orders || [];
+        const staff = this.db.getData().staff || [];
+
+        // Search across all sections
+        tables.forEach(t => {
+            if (t.number.toLowerCase().includes(searchTerm)) {
+                results.push(`Table ${t.number}`);
+            }
+        });
+
+        menuItems.forEach(m => {
+            if (m.name.toLowerCase().includes(searchTerm)) {
+                results.push(`Menu: ${m.name}`);
+            }
+        });
+
+        orders.forEach(o => {
+            if (o.id.toLowerCase().includes(searchTerm)) {
+                results.push(`Order: ${o.id}`);
+            }
+        });
+
+        staff.forEach(s => {
+            if (s.name.toLowerCase().includes(searchTerm)) {
+                results.push(`Staff: ${s.name}`);
+            }
+        });
+
+        if (results.length === 0) {
+            alert(`No results found for "${searchTerm}"`);
+        } else {
+            alert(`Found ${results.length} result(s):\n\n${results.join('\n')}`);
+        }
+    }
+
+    showSettings() {
+        const settings = `
+Restaurant Management System Settings
+=====================================
+
+Current Settings:
+✓ Theme: Professional
+✓ Currency: FCFA
+✓ Date Format: DD/MM/YYYY
+✓ Time Format: 24-hour
+
+Features:
+• Real-time Dashboard
+• Multi-user Support
+• Inventory Tracking
+• Order Management
+• Staff Management
+• Billing System
+• Reports & Analytics
+• Reservation Planning
+• Customer Reviews
+
+Version: 1.0.0
+Last Updated: January 2026
+        `;
+        alert(settings);
+    }
+
     handleAddStaff(e) {
         e.preventDefault();
         const staff = {
@@ -1040,35 +1505,38 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('admin-username').textContent = `👤 ${adminUsername}`;
     }
 
-    // Logout functionality
-    document.getElementById('logout-btn').addEventListener('click', () => {
-        if (confirm('Are you sure you want to logout?')) {
-            sessionStorage.clear();
-            window.location.href = 'admin-login.html';
-        }
-    });
-
     db = new RestaurantDB();
     uiManager = new UIManager(db);
+    // Expose app as global for onclick handlers
+    window.app = uiManager;
     uiManager.renderDashboard();
     
     console.log('Admin dashboard initialized');
-    console.log('Available tabs: dashboard, customer-orders, reservations, reviews, tables, orders, menu, inventory, staff, billing, reports');
+    console.log('Available tabs: dashboard, customer-orders, reservations, reviews, complaints, tables, orders, menu, inventory, staff, billing, reports');
     
     // Pre-load data for new sections (but don't display them yet)
     console.log('Pre-loading customer data...');
-    const customerOrders = JSON.parse(localStorage.getItem('customerOrders') || '[]');
+    let customerOrders = JSON.parse(localStorage.getItem('restaurantOrders') || '[]');
+    if (customerOrders.length === 0) {
+        customerOrders = JSON.parse(localStorage.getItem('customerOrders') || '[]');
+    }
     const reservations = JSON.parse(localStorage.getItem('reservations') || '[]');
     const customerReviews = JSON.parse(localStorage.getItem('customerReviews') || '[]');
+    const customerComplaints = JSON.parse(localStorage.getItem('customerComplaints') || '[]');
     
     console.log(`Found ${customerOrders.length} customer orders`);
     console.log(`Found ${reservations.length} reservations`);
     console.log(`Found ${customerReviews.length} customer reviews`);
+    console.log(`Found ${customerComplaints.length} customer complaints`);
 });
 
 // ==================== CUSTOMER ORDERS MANAGEMENT ====================
 function loadCustomerOrders() {
-    const orders = JSON.parse(localStorage.getItem('customerOrders') || '[]');
+    // Load orders from restaurantOrders (from checkout) and fallback to customerOrders for backwards compatibility
+    let orders = JSON.parse(localStorage.getItem('restaurantOrders') || '[]');
+    if (orders.length === 0) {
+        orders = JSON.parse(localStorage.getItem('customerOrders') || '[]');
+    }
     const tbody = document.getElementById('customer-orders-body');
     
     if (!tbody) {
@@ -1081,7 +1549,7 @@ function loadCustomerOrders() {
     console.log('Loading customer orders:', orders.length);
     
     if (orders.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="9" style="text-align: center; padding: 30px; color: #666;">No customer orders yet. Orders placed from the website will appear here.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 30px; color: #666;">No customer orders yet. Orders placed from the website will appear here.</td></tr>';
         return;
     }
     
@@ -1090,29 +1558,47 @@ function loadCustomerOrders() {
     
     reversedOrders.forEach((order, index) => {
         const row = document.createElement('tr');
-        const dateStr = order.date ? new Date(order.date).toLocaleString() : (order.orderTime || 'N/A');
+        const dateStr = order.timestamp || new Date().toLocaleString();
         
-        let orderType = '';
-        if (order.isOnSite) {
-            orderType = `🍽️ Table ${order.tableNumber}`;
-        } else if (order.deliveryAddress) {
-            orderType = '🚚 Delivery';
-        } else {
-            orderType = `🛍️ Takeaway (Table ${order.tableNumber})`;
+        // Get payment method display name
+        const paymentMethodNames = {
+            'orange': '🟠 Orange Money',
+            'mtn': '🟡 MTN Mobile Money',
+            'cash': '💵 Cash on Delivery'
+        };
+        const paymentDisplay = paymentMethodNames[order.paymentMethod] || order.paymentMethod;
+        
+        // Get delivery type display
+        const deliveryTypeDisplay = order.deliveryType === 'delivery' ? '🚚 Home Delivery' : '🏪 Pickup';
+        
+        // Get shipping zone name
+        let shippingZoneDisplay = '—';
+        if (order.deliveryType === 'delivery' && order.shippingZone) {
+            try {
+                const data = JSON.parse(localStorage.getItem('restaurantData'));
+                const zones = data.shippingZones || [];
+                const zone = zones.find(z => z.id == order.shippingZone);
+                shippingZoneDisplay = zone ? zone.name : 'Unknown Zone';
+            } catch (e) {
+                shippingZoneDisplay = 'Zone ' + order.shippingZone;
+            }
         }
+        
+        const totalAmount = order.totals?.total || 0;
         
         row.innerHTML = `
             <td><strong>${order.orderId}</strong></td>
-            <td>${order.customerName || (order.deliveryAddress?.name || 'Guest')}</td>
-            <td>${order.food?.name || 'N/A'}</td>
-            <td>${order.drink?.name || 'None'}</td>
-            <td>${orderType}</td>
-            <td><strong>${order.totalAmount?.toLocaleString() || '0'} FCFA</strong></td>
-            <td>${order.paymentMethod || 'N/A'}</td>
+            <td>${order.fullName}</td>
+            <td>${order.email}</td>
+            <td>${order.phone}</td>
+            <td>${deliveryTypeDisplay}</td>
+            <td>${shippingZoneDisplay}</td>
+            <td>${paymentDisplay}</td>
+            <td><strong>$${totalAmount.toFixed(2)}</strong></td>
             <td>${dateStr}</td>
             <td style="white-space: nowrap;">
-                <button class="btn-action" onclick="viewOrderDetails(${orders.length - 1 - index})" title="View Details">👁️</button>
-                <button class="btn-action" onclick="deleteCustomerOrder(${orders.length - 1 - index})" title="Delete" style="color: #dc3545;">🗑️</button>
+                <button class="btn-action" onclick="viewWebOrderDetails(${orders.length - 1 - index})" title="View Details">👁️</button>
+                <button class="btn-action" onclick="deleteWebOrder(${orders.length - 1 - index})" title="Delete" style="color: #dc3545;">🗑️</button>
             </td>
         `;
         tbody.appendChild(row);
@@ -1126,8 +1612,8 @@ function refreshCustomerOrders() {
     alert('Customer orders refreshed!');
 }
 
-function viewOrderDetails(index) {
-    const orders = JSON.parse(localStorage.getItem('customerOrders') || '[]');
+function viewWebOrderDetails(index) {
+    const orders = JSON.parse(localStorage.getItem('restaurantOrders') || '[]');
     const order = orders[index];
     
     if (!order) {
@@ -1135,54 +1621,86 @@ function viewOrderDetails(index) {
         return;
     }
     
-    const foodInfo = order.food ? `${order.food.name} (${order.food.priceDisplay || order.food.price + ' FCFA'})` : 'N/A';
-    const drinkInfo = order.drink ? `${order.drink.name} (${order.drink.priceDisplay || order.drink.price + ' FCFA'})` : 'None';
+    // Get payment method display name
+    const paymentMethodNames = {
+        'orange': '🟠 Orange Money',
+        'mtn': '🟡 MTN Mobile Money',
+        'cash': '💵 Cash on Delivery'
+    };
+    const paymentDisplay = paymentMethodNames[order.paymentMethod] || order.paymentMethod;
     
-    let locationInfo = '';
-    if (order.isOnSite) {
-        locationInfo = `Dine-in at Table ${order.tableNumber}`;
-    } else if (order.deliveryAddress) {
-        locationInfo = 'Delivery';
-    } else {
-        locationInfo = `Takeaway - Pickup at Table ${order.tableNumber}`;
+    // Get delivery type display
+    const deliveryTypeDisplay = order.deliveryType === 'delivery' ? '🚚 Home Delivery' : '🏪 Pickup';
+    
+    // Get shipping zone name
+    let shippingZoneDisplay = 'N/A';
+    if (order.deliveryType === 'delivery' && order.shippingZone) {
+        try {
+            const data = JSON.parse(localStorage.getItem('restaurantData'));
+            const zones = data.shippingZones || [];
+            const zone = zones.find(z => z.id == order.shippingZone);
+            shippingZoneDisplay = zone ? zone.name : 'Unknown Zone';
+        } catch (e) {
+            shippingZoneDisplay = 'Zone ' + order.shippingZone;
+        }
     }
     
-    const dateInfo = order.date ? new Date(order.date).toLocaleString() : (order.orderTime || 'N/A');
+    // Build items list
+    const itemsList = order.items.map(item => `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`).join('\n');
     
-    let deliveryInfo = '';
-    if (order.deliveryAddress) {
-        deliveryInfo = `\n\nDELIVERY ADDRESS:\n` +
-                      `Name: ${order.deliveryAddress.name}\n` +
-                      `Phone: ${order.deliveryAddress.phone}\n` +
-                      `Address: ${order.deliveryAddress.street}, ${order.deliveryAddress.city}` +
-                      (order.deliveryAddress.postalCode ? `, ${order.deliveryAddress.postalCode}` : '') +
-                      (order.deliveryAddress.directions ? `\nDirections: ${order.deliveryAddress.directions}` : '');
-    }
+    // Build detailed info
+    let detailsHTML = `
+    ╔════════════════════════════════════════╗
+    ║           ORDER RECEIPT                ║
+    ╚════════════════════════════════════════╝
     
-    let recommendationsInfo = '';
-    if (order.specialRecommendations) {
-        recommendationsInfo = `\n\nSPECIAL RECOMMENDATIONS:\n${order.specialRecommendations}`;
-    }
+    ORDER ID: ${order.orderId}
+    DATE: ${order.timestamp}
     
-    alert(`ORDER DETAILS\n\n` +
-          `Order ID: ${order.orderId}\n` +
-          `Status: ${order.status || 'Confirmed'}\n\n` +
-          `FOOD ITEMS:\n` +
-          `• ${foodInfo}\n` +
-          (order.drink ? `• ${drinkInfo}\n` : '') +
-          `\nLOCATION:\n${locationInfo}` +
-          deliveryInfo +
-          recommendationsInfo +
-          `\n\nPAYMENT:\n${order.paymentMethod}\n\n` +
-          `TOTAL AMOUNT:\n${order.totalAmount?.toLocaleString() || '0'} FCFA\n\n` +
-          `ORDER TIME:\n${dateInfo}`);
+    ─────────────────────────────────────────
+    CUSTOMER INFORMATION
+    ─────────────────────────────────────────
+    Name: ${order.fullName}
+    Email: ${order.email}
+    Phone: ${order.phone}
+    
+    ─────────────────────────────────────────
+    DELIVERY DETAILS
+    ─────────────────────────────────────────
+    Type: ${deliveryTypeDisplay}
+    ${order.deliveryType === 'delivery' ? `Zone: ${shippingZoneDisplay}` : ''}
+    ${order.deliveryType === 'delivery' ? `Address: ${order.address}, ${order.city} ${order.zip}` : `Note: Customer will pickup the order`}
+    ${order.notes ? `Special Instructions: ${order.notes}` : ''}
+    
+    ─────────────────────────────────────────
+    ORDER ITEMS
+    ─────────────────────────────────────────
+    ${itemsList}
+    
+    ─────────────────────────────────────────
+    PAYMENT BREAKDOWN
+    ─────────────────────────────────────────
+    Subtotal:        $${order.totals.subtotal.toFixed(2)}
+    Tax (10%):       $${order.totals.tax.toFixed(2)}
+    ${order.totals.shippingFee ? `Shipping Fee:    $${order.totals.shippingFee.toFixed(2)}` : ''}
+    ${order.totals.shippingFee ? '─────────────────────────────────────────' : ''}
+    TOTAL:           $${order.totals.total.toFixed(2)}
+    
+    Payment Method: ${paymentDisplay}
+    
+    ─────────────────────────────────────────
+    Thank you for your order!
+    ─────────────────────────────────────────
+    `;
+    
+    alert(detailsHTML);
 }
 
-function deleteCustomerOrder(index) {
+function deleteWebOrder(index) {
     if (confirm('Are you sure you want to delete this order?')) {
-        const orders = JSON.parse(localStorage.getItem('customerOrders') || '[]');
+        const orders = JSON.parse(localStorage.getItem('restaurantOrders') || '[]');
         orders.splice(index, 1);
-        localStorage.setItem('customerOrders', JSON.stringify(orders));
+        localStorage.setItem('restaurantOrders', JSON.stringify(orders));
         loadCustomerOrders();
     }
 }
@@ -1392,4 +1910,206 @@ function deleteReservationPlan(id) {
         uiManager.renderReservationPlans();
         alert('Reservation plan deleted successfully!');
     }
+}
+
+// ==================== COMPLAINTS MANAGEMENT ====================
+
+function loadComplaints() {
+    // Load complaints from localStorage directly (not from restaurantData)
+    try {
+        const complaintData = localStorage.getItem('customerComplaints');
+        console.log('Raw complaint data from localStorage:', complaintData);
+        const complaints = JSON.parse(complaintData || '[]');
+        console.log('Parsed complaints:', complaints);
+        console.log('Number of complaints:', complaints.length);
+        renderComplaints(complaints);
+    } catch (e) {
+        console.error('Error loading complaints:', e);
+        renderComplaints([]);
+    }
+}
+
+function renderComplaints(complaints) {
+    const container = document.getElementById('complaints-container');
+    
+    if (!complaints || complaints.length === 0) {
+        container.innerHTML = '<p class="empty-state">No complaints yet</p>';
+        return;
+    }
+
+    const complaintHTML = complaints.map(complaint => {
+        const priorityIcon = {
+            'high': '🔴',
+            'medium': '🟡',
+            'low': '🟢'
+        }[complaint.priority] || '⚫';
+
+        const statusColor = {
+            'pending': '#ff9800',
+            'reviewing': '#2196F3',
+            'resolved': '#4CAF50'
+        }[complaint.status] || '#999';
+
+        const statusIcon = {
+            'pending': '⏳',
+            'reviewing': '👀',
+            'resolved': '✅'
+        }[complaint.status] || '❓';
+
+        const createdDate = new Date(complaint.createdAt).toLocaleDateString();
+        const createdTime = new Date(complaint.createdAt).toLocaleTimeString();
+
+        return `
+            <div class="complaint-card" style="
+                background: white;
+                border-radius: 8px;
+                padding: 20px;
+                margin-bottom: 15px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                border-left: 4px solid ${statusColor};
+            ">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                    <div>
+                        <h3 style="color: #333; margin: 0 0 8px 0; font-size: 1.1rem;">
+                            ${priorityIcon} ${complaint.subject}
+                        </h3>
+                        <p style="color: #666; margin: 0; font-size: 0.9rem;">
+                            <strong>From:</strong> ${complaint.name} (${complaint.email})
+                            ${complaint.phone ? `<br><strong>Phone:</strong> ${complaint.phone}` : ''}
+                        </p>
+                    </div>
+                    <span style="
+                        background: ${statusColor};
+                        color: white;
+                        padding: 6px 12px;
+                        border-radius: 20px;
+                        font-size: 0.85rem;
+                        font-weight: 600;
+                        white-space: nowrap;
+                        margin-left: 10px;
+                    ">
+                        ${statusIcon} ${complaint.status.toUpperCase()}
+                    </span>
+                </div>
+
+                <div style="background: #f5f5f5; padding: 12px; border-radius: 5px; margin-bottom: 12px;">
+                    <p style="color: #555; margin: 0; line-height: 1.5;">
+                        ${complaint.message}
+                    </p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; margin-bottom: 12px; font-size: 0.85rem;">
+                    <div>
+                        <strong style="color: #666;">Type:</strong>
+                        <p style="color: #999; margin: 3px 0 0 0;">${complaint.complaintType.replace('-', ' ').toUpperCase()}</p>
+                    </div>
+                    <div>
+                        <strong style="color: #666;">Priority:</strong>
+                        <p style="color: #999; margin: 3px 0 0 0;">${complaint.priority.toUpperCase()}</p>
+                    </div>
+                    <div>
+                        <strong style="color: #666;">Date:</strong>
+                        <p style="color: #999; margin: 3px 0 0 0;">${createdDate}</p>
+                    </div>
+                    <div>
+                        <strong style="color: #666;">ID:</strong>
+                        <p style="color: #999; margin: 3px 0 0 0;">${complaint.id}</p>
+                    </div>
+                </div>
+
+                ${complaint.orderId ? `
+                    <div style="background: #e3f2fd; padding: 8px 12px; border-radius: 5px; margin-bottom: 12px; font-size: 0.9rem;">
+                        <strong>Related Order:</strong> ${complaint.orderId}
+                    </div>
+                ` : ''}
+
+                <div style="display: flex; gap: 8px;">
+                    <select onchange="updateComplaintStatus('${complaint.id}', this.value)" style="
+                        padding: 8px 12px;
+                        border: 1px solid #ddd;
+                        border-radius: 5px;
+                        font-size: 0.9rem;
+                        flex: 1;
+                    ">
+                        <option value="">Update Status...</option>
+                        <option value="pending" ${complaint.status === 'pending' ? 'selected' : ''}>Pending</option>
+                        <option value="reviewing" ${complaint.status === 'reviewing' ? 'selected' : ''}>Reviewing</option>
+                        <option value="resolved" ${complaint.status === 'resolved' ? 'selected' : ''}>Resolved</option>
+                    </select>
+                    <button onclick="replyToComplaint('${complaint.id}')" class="btn-secondary" style="padding: 8px 15px; font-size: 0.9rem;">
+                        📧 Reply
+                    </button>
+                    <button onclick="deleteComplaint('${complaint.id}')" class="btn-secondary" style="padding: 8px 15px; font-size: 0.9rem; background: #e74c3c; color: white;">
+                        🗑️ Delete
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    container.innerHTML = complaintHTML;
+}
+
+function filterComplaints(status) {
+    let complaints = JSON.parse(localStorage.getItem('customerComplaints') || '[]');
+    
+    if (status) {
+        complaints = complaints.filter(c => c.status === status);
+    }
+    
+    renderComplaints(complaints);
+}
+
+function updateComplaintStatus(id, status) {
+    if (!status) return;
+    
+    let complaints = JSON.parse(localStorage.getItem('customerComplaints') || '[]');
+    const complaint = complaints.find(c => c.id === id);
+    
+    if (complaint) {
+        complaint.status = status;
+        localStorage.setItem('customerComplaints', JSON.stringify(complaints));
+        loadComplaints();
+        alert(`Complaint status updated to: ${status}`);
+    }
+}
+
+function replyToComplaint(id) {
+    let complaints = JSON.parse(localStorage.getItem('customerComplaints') || '[]');
+    const complaint = complaints.find(c => c.id === id);
+    
+    if (!complaint) return;
+    
+    const reply = prompt('Enter your reply (will be sent to ' + complaint.email + '):', '');
+    
+    if (reply === null) return;
+    
+    if (!reply.trim()) {
+        alert('Please enter a reply message');
+        return;
+    }
+    
+    // In a real application, this would send an email
+    // For now, we'll just show a message
+    alert(`Reply sent to ${complaint.email}:\n\n"${reply}"`);
+    
+    // Update complaint status to reviewing if it was pending
+    if (complaint.status === 'pending') {
+        complaint.status = 'reviewing';
+        localStorage.setItem('customerComplaints', JSON.stringify(complaints));
+    }
+    
+    loadComplaints();
+}
+
+function deleteComplaint(id) {
+    if (!confirm('Are you sure you want to delete this complaint? This action cannot be undone.')) {
+        return;
+    }
+    
+    let complaints = JSON.parse(localStorage.getItem('customerComplaints') || '[]');
+    complaints = complaints.filter(c => c.id !== id);
+    localStorage.setItem('customerComplaints', JSON.stringify(complaints));
+    loadComplaints();
+    alert('Complaint deleted successfully');
 }

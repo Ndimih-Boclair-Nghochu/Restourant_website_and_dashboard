@@ -1,0 +1,177 @@
+/* ==================== IMAGE FALLBACK STYLES ==================== */
+/* This file provides graceful fallbacks when external images fail to load */
+
+:root {
+    --fallback-dark: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    --fallback-gold: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+    --fallback-light: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+}
+
+/* Hero Section Fallback - IMPORTANT: Override inline styles */
+.hero {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero:not([style*="url"]) {
+    background-image: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(45, 45, 45, 0.8) 100%) !important;
+    background-color: #1a1a1a !important;
+}
+
+/* Additional gradient overlay for hero sections */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.7) 0%, rgba(45, 45, 45, 0.7) 100%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+}
+
+/* Gallery Hero Fallback */
+.gallery-hero {
+    background-attachment: fixed;
+    background-color: #1a1a1a;
+}
+
+/* Gallery Image Fallback */
+.gallery-image {
+    background: var(--fallback-light) !important;
+    background-color: #f5f5f5 !important;
+}
+
+.gallery-image img:not([src]),
+.gallery-image img[src=""],
+.gallery-image img.image-error {
+    display: none;
+}
+
+/* About Image Fallback */
+.about-image {
+    background: var(--fallback-light) !important;
+    background-color: #f5f5f5 !important;
+}
+
+.about-image img:not([src]),
+.about-image img[src=""],
+.about-image img.image-error {
+    display: none;
+}
+
+.about-image::after {
+    content: '🍽️';
+    font-size: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Testimonial Images Fallback */
+.testimonial-avatar img:not([src]),
+.testimonial-avatar img[src=""],
+.testimonial-avatar img.image-error {
+    display: none;
+}
+
+.testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--fallback-gold) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+}
+
+/* Menu Item Images Fallback */
+.menu-item-image {
+    background: var(--fallback-light) !important;
+    background-color: #f5f5f5 !important;
+}
+
+.menu-item-image img:not([src]),
+.menu-item-image img[src=""],
+.menu-item-image img.image-error {
+    display: none;
+}
+
+.menu-item-image::after {
+    content: '🍽️';
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Events Section Images Fallback */
+.event-image {
+    background: var(--fallback-light) !important;
+    background-color: #f5f5f5 !important;
+}
+
+.event-image img:not([src]),
+.event-image img[src=""],
+.event-image img.image-error {
+    display: none;
+}
+
+/* Contact Section Images Fallback */
+.contact-image {
+    background: var(--fallback-light) !important;
+    background-color: #f5f5f5 !important;
+}
+
+.contact-image img:not([src]),
+.contact-image img[src=""],
+.contact-image img.image-error {
+    display: none;
+}
+
+/* Generic Image Fallback Classes */
+.image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--fallback-light) !important;
+    background-color: #f5f5f5 !important;
+    min-height: 200px;
+    font-size: 60px;
+}
+
+/* Ensure proper aspect ratio maintenance */
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Loading state for images */
+img[data-loading="true"] {
+    opacity: 0.5;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}

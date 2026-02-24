@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service - Le Prestige</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(180deg, #ffffff 0%, #f5f3f0 50%, #ffffff 100%);
+            min-height: 100vh;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+
+        /* Premium Navigation */
+        nav {
+            background: #ffffff;
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #e8d7c6;
+        }
+
+        nav .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #c59963 0%, #a67c52 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav > div:last-child {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #2c2c2c;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #c59963, #a67c52);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #c59963;
+        }
+
+        nav a[href="complaints.html"] {
+            color: #c59963;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Premium Header */
+        .header {
+            text-align: center;
+            margin: 6rem 2rem 4rem;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '✦';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: #c59963;
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #2c2c2c 0%, #5a5a5a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.15rem;
+            color: #7a7a7a;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Luxury Content Wrapper */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .info-section,
+        .form-section {
+            background: #ffffff;
+            padding: 3.5rem;
+            border-radius: 2px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e8d7c6;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .info-section:hover,
+        .form-section:hover {
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .info-section::before,
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #c59963, #a67c52, #c59963);
+            border-radius: 2px 2px 0 0;
+        }
+
+        .info-section h2,
+        .form-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #2c2c2c;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-section h2::before {
+            content: '✦';
+            color: #c59963;
+            font-size: 1.2rem;
+        }
+
+        .form-section h2::before {
+            content: '✧';
+            color: #c59963;
+            font-size: 1.2rem;
+        }
+
+        .info-section p {
+            color: #5a5a5a;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        /* Luxury Contact Method */
+        .contact-method {
+            background: linear-gradient(135deg, #faf8f6 0%, #f5f1ec 100%);
+            padding: 1.8rem;
+            border-radius: 2px;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid #c59963;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .contact-method:hover {
+            background: linear-gradient(135deg, #f5f1ec 0%, #faf8f6 100%);
+            transform: translateX(4px);
+        }
+
+        .contact-method strong {
+            color: #c59963;
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-method p {
+            margin-bottom: 0;
+            color: #5a5a5a;
+            font-size: 0.95rem;
+        }
+
+        /* Luxury Form */
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: #2c2c2c;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 1px solid #d4ccc1;
+            border-radius: 2px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            background: #fafaf8;
+            color: #2c2c2c;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #aaa;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #c59963;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(197, 153, 99, 0.1), inset 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .required {
+            color: #a67c52;
+            font-weight: 600;
+        }
+
+        /* Luxury Priority Buttons */
+        .priority-indicator {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .priority-btn {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #d4ccc1;
+            background: #ffffff;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #5a5a5a;
+        }
+
+        .priority-btn:hover {
+            border-color: #c59963;
+            background: #faf8f6;
+            transform: translateY(-2px);
+        }
+
+        .priority-btn.active {
+            background: linear-gradient(135deg, #c59963, #a67c52);
+            border-color: #c59963;
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(197, 153, 99, 0.3);
+        }
+
+        /* Luxury Submit Button */
+        .btn-submit {
+            background: linear-gradient(135deg, #c59963 0%, #a67c52 100%);
+            color: #ffffff;
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: 2px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            box-shadow: 0 8px 25px rgba(197, 153, 99, 0.25);
+            text-transform: uppercase;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(197, 153, 99, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(-1px);
+        }
+
+        /* Luxury Alerts */
+        .alert {
+            padding: 1.5rem;
+            border-radius: 2px;
+            margin-bottom: 2rem;
+            display: none;
+            border-left: 4px solid;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .alert.success {
+            background: #f0fdf4;
+            color: #166534;
+            border-left-color: #84cc16;
+            display: block;
+        }
+
+        .alert.error {
+            background: #fef2f2;
+            color: #991b1b;
+            border-left-color: #dc2626;
+            display: block;
+        }
+
+        .alert.info {
+            background: #f0f9ff;
+            color: #0c4a6e;
+            border-left-color: #0ea5e9;
+            display: block;
+        }
+
+        /* Info Section List */
+        .info-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-section li {
+            padding: 0.8rem 0;
+            color: #5a5a5a;
+            border-bottom: 1px solid #e8d7c6;
+            position: relative;
+            padding-left: 1.8rem;
+            font-weight: 300;
+        }
+
+        .info-section li:last-child {
+            border-bottom: none;
+        }
+
+        .info-section li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: #c59963;
+            font-size: 0.7rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content-wrapper {
+                gap: 2rem;
+            }
+
+            .info-section,
+            .form-section {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            nav > div:last-child {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .header {
+                margin: 3rem 1rem 2rem;
+                padding: 2rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .header p {
+                font-size: 0.95rem;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+
+            .info-section,
+            .form-section {
+                padding: 2rem;
+            }
+
+            .priority-indicator {
+                flex-direction: column;
+            }
+
+            .priority-btn {
+                padding: 0.8rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            nav .logo {
+                font-size: 22px;
+            }
+
+            nav > div:last-child {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.75rem;
+                margin: 0 5px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .info-section h2,
+            .form-section h2 {
+                font-size: 1.4rem;
+            }
+
+            .form-group label {
+                font-size: 0.85rem;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .btn-submit {
+                padding: 1rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dbeafe 100%);
+            border-radius: 2px;
+            color: #166534;
+            border-left: 4px solid #84cc16;
+            display: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">✦ LE PRESTIGE ✦</div>
+        <div>
+            <a href="home-new.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="reservations.html">Reservations</a>
+            <a href="complaints.html">Support</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Customer Service Concierge</h1>
+            <p>Your satisfaction is our utmost priority. We are committed to addressing your concerns with the highest level of care and attention.</p>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- Information Section -->
+            <div class="info-section">
+                <h2>How We Can Assist You</h2>
+                <p>At Le Prestige, we believe exceptional service extends beyond your dining experience. If you've experienced any concerns, our dedicated customer service team is here to resolve them promptly and professionally.</p>
+
+                <h3 style="color: #2c2c2c; margin-top: 1.8rem; margin-bottom: 1rem; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.5px;">Areas of Support:</h3>
+                <ul>
+                    <li>Culinary Excellence & Food Quality</li>
+                    <li>Service Standards & Staff Conduct</li>
+                    <li>Billing & Payment Inquiries</li>
+                    <li>Reservation & Accommodation Issues</li>
+                    <li>Facilities & Cleanliness</li>
+                    <li>Delivery & Order Fulfillment</li>
+                    <li>General Feedback & Suggestions</li>
+                </ul>
+
+                <div class="contact-method" style="margin-top: 1.8rem;">
+                    <strong>✉ Email Concierge</strong>
+                    <p>concierge@leprestige.com</p>
+                </div>
+
+                <div class="contact-method">
+                    <strong>☎ Guest Services</strong>
+                    <p>+1 (800) PRESTIGE</p>
+                </div>
+
+                <div class="contact-method">
+                    <strong>⏱ Response Commitment</strong>
+                    <p>24-48 hours response guarantee</p>
+                </div>
+            </div>
+
+            <!-- Complaint Form -->
+            <div class="form-section">
+                <h2>Submit Your Feedback</h2>
+                <div class="alert alert-info" id="info-message">
+                    Your valued feedback is the foundation of our commitment to excellence. Every submission is personally reviewed by our management team.
+                </div>
+                <div class="alert alert-success" id="success-message"></div>
+                <div class="alert alert-error" id="error-message"></div>
+
+                <form id="complaint-form">
+                    <div class="form-group">
+                        <label for="name">Full Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Full Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="Your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="complaint-type">Category of Concern <span class="required">*</span></label>
+                        <select id="complaint-type" name="complaint-type" required>
+                            <option value="">— Select a category —</option>
+                            <option value="food-quality">Culinary Quality</option>
+                            <option value="service">Service Standards</option>
+                            <option value="billing">Billing & Charges</option>
+                            <option value="staff">Staff Conduct</option>
+                            <option value="cleanliness">Facilities & Cleanliness</option>
+                            <option value="delivery">Delivery Service</option>
+                            <option value="other">Other Concerns</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="priority">Urgency Level <span class="required">*</span></label>
+                        <div class="priority-indicator">
+                            <button type="button" class="priority-btn" data-priority="low">Low</button>
+                            <button type="button" class="priority-btn" data-priority="medium">Standard</button>
+                            <button type="button" class="priority-btn" data-priority="high">High</button>
+                        </div>
+                        <input type="hidden" id="priority" name="priority" value="medium" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject <span class="required">*</span></label>
+                        <input type="text" id="subject" name="subject" required placeholder="Please describe your concern briefly">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Detailed Account <span class="required">*</span></label>
+                        <textarea id="message" name="message" required placeholder="We appreciate comprehensive details to better assist you..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="order-id">Reservation or Order Reference</label>
+                        <input type="text" id="order-id" name="order-id" placeholder="Optional reference number">
+                    </div>
+
+                    <button type="submit" class="btn-submit">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Priority selection
+        document.querySelectorAll('.priority-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.priority-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById('priority').value = this.dataset.priority;
+            });
+        });
+
+        // Set default priority button
+        document.querySelector('[data-priority="medium"]').classList.add('active');
+
+        // Form submission
+        document.getElementById('complaint-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const complaint = {
+                id: 'COMPLAINT-' + Date.now(),
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                complaintType: document.getElementById('complaint-type').value,
+                priority: document.getElementById('priority').value,
+                subject: document.getElementById('subject').value.trim(),
+                message: document.getElementById('message').value.trim(),
+                orderId: document.getElementById('order-id').value.trim(),
+                createdAt: new Date().toISOString(),
+                status: 'pending',
+                resolved: false
+            };
+
+            // Validate
+            if (!complaint.name || !complaint.email || !complaint.complaintType || !complaint.subject || !complaint.message) {
+                showError('Please fill in all required fields.');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(complaint.email)) {
+                showError('Please enter a valid email address.');
+                return;
+            }
+            // Save complaint
+            let complaints = JSON.parse(localStorage.getItem('customerComplaints')) || [];
+            complaints.push(complaint);
+            localStorage.setItem('customerComplaints', JSON.stringify(complaints));
+
+            // Show success message
+            showSuccess('Thank you for your valuable feedback. Our concierge team will personally review your submission within 24-48 hours.');
+
+            // Reset form
+            this.reset();
+            document.querySelector('[data-priority="medium"]').classList.add('active');
+            document.getElementById('priority').value = 'medium';
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        function showSuccess(message) {
+            const msgDiv = document.getElementById('success-message');
+            msgDiv.textContent = '✓ ' + message;
+            msgDiv.style.display = 'block';
+            document.getElementById('error-message').style.display = 'none';
+            document.getElementById('info-message').style.display = 'none';
+        }
+
+        function showError(message) {
+            const msgDiv = document.getElementById('error-message');
+            msgDiv.textContent = message;
+            msgDiv.style.display = 'block';
+            document.getElementById('success-message').style.display = 'none';
+            document.getElementById('info-message').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

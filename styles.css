@@ -208,6 +208,28 @@ body {
     background: #e0e0e0;
 }
 
+.btn-danger {
+    background: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background: #ff3838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 71, 87, 0.4);
+}
+
+.btn-danger:active {
+    transform: translateY(0);
+}
+
 .btn-large {
     width: 100%;
     padding: 12px;
@@ -811,27 +833,74 @@ textarea {
 }
 
 /* ==================== RESPONSIVE ==================== */
-@media (max-width: 1024px) {
-    .sidebar {
-        width: 200px;
+/* Desktop - 1200px and up */
+@media (min-width: 1200px) {
+    body {
+        font-size: 16px;
     }
-
-    .dashboard-grid {
-        grid-template-columns: repeat(2, 1fr);
+    
+    .page-title {
+        font-size: 28px;
     }
-
-    .dashboard-details {
-        grid-template-columns: 1fr;
-    }
-
+    
     .menu-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
 }
 
-@media (max-width: 768px) {
+/* Tablet - 768px to 1199px */
+@media (max-width: 1199px) and (min-width: 768px) {
+    .sidebar {
+        width: 220px;
+    }
+    
+    .logo {
+        font-size: 24px;
+    }
+    
+    .page-title {
+        font-size: 22px;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .dashboard-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+    
+    .staff-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .reports-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-box {
+        width: 200px;
+    }
+}
+
+/* Mobile - up to 767px */
+@media (max-width: 767px) {
+    * {
+        /* Prevent zoom on input focus */
+        font-size: 16px !important;
+    }
+    
+    body {
+        padding-top: 50px;
+    }
+    
     .container {
         flex-direction: column;
+        height: auto;
     }
 
     .sidebar {
@@ -840,53 +909,328 @@ textarea {
         flex-direction: row;
         align-items: center;
         overflow-x: auto;
+        padding: 10px 0;
     }
-
+    
     .logo-section {
         border-bottom: none;
         border-right: 2px solid rgba(255, 255, 255, 0.2);
+        padding: 15px 20px;
+        flex-shrink: 0;
+    }
+    
+    .logo {
+        font-size: 18px;
+    }
+    
+    .tagline {
+        font-size: 10px;
     }
 
     .navigation {
         flex-direction: row;
         overflow-x: auto;
+        padding: 0;
+        flex-shrink: 0;
     }
 
     .nav-btn {
         flex-shrink: 0;
+        padding: 12px 15px;
+        gap: 8px;
+        min-height: 48px;
+        min-width: 48px;
+    }
+    
+    .nav-btn .icon {
+        font-size: 16px;
     }
 
     .header {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
+        padding: 12px 15px;
+    }
+    
+    .page-title {
+        font-size: 18px;
     }
 
     .header-actions {
         flex-wrap: wrap;
+        width: 100%;
     }
 
     .search-box {
         width: 100%;
+        padding: 12px;
+    }
+    
+    .content-area {
+        padding: 15px;
+    }
+    
+    .tab-content {
+        padding: 15px;
     }
 
     .dashboard-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
 
     .tables-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+    }
+    
+    .table-card {
+        padding: 12px;
+    }
+    
+    .table-number {
+        font-size: 18px;
     }
 
     .menu-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .menu-card {
+        margin-bottom: 10px;
+    }
+    
+    .menu-image {
+        height: 140px;
+        font-size: 40px;
+    }
+    
+    .menu-content {
+        padding: 12px;
+    }
+    
+    .menu-name {
+        font-size: 14px;
+    }
+    
+    .menu-price {
+        font-size: 16px;
     }
 
     .staff-list {
         grid-template-columns: 1fr;
     }
+    
+    .staff-card {
+        padding: 15px;
+    }
+    
+    .staff-avatar {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+    }
 
     .modal-content {
         width: 95%;
+        max-width: 100%;
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .close {
+        font-size: 24px;
+    }
+    
+    /* Touch-friendly button sizing */
+    .btn-primary, .btn-secondary, .btn-danger {
+        padding: 12px 16px;
+        min-height: 48px;
+        font-size: 14px;
+    }
+    
+    .btn-large {
+        width: 100%;
+        padding: 14px 16px;
+        min-height: 48px;
+    }
+    
+    /* Form inputs touch-friendly */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    input[type="file"],
+    textarea,
+    select {
+        padding: 12px;
+        min-height: 48px;
+        font-size: 16px;
+    }
+    
+    /* Inventory and orders lists */
+    .inventory-list,
+    .orders-list,
+    .billing-list {
+        gap: 12px;
+    }
+    
+    .inventory-item,
+    .order-item,
+    .billing-item {
+        padding: 12px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .inventory-details,
+    .billing-details {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    /* Report cards */
+    .reports-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .report-card {
+        padding: 15px;
+    }
+    
+    /* Data table responsiveness */
+    .data-table {
+        font-size: 12px;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 10px;
+    }
+    
+    /* Reviews and plans grid */
+    .reviews-grid,
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .review-admin-card,
+    .plan-card {
+        padding: 15px;
+    }
+}
+
+/* Small phones - up to 480px */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .sidebar {
+        gap: 0;
+    }
+    
+    .logo-section {
+        padding: 10px 15px;
+    }
+    
+    .logo {
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+    
+    .tagline {
+        font-size: 9px;
+    }
+    
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+    
+    .page-title {
+        font-size: 16px;
+    }
+    
+    .kpi-value {
+        font-size: 24px;
+    }
+    
+    .kpi-header h3 {
+        font-size: 12px;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .section-header h2 {
+        font-size: 18px;
+    }
+    
+    .menu-image {
+        height: 120px;
+        font-size: 32px;
+    }
+    
+    .menu-card > div:last-child {
+        gap: 4px;
+    }
+    
+    .menu-card .btn-secondary,
+    .menu-card .btn-danger {
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+    
+    .table-card {
+        padding: 10px;
+    }
+    
+    .table-number {
+        font-size: 16px;
+    }
+    
+    .table-capacity {
+        font-size: 11px;
+    }
+    
+    .plan-budget {
+        font-size: 24px;
+    }
+    
+    .report-data {
+        font-size: 18px;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    input[type="file"],
+    textarea,
+    select {
+        padding: 10px;
+        min-height: 44px;
+    }
+}
+
+/* Extra small phones - below 380px */
+@media (max-width: 379px) {
+    .nav-logo {
+        font-size: 12px;
+    }
+    
+    .header {
+        padding: 10px;
+    }
+    
+    .content-area {
+        padding: 10px;
     }
 }
 
@@ -1087,9 +1431,7 @@ textarea {
 .plan-actions .btn-action:hover {
     transform: scale(1.2);
 }
-    margin-bottom: 15px;
-    font-style: italic;
-}
+/* Removed misplaced margin-bottom and font-style properties outside of selector. */
 
 .review-actions {
     display: flex;
@@ -1173,4 +1515,92 @@ textarea {
 
 .data-table tbody tr:last-child td {
     border-bottom: none;
+}
+
+/* ==================== MENU MANAGEMENT ==================== */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.menu-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.menu-card .menu-image {
+    width: 100%;
+    height: 180px;
+    background: #f0f0f0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+}
+
+.menu-card .menu-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.menu-card .menu-content {
+    padding: 20px;
+}
+
+.menu-card .menu-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.menu-card .menu-description {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.menu-card .menu-category {
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.menu-card .menu-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 12px;
+}
+
+.menu-card > div:last-child {
+    display: flex;
+    gap: 8px;
+}
+
+.menu-card .btn-secondary,
+.menu-card .btn-danger {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 12px;
+    margin: 0;
 }
