@@ -155,53 +155,7 @@ nav .container {
     }
 }
 
-/* ==================== SIDEBAR RESPONSIVE ==================== */
-.sidebar {
-    position: fixed !important;
-    left: -100% !important;
-    top: 0 !important;
-    width: 80vw !important;
-    max-width: 300px !important;
-    height: 100vh !important;
-    background: white !important;
-    z-index: 1000 !important;
-    overflow-y: auto !important;
-    transition: left 0.3s ease !important;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1) !important;
-}
-
-.sidebar.active {
-    left: 0 !important;
-}
-
-.sidebar-toggle {
-    display: block !important;
-    position: fixed !important;
-    top: 20px !important;
-    left: 20px !important;
-    z-index: 999 !important;
-    background: #d4af37 !important;
-    border: none !important;
-    padding: 10px 15px !important;
-    cursor: pointer !important;
-    border-radius: 4px !important;
-    font-size: 18px !important;
-}
-
-@media (min-width: 768px) {
-    .sidebar {
-        position: relative !important;
-        left: 0 !important;
-        width: auto !important;
-        max-width: none !important;
-        height: auto !important;
-        box-shadow: none !important;
-    }
-    .sidebar-toggle {
-        display: none !important;
-    }
-}
-
+/* sidebar removed; top-nav handled via styles.css */
 /* ==================== MAIN CONTENT RESPONSIVE ==================== */
 .main-content {
     width: 100% !important;
@@ -475,16 +429,6 @@ a,
     }
 }
 
-.sidebar {
-    min-width: 100% !important;
-}
-
-@media (min-width: 768px) {
-    .sidebar {
-        min-width: 250px !important;
-        width: auto !important;
-    }
-}
 
 /* ==================== MENU ITEMS RESPONSIVE ==================== */
 .menu-item,
@@ -501,10 +445,6 @@ a,
 /* ==================== Z-INDEX FIXES FOR MOBILE ==================== */
 nav {
     z-index: 100 !important;
-}
-
-.sidebar.active {
-    z-index: 1001 !important;
 }
 
 /* ==================== ENHANCED MOBILE TOUCH & APP-LIKE EXPERIENCE ==================== */
