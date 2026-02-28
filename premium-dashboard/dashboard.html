@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Admin Dashboard</title>
+    <!-- chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- wrapper for sidebar + main area -->
+    <div class="app-container">
+        <!-- left sidebar (desktop) -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <h1>Restaurant</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active"><span class="icon">🏠</span><span>Dashboard</span></a>
+                <a href="#" class="nav-item"><span class="icon">🧾</span><span>Orders</span></a>
+                <a href="#" class="nav-item"><span class="icon">📅</span><span>Reservations</span></a>
+                <a href="#" class="nav-item"><span class="icon">📋</span><span>Menu Management</span></a>
+                <a href="#" class="nav-item"><span class="icon">👥</span><span>Customers</span></a>
+                <a href="#" class="nav-item"><span class="icon">💳</span><span>Transactions</span></a>
+                <a href="#" class="nav-item"><span class="icon">📊</span><span>Analytics</span></a>
+                <a href="#" class="nav-item"><span class="icon">⚙️</span><span>Settings</span></a>
+                <a href="#" class="nav-item"><span class="icon">🚪</span><span>Logout</span></a>
+            </nav>
+            <button class="sidebar-collapse" id="collapseBtn">⯈</button>
+        </aside>
+
+        <!-- main content area -->
+        <div class="main-area">
+            <!-- top navbar -->
+            <header class="topbar">
+                <button class="hamburger" id="hamburger">☰</button>
+                <h2 class="page-title">Dashboard</h2>
+                <div class="topbar-controls">
+                    <input type="text" class="search" placeholder="Search...">
+                    <button class="icon-btn">🔔</button>
+                    <div class="profile-dropdown">
+                        <img src="https://via.placeholder.com/32" alt="avatar" class="avatar">
+                        <div class="dropdown-menu">
+                            <a href="#">Profile</a>
+                            <a href="#">Sign out</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- content area -->
+            <main class="content">
+                <!-- stats cards -->
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <div class="card-icon">🧾</div>
+                        <div class="card-number" id="totalOrders">0</div>
+                        <div class="card-label">Total Orders</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="card-icon">⏳</div>
+                        <div class="card-number" id="pendingOrders">0</div>
+                        <div class="card-label">Pending Orders</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="card-icon">💰</div>
+                        <div class="card-number" id="totalRevenue">$0</div>
+                        <div class="card-label">Total Revenue</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="card-icon">🆕</div>
+                        <div class="card-number" id="newCustomers">0</div>
+                        <div class="card-label">New Customers</div>
+                    </div>
+                </section>
+
+                <!-- charts -->
+                <section class="charts-grid">
+                    <div class="chart-card">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <canvas id="ordersChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- recent transactions table -->
+                <section class="table-section">
+                    <h3>Recent Transactions</h3>
+                    <div class="table-wrapper">
+                        <table class="transactions-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Customer</th>
+                                    <th>Order #</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactionsBody">
+                                <!-- rows populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- toast container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
