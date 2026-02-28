@@ -1223,9 +1223,24 @@ textarea {
     font-weight: 600;
 }
 
+/* ==================== HAMBURGER MENU ==================== */
+/* Hide hamburger menu on desktop by default */
+.hamburger-menu {
+    display: none !important;
+}
+
 /* ==================== RESPONSIVE ==================== */
 /* Desktop - 1200px and up */
 @media (min-width: 1200px) {
+    /* Ensure sidebar is always visible on desktop */
+    .sidebar {
+        position: relative !important;
+        width: 260px !important;
+        height: auto !important;
+        transform: none !important;
+        z-index: auto !important;
+    }
+    
     body {
         font-size: 14px;
     }
@@ -1245,8 +1260,13 @@ textarea {
 
 /* Tablet - 768px to 1199px */
 @media (max-width: 1199px) and (min-width: 768px) {
+    /* Ensure sidebar is always visible on tablet */
     .sidebar {
-        width: 240px;
+        position: relative !important;
+        width: 240px !important;
+        height: auto !important;
+        transform: none !important;
+        z-index: auto !important;
     }
     
     .logo {
@@ -1332,7 +1352,7 @@ textarea {
         pointer-events: auto;
     }
 
-    /* Hamburger menu button */
+    /* Hamburger menu button - ONLY show on mobile */
     .hamburger-menu {
         display: block !important;
         background: none;
