@@ -1430,36 +1430,50 @@ textarea {
     }
     
     .logo-section {
-        border-bottom: 2px solid var(--primary);
-        padding: 25px 20px;
-        flex-shrink: 0;
+        border-bottom: 2px solid var(--primary) !important;
+        padding: 12px 12px !important;
+        flex-shrink: 0 !important;
+        text-align: center !important;
+        background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%) !important;
     }
     
     .logo {
-        font-size: 22px;
-        margin-bottom: 8px;
+        font-size: 18px !important;
+        margin-bottom: 4px !important;
+        font-weight: 800 !important;
+        color: var(--primary) !important;
     }
     
     .tagline {
-        font-size: 11px;
+        font-size: 9px !important;
+        opacity: 0.7 !important;
+        color: var(--text-muted) !important;
+    }
+
+    .logo-section > div {
+        display: none !important;
     }
 
     .navigation {
         flex: 1 !important;
-        padding: 10px 0 !important;
+        padding: 8px 0 !important;
         overflow-y: auto !important;
+        overflow-x: hidden !important;
         display: flex !important;
         flex-direction: column !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        -webkit-overflow-scrolling: touch !important;
     }
 
     .nav-btn {
-        padding: 12px 16px !important;
-        gap: 12px !important;
-        min-height: 48px !important;
+        padding: 10px 12px !important;
+        gap: 10px !important;
+        min-height: 44px !important;
         width: 100% !important;
         text-align: left !important;
         border-left: 3px solid transparent !important;
-        font-size: 13px !important;
+        font-size: 12px !important;
         display: flex !important;
         align-items: center !important;
         background: none !important;
@@ -1467,6 +1481,7 @@ textarea {
         color: var(--text-light) !important;
         cursor: pointer !important;
         transition: all 0.2s ease !important;
+        flex-shrink: 0 !important;
     }
     
     .nav-btn:hover {
@@ -1476,8 +1491,9 @@ textarea {
     }
 
     .nav-btn .icon {
-        font-size: 18px;
-        flex-shrink: 0;
+        font-size: 16px !important;
+        flex-shrink: 0 !important;
+    }
     }
     
     .page-title {
