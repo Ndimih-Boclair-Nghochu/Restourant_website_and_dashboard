@@ -53,7 +53,7 @@ body {
 
 /* hamburger toggle button */
 .sidebar-toggle {
-    display: none;
+    display: none; /* default hidden until mobile or explicit override */
     background: none;
     border: none;
     font-size: 24px;
@@ -61,6 +61,24 @@ body {
     cursor: pointer;
     padding: 8px;
     transition: color 0.3s ease;
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 1100;
+}
+
+/* show on small screens or when explicitly required */
+@media (max-width: 767px) {
+    .sidebar-toggle {
+        display: block;
+    }
+}
+
+/* hide on larger viewports */
+@media (min-width: 768px) {
+    .sidebar-toggle {
+        display: none !important;
+    }
 }
 
 .sidebar-toggle:hover {
@@ -1008,9 +1026,6 @@ textarea {
         align-items: center;
         overflow-x: auto;
         padding: 10px 0;
-    }
-    .sidebar-toggle {
-        display: block;
     }
     
     .logo-section {

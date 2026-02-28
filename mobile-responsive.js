@@ -16,13 +16,28 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (sidebarToggle) {
         sidebarToggle.addEventListener('click', function() {
+            console.log('sidebarToggle clicked');
             if (sidebar) {
                 const isHidden = sidebar.classList.toggle('collapsed');
                 // change icon to X when open
                 sidebarToggle.textContent = isHidden ? '☰' : '✕';
+                console.log('sidebar.collapsed?', isHidden);
+                alert('toggle fired, collapsed=' + isHidden);
             }
         });
     }
+
+    // fallback delegated handler in case the direct listener doesn't fire
+    document.body.addEventListener('click', function(e) {
+        const target = e.target.closest('.sidebar-toggle');
+        if (target) {
+            console.log('delegated sidebar toggle click');
+            if (sidebar) {
+                const isHidden = sidebar.classList.toggle('collapsed');
+                sidebarToggle.textContent = isHidden ? '☰' : '✕';
+            }
+        }
+    });
     
     // Close sidebar when a nav button is clicked
     if (sidebar) {
