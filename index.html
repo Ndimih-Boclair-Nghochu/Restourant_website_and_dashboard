@@ -1,371 +1,113 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Management System</title>
-    <link rel="stylesheet" href="styles.css">
-    <script>
-        // Authentication check
-        if (sessionStorage.getItem('adminLoggedIn') !== 'true') {
-            window.location.href = 'admin-login.html';
-        }
-    </script>
+    <!-- chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="dashboard.css">
+    <script>if(sessionStorage.getItem('adminLoggedIn')!=='true'){window.location.href='admin-login.html';}</script>
 </head>
 <body>
-    <div class="container">
-        <!-- Main Content Area -->
-        <main class="main-content">
-            <!-- Header -->
-            <header class="header">
-            <h2 class="page-title">Dashboard</h2>
-                <div class="header-actions">
-                    <input type="text" class="search-box" placeholder="Search...">
-                    <span id="admin-username" style="color: #d4af37; margin-right: 15px; font-weight: 600;"></span>
-                    <button class="btn-secondary">⚙️ Settings</button>
-                    <button class="btn-secondary" id="logout-btn">🚪 Logout</button>
+    <!-- wrapper for sidebar + main area -->
+    <div class="app-container">
+        <!-- left sidebar (desktop) -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <h1>Restaurant</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active"><span class="icon">ðŸ </span><span>Dashboard</span></a>
+                <a href="#" class="nav-item"><span class="icon">ðŸ§¾</span><span>Orders</span></a>
+                <a href="#" class="nav-item"><span class="icon">ðŸ“…</span><span>Reservations</span></a>
+                <a href="#" class="nav-item"><span class="icon">ðŸ“‹</span><span>Menu Management</span></a>
+                <a href="#" class="nav-item"><span class="icon">ðŸ‘¥</span><span>Customers</span></a>
+                <a href="#" class="nav-item"><span class="icon">ðŸ’³</span><span>Transactions</span></a>
+                <a href="#" class="nav-item"><span class="icon">ðŸ“Š</span><span>Analytics</span></a>
+                <a href="#" class="nav-item"><span class="icon">âš™ï¸</span><span>Settings</span></a>
+                <a href="#" class="nav-item"><span class="icon">ðŸšª</span><span>Logout</span></a>
+            </nav>
+            <button class="sidebar-collapse" id="collapseBtn">â¯ˆ</button>
+        </aside>
+
+        <!-- main content area -->
+        <div class="main-area">
+            <!-- top navbar -->
+            <header class="topbar">
+                <button class="hamburger" id="hamburger">â˜°</button>
+                <h2 class="page-title">Dashboard</h2>
+                <div class="topbar-controls">
+                    <input type="text" class="search" placeholder="Search...">
+                    <button class="icon-btn">ðŸ””</button>
+                    <div class="profile-dropdown">
+                        <img src="https://via.placeholder.com/32" alt="avatar" class="avatar">
+                        <div class="dropdown-menu">
+                            <a href="#">Profile</a>
+                            <a href="#">Sign out</a>
+                        </div>
+                    </div>
                 </div>
             </header>
-            <!-- top navigation bar -->
-            <nav class="top-nav">
-                <button class="nav-btn active" data-tab="dashboard">
-                    <span class="icon">📊</span>
-                    <span>Dashboard</span>
-                </button>
-                <button class="nav-btn" data-tab="customer-orders">
-                    <span class="icon">🛒</span>
-                    <span>Customer Orders</span>
-                </button>
-                <button class="nav-btn" data-tab="reservations">
-                    <span class="icon">📅</span>
-                    <span>Reservations</span>
-                </button>
-                <button class="nav-btn" data-tab="reservation-plans">
-                    <span class="icon">🎯</span>
-                    <span>Reservation Plans</span>
-                </button>
-                <button class="nav-btn" data-tab="reviews">
-                    <span class="icon">⭐</span>
-                    <span>Reviews</span>
-                </button>
-                <button class="nav-btn" data-tab="complaints">
-                    <span class="icon">📞</span>
-                    <span>Customer Complaints</span>
-                </button>
-                <button class="nav-btn" data-tab="tables">
-                    <span class="icon">🪑</span>
-                    <span>Tables</span>
-                </button>
-                <button class="nav-btn" data-tab="orders">
-                    <span class="icon">📋</span>
-                    <span>All Orders</span>
-                </button>
-                <button class="nav-btn" data-tab="menu">
-                    <span class="icon">📖</span>
-                    <span>Menu</span>
-                </button>
-                <button class="nav-btn" data-tab="inventory">
-                    <span class="icon">📦</span>
-                    <span>Inventory</span>
-                </button>
-                <button class="nav-btn" data-tab="staff">
-                    <span class="icon">👥</span>
-                    <span>Staff</span>
-                </button>
-                <button class="nav-btn" data-tab="billing">
-                    <span class="icon">💳</span>
-                    <span>Billing</span>
-                </button>
-                <button class="nav-btn" data-tab="shipping-zones">
-                    <span class="icon">🚚</span>
-                    <span>Shipping Zones</span>
-                </button>
-                <button class="nav-btn" data-tab="reports">
-                    <span class="icon">📈</span>
-                    <span>Reports</span>
-                </button>
-            </nav>
 
-            <!-- Dashboard Tab -->
-            <section id="dashboard" class="tab-content active">
-                <div class="dashboard-grid">
-                    <!-- KPI Cards -->
-                    <div class="kpi-card">
-                        <div class="kpi-header">
-                            <h3>Total Revenue</h3>
-                            <span class="kpi-icon">💰</span>
-                        </div>
-                        <p class="kpi-value"><span id="today-revenue">0 FCFA</span></p>
-                        <p class="kpi-change">Internal: 0 FCFA | Website: 0 FCFA</p>
+            <!-- content area -->
+            <main class="content">
+                <!-- stats cards -->
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <div class="card-icon">ðŸ§¾</div>
+                        <div class="card-number" id="totalOrders">0</div>
+                        <div class="card-label">Total Orders</div>
                     </div>
-
-                    <div class="kpi-card">
-                        <div class="kpi-header">
-                            <h3>Total Orders</h3>
-                            <span class="kpi-icon">📦</span>
-                        </div>
-                        <p class="kpi-value"><span id="total-orders">0</span></p>
-                        <p class="kpi-change">Internal: 0 | Website: 0</p>
+                    <div class="stat-card">
+                        <div class="card-icon">â³</div>
+                        <div class="card-number" id="pendingOrders">0</div>
+                        <div class="card-label">Pending Orders</div>
                     </div>
-
-                    <div class="kpi-card">
-                        <div class="kpi-header">
-                            <h3>Tables Status</h3>
-                            <span class="kpi-icon">🪑</span>
-                        </div>
-                        <p class="kpi-value"><span id="occupied-tables">0/0</span></p>
-                        <p class="kpi-change">Available: 0 | Reservations: 0</p>
+                    <div class="stat-card">
+                        <div class="card-icon">ðŸ’°</div>
+                        <div class="card-number" id="totalRevenue">$0</div>
+                        <div class="card-label">Total Revenue</div>
                     </div>
-
-                    <div class="kpi-card">
-                        <div class="kpi-header">
-                            <h3>Staff & Reviews</h3>
-                            <span class="kpi-icon">👥</span>
-                        </div>
-                        <p class="kpi-value"><span id="staff-duty">0/0</span></p>
-                        <p class="kpi-change">Reviews: 0 | Avg Rating: 0.0⭐</p>
+                    <div class="stat-card">
+                        <div class="card-icon">ðŸ†•</div>
+                        <div class="card-number" id="newCustomers">0</div>
+                        <div class="card-label">New Customers</div>
                     </div>
-                </div>
+                </section>
 
-                <!-- Menu QR Code Card - Prominent Section -->
-                <div class="card" id="qr-card" style="margin-bottom: 30px; padding: 30px; text-align: center; border-top: 3px solid #d4af37;">
-                    <h3 style="margin-bottom: 15px;">📱 Menu QR Code - Customers Can Scan to Order</h3>
-                    <div id="qr-container" style="text-align: center; margin: 20px 0;"></div>
-                    <div class="qr-actions" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 15px;">
-                        <button id="generate-qr-btn" class="btn-secondary">🔄 Generate</button>
-                        <button id="download-qr-btn" class="btn-primary">⬇️ Download as Image</button>
-                        <button id="print-qr-btn" class="btn-secondary">🖨️ Print</button>
+                <!-- charts -->
+                <section class="charts-grid">
+                    <div class="chart-card">
+                        <canvas id="revenueChart"></canvas>
                     </div>
-                </div>
-
-                <!-- Charts and Details -->
-                <div class="dashboard-details">
-                    <!-- Active Orders -->
-                    <div class="card">
-                        <h3>Active Orders</h3>
-                        <div id="active-orders-list" class="orders-list">
-                            <p class="empty-state">No active orders</p>
-                        </div>
+                    <div class="chart-card">
+                        <canvas id="ordersChart"></canvas>
                     </div>
+                </section>
 
-                    <!-- Recent Transactions -->
-                    <div class="card">
-                        <h3>Recent Transactions</h3>
-                        <div id="recent-transactions" class="transactions-list">
-                            <p class="empty-state">No transactions</p>
-                        </div>
+                <!-- recent transactions table -->
+                <section class="table-section">
+                    <h3>Recent Transactions</h3>
+                    <div class="table-wrapper">
+                        <table class="transactions-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Customer</th>
+                                    <th>Order #</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactionsBody">
+                                <!-- rows populated by JS -->
+                            </tbody>
+                        </table>
                     </div>
-
-                    <!-- Placeholder Card -->
-                    <div class="card">
-                        <h3>Quick Stats</h3>
-                        <div style="color: #666; font-size: 14px;">
-                            <p>System running smoothly</p>
-                            <p style="font-size: 12px; color: #999; margin-top: 10px;">More metrics coming soon</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Customer Orders Tab -->
-            <section id="customer-orders" class="tab-content">
-                <div class="section-header">
-                    <h2>Customer Orders from Website</h2>
-                    <button class="btn-secondary" onclick="refreshCustomerOrders()">🔄 Refresh</button>
-                </div>
-                <div id="customer-orders-table" class="data-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Customer Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Delivery Type</th>
-                                <th>Delivery Zone</th>
-                                <th>Payment Method</th>
-                                <th>Total (FCFA)</th>
-                                <th>Date</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="customer-orders-body">
-                            <!-- Orders will be populated here -->
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- Reservations Tab -->
-            <section id="reservations" class="tab-content">
-                <div class="section-header">
-                    <h2>Table Reservations</h2>
-                    <button class="btn-secondary" onclick="refreshReservations()">🔄 Refresh</button>
-                </div>
-                <div id="reservations-table" class="data-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Reservation ID</th>
-                                <th>Customer Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Guests</th>
-                                <th>Plan</th>
-                                <th>Budget</th>
-                                <th>Special Requests</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="reservations-body">
-                            <!-- Reservations will be populated here -->
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- Reviews Tab -->
-            <section id="reviews" class="tab-content">
-                <div class="section-header">
-                    <h2>Customer Reviews</h2>
-                    <button class="btn-secondary" onclick="refreshReviews()">🔄 Refresh</button>
-                </div>
-                <div id="reviews-container" class="reviews-grid">
-                    <!-- Reviews will be populated here -->
-                </div>
-            </section>
-
-            <!-- Customer Complaints Tab -->
-            <section id="complaints" class="tab-content">
-                <div class="section-header">
-                    <h2>Customer Complaints & Feedback</h2>
-                    <div>
-                        <button class="btn-secondary" onclick="loadComplaints()">🔄 Refresh</button>
-                        <select id="complaint-filter" class="filter-select" onchange="filterComplaints(this.value)" style="padding: 8px 12px; margin-left: 10px; border: 1px solid #ddd; border-radius: 5px; background: white;">
-                            <option value="">All Status</option>
-                            <option value="pending">Pending</option>
-                            <option value="reviewing">Reviewing</option>
-                            <option value="resolved">Resolved</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="complaints-container" class="complaints-list">
-                    <p class="empty-state">No complaints yet</p>
-                </div>
-            </section>
-
-            <!-- Reservation Plans Tab -->
-            <section id="reservation-plans" class="tab-content">
-                <div class="section-header">
-                    <h2>Reservation Plans & Budgets</h2>
-                    <button class="btn-primary" id="add-plan-btn">+ Add Plan</button>
-                </div>
-                <div id="plans-grid" class="plans-grid">
-                    <!-- Reservation plans will be displayed here -->
-                </div>
-            </section>
-
-            <!-- Tables Tab -->
-            <section id="tables" class="tab-content">
-                <div class="section-header">
-                    <h2>Table Management</h2>
-                    <button class="btn-primary" id="add-table-btn">+ Add Table</button>
-                </div>
-                <div id="tables-grid" class="tables-grid">
-                    <!-- Tables will be dynamically added here -->
-                </div>
-            </section>
-
-            <!-- Orders Tab -->
-            <section id="orders" class="tab-content">
-                <div class="section-header">
-                    <h2>All Orders</h2>
-                    <div>
-                        <button class="btn-secondary" onclick="uiManager.renderOrders()" style="margin-right: 10px;">🔄 Refresh</button>
-                        <button class="btn-primary" id="new-order-btn">+ New Order</button>
-                    </div>
-                </div>
-                <div id="orders-list" class="orders-list">
-                    <!-- Orders will be displayed here -->
-                </div>
-            </section>
-
-            <!-- Menu Tab -->
-            <section id="menu" class="tab-content">
-                <div class="section-header">
-                    <h2>Menu Management</h2>
-                    <button class="btn-primary" id="add-item-btn">+ Add Item</button>
-                </div>
-                <div id="menu-items" class="menu-grid">
-                    <!-- Menu items will be displayed here -->
-                </div>
-            </section>
-
-            <!-- Inventory Tab -->
-            <section id="inventory" class="tab-content">
-                <div class="section-header">
-                    <h2>Inventory Management</h2>
-                    <button class="btn-primary" id="add-inventory-btn">+ Add Item</button>
-                </div>
-                <div id="inventory-list" class="inventory-list">
-                    <!-- Inventory items will be displayed here -->
-                </div>
-            </section>
-
-            <!-- Staff Tab -->
-            <section id="staff" class="tab-content">
-                <div class="section-header">
-                    <h2>Staff Management</h2>
-                    <button class="btn-primary" id="add-staff-btn">+ Add Staff</button>
-                </div>
-                <div id="staff-list" class="staff-list">
-                    <!-- Staff members will be displayed here -->
-                </div>
-            </section>
-
-            <!-- Billing Tab -->
-            <section id="billing" class="tab-content">
-                <div class="section-header">
-                    <h2>Billing & Invoices</h2>
-                    <button class="btn-primary" id="generate-invoice-btn">+ Generate Invoice</button>
-                </div>
-                <div id="billing-list" class="billing-list">
-                    <!-- Billing records will be displayed here -->
-                </div>
-            </section>
-
-            <!-- Shipping Zones Tab -->
-            <section id="shipping-zones" class="tab-content">
-                <div class="section-header">
-                    <h2>Shipping Zones Management</h2>
-                    <button class="btn-primary" id="add-shipping-zone-btn">+ Add Shipping Zone</button>
-                </div>
-                <div id="shipping-zones-list" class="shipping-zones-list">
-                    <!-- Shipping zones will be displayed here -->
-                </div>
-            </section>
-
-            <!-- Reports Tab -->
-            <section id="reports" class="tab-content">
-                <div class="section-header">
-                    <h2>Reports & Analytics</h2>
-                    <div class="report-filters">
-                        <select id="date-range">
-                            <option value="today">Today</option>
-                            <option value="week">This Week</option>
-                            <option value="month">This Month</option>
-                        </select>
-                        <button class="btn-secondary">Export PDF</button>
-                    </div>
-                </div>
-                <div id="reports-container" class="reports-container">
-                    <!-- Reports will be displayed here -->
-                </div>
-            </section>
-        </main>
+                </section>
+            </main>
+        </div>
     </div>
 
     <!-- Modal for Add Table -->
@@ -492,6 +234,9 @@
     <!-- QR code generation library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="app.js"></script>
-    <script src="mobile-responsive.js"></script>
+    <!-- toast container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="dashboard.js"></script>
 </body>
 </html>

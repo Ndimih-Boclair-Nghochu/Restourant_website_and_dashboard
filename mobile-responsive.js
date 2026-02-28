@@ -1,14 +1,14 @@
 /* ==================== MOBILE RESPONSIVE HELPERS ==================== */
 
 document.addEventListener('DOMContentLoaded', function() {
-    const nav = document.querySelector('.top-nav');
+    const sidebar = document.querySelector('.sidebar');
     const header = document.querySelector('.header');
     
-    if (!nav || !header) return;
+    if (!sidebar || !header) return;
     
-    // Create hamburger button for toggling top navigation on small screens
+    // Create hamburger button
     const hamburger = document.createElement('button');
-    hamburger.className = 'nav-toggle';
+    hamburger.className = 'hamburger-menu';
     hamburger.innerHTML = '☰';
     hamburger.setAttribute('aria-label', 'Toggle menu');
     hamburger.setAttribute('title', 'Toggle navigation');
@@ -16,50 +16,55 @@ document.addEventListener('DOMContentLoaded', function() {
     // Insert hamburger at the start of header
     header.insertBefore(hamburger, header.firstChild);
     
-    // Hamburger click handler - toggle nav open class
+    // Hamburger click handler - toggle sidebar open class
     hamburger.addEventListener('click', function(e) {
         e.stopPropagation();
-        nav.classList.toggle('nav-open');
-        hamburger.innerHTML = nav.classList.contains('nav-open') ? '✕' : '☰';
+        sidebar.classList.toggle('sidebar-open');
+        document.body.classList.toggle('sidebar-active');
+        hamburger.innerHTML = sidebar.classList.contains('sidebar-open') ? '✕' : '☰';
         
-        // Prevent body scroll when overlay menu open
-        if (nav.classList.contains('nav-open')) {
+        // Show/hide body scroll when sidebar open
+        if (sidebar.classList.contains('sidebar-open')) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'auto';
         }
     });
     
-    // Close nav when clicking on a nav button on mobile
-    const navBtns = nav.querySelectorAll('.nav-btn');
+    // Close sidebar when clicking on a nav button
+    const navBtns = sidebar.querySelectorAll('.nav-btn');
     navBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             if (window.innerWidth < 768) {
-                nav.classList.remove('nav-open');
+                sidebar.classList.remove('sidebar-open');
+                document.body.classList.remove('sidebar-active');
                 hamburger.innerHTML = '☰';
                 document.body.style.overflow = 'auto';
             }
         });
     });
     
-    // Close nav when clicking outside on mobile
+    // Close sidebar when clicking outside on mobile
     document.addEventListener('click', function(event) {
-        if (window.innerWidth < 768 && nav.classList.contains('nav-open')) {
-            if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
-                nav.classList.remove('nav-open');
+        if (window.innerWidth < 768 && sidebar.classList.contains('sidebar-open')) {
+            // If click is not inside sidebar and not on hamburger, close sidebar
+            if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+                sidebar.classList.remove('sidebar-open');
+                document.body.classList.remove('sidebar-active');
                 hamburger.innerHTML = '☰';
                 document.body.style.overflow = 'auto';
             }
         }
     });
     
-    // Close nav on resize if widening to desktop
+    // Close sidebar on resize if widening to desktop
     let resizeTimer;
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function() {
-            if (window.innerWidth >= 768 && nav.classList.contains('nav-open')) {
-                nav.classList.remove('nav-open');
+            if (window.innerWidth >= 768 && sidebar.classList.contains('sidebar-open')) {
+                sidebar.classList.remove('sidebar-open');
+                document.body.classList.remove('sidebar-active');
                 hamburger.innerHTML = '☰';
                 document.body.style.overflow = 'auto';
             }
