@@ -37,52 +37,7 @@ body {
     flex-direction: column;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     overflow-y: auto;
-    transition: transform 0.3s ease;
-}
-
-/* collapsed state for mobile */
-.sidebar.collapsed,
-.sidebar.active {
-    transform: translateX(-100%);
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    z-index: 1000;
-}
-
-/* hamburger toggle button */
-.sidebar-toggle {
-    display: none; /* default hidden until mobile or explicit override */
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: var(--primary);
-    cursor: pointer;
-    padding: 8px;
-    transition: color 0.3s ease;
-    position: fixed;
-    top: 12px;
-    left: 12px;
-    z-index: 1100;
-}
-
-/* show on small screens or when explicitly required */
-@media (max-width: 767px) {
-    .sidebar-toggle {
-        display: block;
-    }
-}
-
-/* hide on larger viewports */
-@media (min-width: 768px) {
-    .sidebar-toggle {
-        display: none !important;
-    }
-}
-
-.sidebar-toggle:hover {
-    color: var(--primary-dark);
+    transition: all 0.3s ease;
 }
 
 .logo-section {
@@ -1019,18 +974,45 @@ textarea {
         height: auto;
     }
 
+    /* Mobile: sidebar hidden by default, slides in from left */
     .sidebar {
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        align-items: center;
-        overflow-x: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        transform: translateX(-100%);
+        z-index: 999;
+        flex-direction: column;
         padding: 10px 0;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* When sidebar is open, show it */
+    .sidebar.sidebar-open {
+        transform: translateX(0);
+    }
+
+    /* Hamburger menu button */
+    .hamburger-menu {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--primary);
+        font-size: 24px;
+        cursor: pointer;
+        padding: 8px;
+        transition: color 0.3s ease;
+        order: -1;
+        margin-right: 10px;
+    }
+
+    .hamburger-menu:hover {
+        color: var(--primary-dark);
     }
     
     .logo-section {
         border-bottom: none;
-        border-right: 2px solid rgba(255, 255, 255, 0.2);
         padding: 15px 20px;
         flex-shrink: 0;
     }
@@ -1044,18 +1026,16 @@ textarea {
     }
 
     .navigation {
-        flex-direction: row;
-        overflow-x: auto;
-        padding: 0;
-        flex-shrink: 0;
+        flex-direction: column;
+        padding: 10px 0;
     }
 
     .nav-btn {
-        flex-shrink: 0;
-        padding: 12px 15px;
+        padding: 12px 20px;
         gap: 8px;
         min-height: 48px;
-        min-width: 48px;
+        width: 100%;
+        text-align: left;
     }
     
     .nav-btn .icon {

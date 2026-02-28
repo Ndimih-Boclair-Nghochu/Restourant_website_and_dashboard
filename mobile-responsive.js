@@ -1,61 +1,55 @@
 /* ==================== MOBILE RESPONSIVE HELPERS ==================== */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Sidebar Toggle for Dashboard
     const sidebar = document.querySelector('.sidebar');
-    let sidebarToggle = document.querySelector('.sidebar-toggle');
+    const header = document.querySelector('.header');
     
-    // Create sidebar toggle if it doesn't exist
-    if (sidebar && !sidebarToggle) {
-        sidebarToggle = document.createElement('button');
-        sidebarToggle.className = 'sidebar-toggle';
-        sidebarToggle.textContent = '☰';
-        sidebarToggle.setAttribute('aria-label', 'Toggle sidebar');
-        document.body.insertBefore(sidebarToggle, document.body.firstChild);
-    }
+    if (!sidebar || !header) return;
     
-    if (sidebarToggle) {
-        sidebarToggle.addEventListener('click', function() {
-            if (sidebar) {
-                const isHidden = sidebar.classList.toggle('collapsed');
-                // change icon to X when open
-                sidebarToggle.textContent = isHidden ? '☰' : '✕';
+    // Create hamburger button
+    const hamburger = document.createElement('button');
+    hamburger.className = 'hamburger-menu';
+    hamburger.innerHTML = '☰';
+    hamburger.setAttribute('aria-label', 'Toggle menu');
+    hamburger.setAttribute('title', 'Toggle navigation');
+    
+    // Insert hamburger at the start of header
+    header.insertBefore(hamburger, header.firstChild);
+    
+    // Hamburger click handler - toggle sidebar open class
+    hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        sidebar.classList.toggle('sidebar-open');
+        hamburger.innerHTML = sidebar.classList.contains('sidebar-open') ? '✕' : '☰';
+    });
+    
+    // Close sidebar when clicking on a nav button
+    const navBtns = sidebar.querySelectorAll('.nav-btn');
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (window.innerWidth < 768) {
+                sidebar.classList.remove('sidebar-open');
+                hamburger.innerHTML = '☰';
             }
         });
-    }
-
-
-    
-    // Close sidebar when a nav button is clicked
-    if (sidebar) {
-        const navBtns = sidebar.querySelectorAll('.nav-btn');
-        navBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Close sidebar on mobile
-                if (window.innerWidth < 768) {
-                    sidebar.classList.add('collapsed');
-                    if (sidebarToggle) sidebarToggle.textContent = '☰';
-                }
-            });
-        });
-    }
+    });
     
     // Close sidebar when clicking outside on mobile
     document.addEventListener('click', function(event) {
-        if (sidebar && window.innerWidth < 768) {
-            if (!sidebar.contains(event.target) && 
-                sidebarToggle && !sidebarToggle.contains(event.target)) {
-                sidebar.classList.add('collapsed');
-                if (sidebarToggle) sidebarToggle.textContent = '☰';
+        if (window.innerWidth < 768 && sidebar.classList.contains('sidebar-open')) {
+            // If click is not inside sidebar and not on hamburger, close sidebar
+            if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
+                sidebar.classList.remove('sidebar-open');
+                hamburger.innerHTML = '☰';
             }
         }
     });
     
-    // Adjust layout on window resize
+    // Close sidebar on resize if widening to desktop
     window.addEventListener('resize', function() {
-        if (window.innerWidth >= 768 && sidebar) {
-            sidebar.classList.remove('collapsed');
-            if (sidebarToggle) sidebarToggle.textContent = '✕';
+        if (window.innerWidth >= 768 && sidebar.classList.contains('sidebar-open')) {
+            sidebar.classList.remove('sidebar-open');
+            hamburger.innerHTML = '☰';
         }
     });
     
