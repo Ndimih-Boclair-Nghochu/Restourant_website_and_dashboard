@@ -1242,6 +1242,12 @@ textarea {
 /* ==================== RESPONSIVE ==================== */
 /* Desktop - 1200px and up */
 @media (min-width: 1200px) {
+    .container {
+        display: flex !important;
+        height: 100vh !important;
+        overflow: hidden !important;
+    }
+
     /* Ensure sidebar is always visible on desktop - relative positioning */
     .sidebar {
         position: relative !important;
@@ -1249,12 +1255,19 @@ textarea {
         height: 100% !important;
         transform: none !important;
         z-index: auto !important;
-        flex-direction: column;
-        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.8);
+        flex-direction: column !important;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.8) !important;
+        display: flex !important;
+        flex-shrink: 0 !important;
     }
     
     .hamburger-menu {
         display: none !important;
+    }
+    
+    .content-area {
+        flex: 1 !important;
+        overflow-y: auto !important;
     }
     
     body {
@@ -1263,6 +1276,7 @@ textarea {
     
     .header {
         padding: 25px 40px;
+
     }
     
     .content-area {
@@ -1276,6 +1290,12 @@ textarea {
 
 /* Tablet - 768px to 1199px */
 @media (min-width: 768px) and (max-width: 1199px) {
+    .container {
+        display: flex !important;
+        height: 100vh !important;
+        overflow: hidden !important;
+    }
+
     /* Ensure sidebar is always visible on tablet - relative positioning */
     .sidebar {
         position: relative !important;
@@ -1283,12 +1303,19 @@ textarea {
         height: 100% !important;
         transform: none !important;
         z-index: auto !important;
-        flex-direction: column;
-        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.8);
+        flex-direction: column !important;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.8) !important;
+        display: flex !important;
+        flex-shrink: 0 !important;
     }
     
     .hamburger-menu {
         display: none !important;
+    }
+
+    .content-area {
+        flex: 1 !important;
+        overflow-y: auto !important;
     }
     
     .logo {
@@ -1337,9 +1364,10 @@ textarea {
     
     /* Container keeps flex layout - sidebar is fixed positioned, doesn't affect flex */
     .container {
-        display: flex;
-        height: 100vh;
-        overflow: hidden;
+        display: flex !important;
+        height: 100vh !important;
+        overflow: hidden !important;
+        position: relative !important;
     }
 
     /* Mobile: sidebar hidden by default, slides in from left */
