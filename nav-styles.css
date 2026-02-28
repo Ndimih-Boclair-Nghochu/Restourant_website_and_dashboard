@@ -1,10 +1,10 @@
 /* ==================== SHARED NAVIGATION STYLES ==================== */
 @import url("mobile-responsive.css");
 
-/* Navigation Bar */
+/* Professional 5-Star Restaurant Navigation */
 nav {
     background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
-    padding: 20px;
+    padding: 16px 30px;
     border-bottom: 2px solid var(--primary);
     position: fixed;
     top: 0;
@@ -25,16 +25,28 @@ nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
+/* Restaurant Logo - Elegant 5-Star Style */
 .nav-logo {
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
     text-decoration: none;
-    text-transform: uppercase;
     transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.nav-logo h1 {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: var(--primary);
+    margin: 0;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-shadow: 
         1px 1px 0 #b8941f,
         2px 2px 0 #a08120,
@@ -43,11 +55,19 @@ nav .container {
         5px 5px 0 #584823,
         6px 6px 10px rgba(0, 0, 0, 0.5),
         0 0 20px rgba(212, 175, 55, 0.3);
-    transform: perspective(500px) rotateX(10deg);
-    transform-style: preserve-3d;
 }
 
-.nav-logo:hover {
+.nav-logo p {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #d4af37;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.nav-logo:hover h1 {
     text-shadow: 
         1px 1px 0 #b8941f,
         2px 2px 0 #a08120,
@@ -57,13 +77,16 @@ nav .container {
         6px 6px 10px rgba(0, 0, 0, 0.5),
         0 0 30px rgba(212, 175, 55, 0.6),
         0 0 40px rgba(212, 175, 55, 0.4);
-    transform: perspective(500px) rotateX(10deg) translateY(-2px);
+    transform: translateY(-2px);
 }
 
+/* Navigation Center - Hidden on Mobile, Shows on Desktop */
 .nav-links {
     display: flex;
     gap: 40px;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
@@ -100,14 +123,16 @@ nav .container {
     color: var(--primary);
 }
 
+/* Right Side - Cart & Menu Toggle */
 .nav-right {
     display: flex;
     gap: 20px;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .nav-right a {
-    color: var(--text-dark);
+    color: #fafafa;
     text-decoration: none;
     font-size: 12px;
     font-weight: 500;
@@ -118,6 +143,28 @@ nav .container {
 
 .nav-right a:hover {
     color: var(--primary);
+}
+
+/* Hamburger Menu Button - Professional Style */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--primary);
+    transition: all 0.3s ease;
+    padding: 8px;
+    flex-shrink: 0;
+}
+
+.menu-toggle:hover {
+    color: #f4d03f;
+    transform: scale(1.1);
+}
+
+.menu-toggle.active {
+    color: #f4d03f;
 }
 
 /* Admin Badge Sticker */
@@ -504,25 +551,45 @@ section {
 }
 
 @media (max-width: 768px) {
-    nav .container {
-        flex-direction: row;
+    nav {
+        padding: 14px 16px;
     }
 
+    nav .container {
+        gap: 12px;
+    }
+
+    .nav-logo h1 {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+
+    .nav-logo p {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    /* Show hamburger menu on mobile */
     .menu-toggle {
         display: block;
     }
 
+    /* Hide desktop navigation links */
     .nav-links {
         display: none;
         position: absolute;
-        top: 70px;
+        top: 60px;
         left: 0;
         right: 0;
-        background: white;
+        background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
         flex-direction: column;
         gap: 0;
-        padding: 20px;
-        border-bottom: 1px solid var(--border);
+        padding: 16px 0;
+        border-bottom: 2px solid var(--primary);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+        list-style: none;
+        margin: 0;
     }
 
     .nav-links.active {
@@ -530,12 +597,18 @@ section {
     }
 
     .nav-links a {
-        padding: 10px 0;
-        border-bottom: 1px solid var(--border);
+        padding: 14px 20px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        color: #fafafa;
+    }
+
+    .nav-links a:hover {
+        background: rgba(212, 175, 55, 0.1);
+        color: var(--primary);
     }
 
     .nav-right {
-        gap: 10px;
+        gap: 8px;
     }
 
     .cart-panel {
@@ -554,18 +627,38 @@ section {
 
 @media (max-width: 480px) {
     nav {
-        padding: 15px;
+        padding: 12px 12px;
     }
 
-    .nav-logo {
-        font-size: 16px;
+    nav .container {
+        gap: 10px;
     }
 
-    .section-title {
-        font-size: 24px;
+    .nav-logo h1 {
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    .nav-logo p {
+        display: none;
+    }
+
+    .menu-toggle {
+        font-size: 20px;
     }
 
     .nav-right {
-        gap: 10px;
+        gap: 6px;
     }
+
+    #cartIcon {
+        font-size: 18px;
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+
+    .nav-links {
+        top: 50px !important;
 }
