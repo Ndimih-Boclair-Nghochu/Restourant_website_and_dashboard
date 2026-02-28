@@ -123,7 +123,7 @@ nav .container {
     color: var(--primary);
 }
 
-/* Right Side - Cart & Menu Toggle */
+/* Right Side - Admin Badge (Desktop) */
 .nav-right {
     display: flex;
     gap: 20px;
@@ -145,7 +145,7 @@ nav .container {
     color: var(--primary);
 }
 
-/* Hamburger Menu Button - Professional Style */
+/* Hamburger Menu Button - Professional Style with Gold Color */
 .menu-toggle {
     display: none;
     background: none;
@@ -167,7 +167,7 @@ nav .container {
     color: #f4d03f;
 }
 
-/* Admin Badge Sticker */
+/* Admin Badge - Desktop and Mobile */
 .admin-badge {
     background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
     color: #0d0d0d !important;
@@ -181,12 +181,27 @@ nav .container {
     display: inline-flex;
     align-items: center;
     gap: 5px;
+    text-decoration: none !important;
 }
 
 .admin-badge:hover {
     background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+}
+
+/* Admin badge in mobile menu */
+.nav-links .admin-badge {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.nav-links .admin-badge:hover {
+    background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%);
 }
 
 /* Cart Icon */
@@ -608,7 +623,7 @@ section {
     }
 
     .nav-right {
-        gap: 8px;
+        display: none;
     }
 
     .cart-panel {
