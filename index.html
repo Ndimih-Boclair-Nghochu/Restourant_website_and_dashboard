@@ -503,35 +503,6 @@
     <!-- QR code generation library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="app.js"></script>
-    <script>
-        // Sidebar toggle for mobile
-        const sidebar = document.querySelector('.sidebar');
-        const toggleBtn = document.getElementById('sidebarToggle');
-
-        function updateSidebarState() {
-            if (window.innerWidth <= 768) {
-                sidebar.classList.add('collapsed');
-            } else {
-                sidebar.classList.remove('collapsed');
-            }
-        }
-
-        window.addEventListener('resize', updateSidebarState);
-        updateSidebarState();
-
-        toggleBtn?.addEventListener('click', () => {
-            sidebar.classList.toggle('collapsed');
-        });
-
-        // close sidebar when clicking outside on small screens
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768 && !sidebar.classList.contains('collapsed')) {
-                if (!sidebar.contains(e.target) && e.target !== toggleBtn) {
-                    sidebar.classList.add('collapsed');
-                }
-            }
-        });
-    </script>
     <script src="mobile-responsive.js"></script>
 </body>
 </html>
