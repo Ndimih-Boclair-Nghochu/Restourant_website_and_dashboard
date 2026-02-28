@@ -21,6 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
         e.stopPropagation();
         sidebar.classList.toggle('sidebar-open');
         hamburger.innerHTML = sidebar.classList.contains('sidebar-open') ? '✕' : '☰';
+        
+        // Show/hide body scroll when sidebar open
+        if (sidebar.classList.contains('sidebar-open')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
     });
     
     // Close sidebar when clicking on a nav button
@@ -30,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (window.innerWidth < 768) {
                 sidebar.classList.remove('sidebar-open');
                 hamburger.innerHTML = '☰';
+                document.body.style.overflow = 'auto';
             }
         });
     });
@@ -41,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
                 sidebar.classList.remove('sidebar-open');
                 hamburger.innerHTML = '☰';
+                document.body.style.overflow = 'auto';
             }
         }
     });
@@ -50,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (window.innerWidth >= 768 && sidebar.classList.contains('sidebar-open')) {
             sidebar.classList.remove('sidebar-open');
             hamburger.innerHTML = '☰';
+            document.body.style.overflow = 'auto';
         }
     });
     
