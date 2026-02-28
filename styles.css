@@ -1232,13 +1232,19 @@ textarea {
 /* ==================== RESPONSIVE ==================== */
 /* Desktop - 1200px and up */
 @media (min-width: 1200px) {
-    /* Ensure sidebar is always visible on desktop */
+    /* Ensure sidebar is always visible on desktop - relative positioning */
     .sidebar {
         position: relative !important;
         width: 260px !important;
-        height: auto !important;
+        height: 100% !important;
         transform: none !important;
         z-index: auto !important;
+        flex-direction: column;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.8);
+    }
+    
+    .hamburger-menu {
+        display: none !important;
     }
     
     body {
@@ -1259,14 +1265,20 @@ textarea {
 }
 
 /* Tablet - 768px to 1199px */
-@media (max-width: 1199px) and (min-width: 768px) {
-    /* Ensure sidebar is always visible on tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+    /* Ensure sidebar is always visible on tablet - relative positioning */
     .sidebar {
         position: relative !important;
         width: 240px !important;
-        height: auto !important;
+        height: 100% !important;
         transform: none !important;
         z-index: auto !important;
+        flex-direction: column;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.8);
+    }
+    
+    .hamburger-menu {
+        display: none !important;
     }
     
     .logo {
@@ -1310,12 +1322,14 @@ textarea {
 /* Mobile - up to 767px */
 @media (max-width: 767px) {
     body {
-        padding-top: 55px;
+        padding-top: 60px;
     }
     
+    /* Container keeps flex layout - sidebar is fixed positioned, doesn't affect flex */
     .container {
-        flex-direction: column;
-        height: auto;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
     }
 
     /* Mobile: sidebar hidden by default, slides in from left */
@@ -1400,6 +1414,8 @@ textarea {
         text-align: left;
         border-left: 3px solid transparent;
         font-size: 13px;
+        display: flex;
+        align-items: center;
     }
     
     .nav-btn:hover {
@@ -1418,15 +1434,24 @@ textarea {
     }
 
     .header {
-        padding: 15px 20px;
+        padding: 12px 15px;
         flex-wrap: wrap;
-        gap: 12px;
+        gap: 8px;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .header .page-title {
+        margin: 0;
+        font-size: 18px;
+        flex: 1;
     }
 
     .header-actions {
         width: 100%;
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
+        margin-top: 8px;
     }
 
     .search-box {
@@ -1446,6 +1471,46 @@ textarea {
 
     .kpi-card {
         padding: 20px;
+    }
+
+    /* TABLE SCROLLING ON MOBILE */
+    .data-table {
+        overflow-x: auto;
+        overflow-y: hidden;
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .data-table table {
+        width: 100%;
+        min-width: 900px;
+    }
+
+    .data-table thead {
+        background: rgba(212, 175, 55, 0.1);
+        position: sticky;
+        top: 0;
+    }
+
+    .data-table th {
+        padding: 12px;
+        font-weight: 600;
+        color: var(--primary-light);
+        text-align: left;
+        border-bottom: 2px solid var(--border-color);
+        white-space: nowrap;
+        font-size: 13px;
+    }
+
+    .data-table td {
+        padding: 12px;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 12px;
+    }
+
+    .data-table tbody tr:hover {
+        background: rgba(212, 175, 55, 0.08);
     }
 
     .tables-grid {
@@ -1483,9 +1548,11 @@ textarea {
 
     .modal-content {
         width: 95%;
-        max-width: 100%;
-        padding: 25px;
+        max-width: calc(100vw - 30px);
+        padding: 20px;
         margin: 15px;
+        max-height: 85vh;
+        overflow-y: auto;
     }
     
     /* Touch-friendly button sizing */
@@ -1531,13 +1598,32 @@ textarea {
     .report-card {
         padding: 20px;
     }
-}
 
-/* Small phones - up to 480px */
-@media (max-width: 480px) {
-    body {
-        font-size: 13px;
-        padding-top: 50px;
+    /* RESPONSIVE ICON SIZING */
+    .kpi-card .icon {
+        font-size: 20px !important;
+    }
+
+    .menu-item .icon,
+    .menu-card .icon {
+        font-size: 40px !important;
+        width: 40px;
+        height: 40px;
+    }
+
+    .staff-avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .order-item .status-badge {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+
+    .modal .icon {
+        font-size: 40px;
     }
     
     .sidebar {
@@ -1644,6 +1730,27 @@ textarea {
         padding: 10px 12px;
         min-height: 44px;
         font-size: 14px;
+    }
+
+    /* RESPONSIVE IMAGE SIZING */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .menu-card .menu-image {
+        max-height: 150px;
+    }
+
+    .menu-card .menu-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .menu-item img {
+        max-width: 100%;
+        height: auto;
     }
 }
 

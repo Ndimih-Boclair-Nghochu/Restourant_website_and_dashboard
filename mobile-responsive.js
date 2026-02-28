@@ -58,13 +58,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Close sidebar on resize if widening to desktop
+    let resizeTimer;
     window.addEventListener('resize', function() {
-        if (window.innerWidth >= 768 && sidebar.classList.contains('sidebar-open')) {
-            sidebar.classList.remove('sidebar-open');
-            document.body.classList.remove('sidebar-active');
-            hamburger.innerHTML = '☰';
-            document.body.style.overflow = 'auto';
-        }
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            if (window.innerWidth >= 768 && sidebar.classList.contains('sidebar-open')) {
+                sidebar.classList.remove('sidebar-open');
+                document.body.classList.remove('sidebar-active');
+                hamburger.innerHTML = '☰';
+                document.body.style.overflow = 'auto';
+            }
+        }, 100);
     });
     
     // Touch-friendly improvements
