@@ -120,6 +120,16 @@ function updateCartBadge() {
     }
 }
 
+// Ensure mobile responsive helpers are loaded on pages that include this script
+(function loadMobileResponsive() {
+    if (!document.querySelector('script[src="mobile-responsive.js"]')) {
+        var s = document.createElement('script');
+        s.src = 'mobile-responsive.js';
+        s.async = true;
+        document.body.appendChild(s);
+    }
+})();
+
 // Show cart modal
 function showCartModal() {
     const cartModal = document.getElementById('cartModal');

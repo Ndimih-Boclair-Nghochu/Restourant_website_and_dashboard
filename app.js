@@ -512,6 +512,14 @@ class UIManager {
             });
         }
 
+        // QR code actions
+        const genBtn = document.getElementById('generate-qr-btn');
+        if (genBtn) genBtn.addEventListener('click', () => this.generateMenuQRCode());
+        const downloadBtn = document.getElementById('download-qr-btn');
+        if (downloadBtn) downloadBtn.addEventListener('click', () => this.downloadMenuQRCode());
+        const printBtn = document.getElementById('print-qr-btn');
+        if (printBtn) printBtn.addEventListener('click', () => this.printMenuQRCode());
+
         // Logout
         document.getElementById('logout-btn').addEventListener('click', () => {
             if (confirm('Are you sure you want to logout?')) {
@@ -795,6 +803,64 @@ class UIManager {
         }
         
         console.log('Dashboard rendered successfully');
+
+        // ensure QR code is there when dashboard loads
+        this.generateMenuQRCode();
+    }
+
+    // -------- QR CODE SECTION --------
+    generateMenuQRCode() {
+        const container = document.getElementById('qr-container');
+        if (!container) return;
+        container.innerHTML = ''; // clear any previous
+        // build absolute URL to menu page
+        const origin = window.location.origin || (window.location.protocol + '//' + window.location.host);
+        const menuUrl = origin + '/menu.html';
+        try {
+            new QRCode(container, {
+                text: menuUrl,
+                width: 150,
+                height: 150,
+                colorDark : '#000000',
+                colorLight : '#ffffff',
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        } catch (e) {
+            console.error('Failed to generate QR code:', e);
+        }
+        // show download/print buttons
+        document.getElementById('download-qr-btn').style.display = 'inline-block';
+        document.getElementById('print-qr-btn').style.display = 'inline-block';
+    }
+
+    downloadMenuQRCode() {
+        const container = document.getElementById('qr-container');
+        if (!container) return;
+        const img = container.querySelector('img') || container.querySelector('canvas');
+        if (!img) return;
+        let dataUrl;
+        if (img.tagName === 'IMG') {
+            dataUrl = img.src;
+        } else {
+            dataUrl = img.toDataURL('image/png');
+        }
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = 'menu-qr.png';
+        a.click();
+    }
+
+    printMenuQRCode() {
+        const container = document.getElementById('qr-container');
+        if (!container) return;
+        const img = container.querySelector('img') || container.querySelector('canvas');
+        if (!img) return;
+        const win = window.open('');
+        if (img.tagName === 'IMG') {
+            win.document.write('<img src="' + img.src + '" onload="window.print();window.close();"/>');
+        } else {
+            win.document.write('<img src="' + img.toDataURL('image/png') + '" onload="window.print();window.close();"/>');
+        }
     }
 
     // Tables
@@ -1134,33 +1200,74 @@ class UIManager {
         const orders = this.db.getOrders();
         const billing = this.db.getBilling();
         const tables = this.db.getTables();
-
-        const totalOrders = orders.length;
-        const completedOrders = orders.filter(o => o.status === 'completed').length;
-        const totalRevenue = billing.reduce((sum, b) => sum + (b.amount || 0), 0);
+        
+        // Get customer orders from website
+        let customerOrders = JSON.parse(localStorage.getItem('restaurantOrders') || '[]');
+        if (customerOrders.length === 0) {
+            customerOrders = JSON.parse(localStorage.getItem('customerOrders') || '[]');
+        }
+        const reservations = JSON.parse(localStorage.getItem('reservations') || '[]');
+        const reviews = JSON.parse(localStorage.getItem('customerReviews') || '[]');
+        
+        // Calculate from INTERNAL orders
+        const internalOrdersTotal = orders.length;
+        const internalCompleted = orders.filter(o => o.status === 'completed').length;
+        const internalRevenue = billing.reduce((sum, b) => sum + (b.amount || 0), 0);
+        
+        // Calculate from CUSTOMER orders
+        const customerOrdersTotal = customerOrders.length;
+        const customerRevenue = customerOrders.reduce((sum, o) => sum + (o.totalAmount || 0), 0);
+        
+        // TOTAL across all sources
+        const totalOrders = internalOrdersTotal + customerOrdersTotal;
+        const totalRevenue = internalRevenue + customerRevenue;
         const avgOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0;
         const occupancyRate = tables.length > 0 ? (tables.filter(t => t.status === 'occupied').length / tables.length) * 100 : 0;
+        
+        // Calculate customer metrics
+        const avgReviewRating = reviews.length > 0 ? (reviews.reduce((sum, r) => sum + (r.rating || 0), 0) / reviews.length).toFixed(1) : 0;
+        const reservationCount = reservations.length;
 
         const html = `
             <div class="report-card">
-                <h3>Total Orders</h3>
+                <h3>📊 Total Orders</h3>
                 <div class="report-data">${totalOrders}</div>
-                <div class="report-change">Completed: ${completedOrders}</div>
+                <div class="report-change">Internal: ${internalOrdersTotal} | Website: ${customerOrdersTotal}</div>
             </div>
             <div class="report-card">
-                <h3>Total Revenue</h3>
+                <h3>💰 Total Revenue</h3>
                 <div class="report-data">${totalRevenue.toLocaleString()} FCFA</div>
-                <div class="report-change">Avg per order: ${avgOrderValue.toLocaleString()} FCFA</div>
+                <div class="report-change">Internal: ${internalRevenue.toLocaleString()} | Website: ${customerRevenue.toLocaleString()}</div>
             </div>
             <div class="report-card">
-                <h3>Table Occupancy</h3>
+                <h3>🪑 Table Occupancy</h3>
                 <div class="report-data">${occupancyRate.toFixed(1)}%</div>
                 <div class="report-change">Occupied: ${tables.filter(t => t.status === 'occupied').length}/${tables.length}</div>
             </div>
             <div class="report-card">
-                <h3>Average Order Value</h3>
+                <h3>💵 Avg Order Value</h3>
                 <div class="report-data">${avgOrderValue.toLocaleString()} FCFA</div>
-                <div class="report-change">Peak: During dinner hours</div>
+                <div class="report-change">Total revenue ÷ Total orders</div>
+            </div>
+            <div class="report-card">
+                <h3>📅 Reservations</h3>
+                <div class="report-data">${reservationCount}</div>
+                <div class="report-change">Pending bookings</div>
+            </div>
+            <div class="report-card">
+                <h3>⭐ Avg Review Rating</h3>
+                <div class="report-data">${avgReviewRating}⭐</div>
+                <div class="report-change">From ${reviews.length} reviews</div>
+            </div>
+            <div class="report-card">
+                <h3>✅ Completed Orders</h3>
+                <div class="report-data">${internalCompleted}</div>
+                <div class="report-change">Internal orders done</div>
+            </div>
+            <div class="report-card">
+                <h3>🔄 Pending Orders</h3>
+                <div class="report-data">${internalOrdersTotal - internalCompleted}</div>
+                <div class="report-change">Awaiting completion</div>
             </div>
         `;
         

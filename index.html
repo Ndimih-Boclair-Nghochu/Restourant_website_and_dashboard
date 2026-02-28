@@ -138,6 +138,17 @@
                     </div>
                 </div>
 
+                <!-- Menu QR Code Card - Prominent Section -->
+                <div class="card" id="qr-card" style="margin-bottom: 30px; padding: 30px; text-align: center; border-top: 3px solid #d4af37;">
+                    <h3 style="margin-bottom: 15px;">📱 Menu QR Code - Customers Can Scan to Order</h3>
+                    <div id="qr-container" style="text-align: center; margin: 20px 0;"></div>
+                    <div class="qr-actions" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 15px;">
+                        <button id="generate-qr-btn" class="btn-secondary">🔄 Generate</button>
+                        <button id="download-qr-btn" class="btn-primary">⬇️ Download as Image</button>
+                        <button id="print-qr-btn" class="btn-secondary">🖨️ Print</button>
+                    </div>
+                </div>
+
                 <!-- Charts and Details -->
                 <div class="dashboard-details">
                     <!-- Active Orders -->
@@ -153,6 +164,15 @@
                         <h3>Recent Transactions</h3>
                         <div id="recent-transactions" class="transactions-list">
                             <p class="empty-state">No transactions</p>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder Card -->
+                    <div class="card">
+                        <h3>Quick Stats</h3>
+                        <div style="color: #666; font-size: 14px;">
+                            <p>System running smoothly</p>
+                            <p style="font-size: 12px; color: #999; margin-top: 10px;">More metrics coming soon</p>
                         </div>
                     </div>
                 </div>
@@ -480,6 +500,8 @@
         </div>
     </div>
 
+    <!-- QR code generation library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="app.js"></script>
     <script src="mobile-responsive.js"></script>
 </body>

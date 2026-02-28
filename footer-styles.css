@@ -1,5 +1,7 @@
 /* ==================== FOOTER STYLES ==================== */
 
+@import url("mobile-responsive.css");
+
 footer {
     background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
     color: white;
