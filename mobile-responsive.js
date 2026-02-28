@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     hamburger.addEventListener('click', function(e) {
         e.stopPropagation();
         sidebar.classList.toggle('sidebar-open');
+        document.body.classList.toggle('sidebar-active');
         hamburger.innerHTML = sidebar.classList.contains('sidebar-open') ? '✕' : '☰';
         
         // Show/hide body scroll when sidebar open
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', function() {
             if (window.innerWidth < 768) {
                 sidebar.classList.remove('sidebar-open');
+                document.body.classList.remove('sidebar-active');
                 hamburger.innerHTML = '☰';
                 document.body.style.overflow = 'auto';
             }
@@ -48,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // If click is not inside sidebar and not on hamburger, close sidebar
             if (!sidebar.contains(event.target) && !hamburger.contains(event.target)) {
                 sidebar.classList.remove('sidebar-open');
+                document.body.classList.remove('sidebar-active');
                 hamburger.innerHTML = '☰';
                 document.body.style.overflow = 'auto';
             }
@@ -58,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', function() {
         if (window.innerWidth >= 768 && sidebar.classList.contains('sidebar-open')) {
             sidebar.classList.remove('sidebar-open');
+            document.body.classList.remove('sidebar-active');
             hamburger.innerHTML = '☰';
             document.body.style.overflow = 'auto';
         }

@@ -982,15 +982,29 @@ textarea {
         width: 250px;
         height: 100vh;
         transform: translateX(-100%);
-        z-index: 999;
+        z-index: 1001;
         flex-direction: column;
-        padding: 10px 0;
+        padding: 0;
         border-right: 1px solid rgba(255, 255, 255, 0.1);
+        overflow-y: auto;
     }
 
     /* When sidebar is open, show it */
     .sidebar.sidebar-open {
         transform: translateX(0);
+    }
+
+    /* Backdrop overlay when sidebar is open */
+    body.sidebar-active::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        pointer-events: none;
     }
 
     /* Hamburger menu button */
@@ -1005,22 +1019,12 @@ textarea {
         transition: color 0.3s ease;
         order: -1;
         margin-right: 10px;
+        position: relative;
+        z-index: 1002;
     }
 
     .hamburger-menu:hover {
         color: var(--primary-dark);
-    }
-
-    /* Backdrop overlay when sidebar is open */
-    .sidebar.sidebar-open::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: -1;
     }
     
     .logo-section {
