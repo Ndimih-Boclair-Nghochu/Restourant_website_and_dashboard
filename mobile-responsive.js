@@ -17,7 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (sidebarToggle) {
         sidebarToggle.addEventListener('click', function() {
             if (sidebar) {
-                sidebar.classList.toggle('collapsed');
+                const isHidden = sidebar.classList.toggle('collapsed');
+                // change icon to X when open
+                sidebarToggle.textContent = isHidden ? '☰' : '✕';
             }
         });
     }
@@ -29,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.addEventListener('click', function() {
                 // Close sidebar on mobile
                 if (window.innerWidth < 768) {
-                    sidebar.classList.remove('collapsed');
+                    sidebar.classList.add('collapsed');
+                    if (sidebarToggle) sidebarToggle.textContent = '☰';
                 }
             });
         });
@@ -40,7 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (sidebar && window.innerWidth < 768) {
             if (!sidebar.contains(event.target) && 
                 sidebarToggle && !sidebarToggle.contains(event.target)) {
-                sidebar.classList.remove('collapsed');
+                sidebar.classList.add('collapsed');
+                if (sidebarToggle) sidebarToggle.textContent = '☰';
             }
         }
     });
@@ -49,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', function() {
         if (window.innerWidth >= 768 && sidebar) {
             sidebar.classList.remove('collapsed');
+            if (sidebarToggle) sidebarToggle.textContent = '✕';
         }
     });
     

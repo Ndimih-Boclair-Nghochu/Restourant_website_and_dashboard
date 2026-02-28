@@ -498,9 +498,14 @@ class UIManager {
         // Search functionality
         const searchBox = document.querySelector('.search-box');
         if (searchBox) {
-            searchBox.addEventListener('keyup', (e) => {
-                const searchTerm = e.target.value.toLowerCase();
-                this.performSearch(searchTerm);
+            // require pressing Enter before searching
+            searchBox.setAttribute('placeholder', 'Type name then press Enter');
+            searchBox.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const searchTerm = e.target.value.trim().toLowerCase();
+                    // only search when there is some text
+                    if (searchTerm) this.performSearch(searchTerm);
+                }
             });
         }
 
@@ -1511,25 +1516,25 @@ class UIManager {
 
         // Search across all sections
         tables.forEach(t => {
-            if (t.number.toLowerCase().includes(searchTerm)) {
+            if (t.number.toLowerCase() === searchTerm) {
                 results.push(`Table ${t.number}`);
             }
         });
 
         menuItems.forEach(m => {
-            if (m.name.toLowerCase().includes(searchTerm)) {
+            if (m.name.toLowerCase() === searchTerm) {
                 results.push(`Menu: ${m.name}`);
             }
         });
 
         orders.forEach(o => {
-            if (o.id.toLowerCase().includes(searchTerm)) {
+            if (o.id.toLowerCase() === searchTerm) {
                 results.push(`Order: ${o.id}`);
             }
         });
 
         staff.forEach(s => {
-            if (s.name.toLowerCase().includes(searchTerm)) {
+            if (s.name.toLowerCase() === searchTerm) {
                 results.push(`Staff: ${s.name}`);
             }
         });
