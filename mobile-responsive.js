@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (sidebarToggle) {
         sidebarToggle.addEventListener('click', function() {
             if (sidebar) {
-                sidebar.classList.toggle('active');
+                sidebar.classList.toggle('collapsed');
             }
         });
     }
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.addEventListener('click', function() {
                 // Close sidebar on mobile
                 if (window.innerWidth < 768) {
-                    sidebar.classList.remove('active');
+                    sidebar.classList.remove('collapsed');
                 }
             });
         });
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (sidebar && window.innerWidth < 768) {
             if (!sidebar.contains(event.target) && 
                 sidebarToggle && !sidebarToggle.contains(event.target)) {
-                sidebar.classList.remove('active');
+                sidebar.classList.remove('collapsed');
             }
         }
     });
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Adjust layout on window resize
     window.addEventListener('resize', function() {
         if (window.innerWidth >= 768 && sidebar) {
-            sidebar.classList.remove('active');
+            sidebar.classList.remove('collapsed');
         }
     });
     
